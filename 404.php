@@ -6,7 +6,7 @@ if (!is_textdomain_loaded('intercoastal')) {
     load_theme_textdomain('intercoastal', get_template_directory() . '/languages');
 }
 
-include("includes/headers/{$header_type}.php");
+get_header();
 ?>
 
 <main id="primary" class="site-404">

@@ -33,4 +33,3 @@ require get_template_directory() . '/theme-options/acf-navigation-background.php
 require get_template_directory() . '/theme-options/general-functions.php';
 require get_template_directory() . '/theme-options/taxonomies.php';
 require get_template_directory() . '/theme-options/update-alt-tags.php';
-require get_template_directory() . '/theme-options/global-headers.php';

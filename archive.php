@@ -1,6 +1,5 @@
 <?php
-global $header_type; // required to access global variable
-include("includes/headers/{$header_type}.php"); 
+get_header(); 
 ?>
 
 <main id="primary" class="site-archive archive-page">

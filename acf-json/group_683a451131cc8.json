@@ -86,68 +86,6 @@
             "selected": 0
         },
         {
-            "key": "field_68421b2263fa3",
-            "label": "Header Selector",
-            "name": "header_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "centerized-logo": "Header with Centerized Logo",
-                "minimalmenu": "Header Minimal",
-                "rightmenu": "Header Right Menu",
-                "with-announcement": "Header with Announcement Bar"
-            },
-            "default_value": "rightmenu",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_68421b2263fa3",
-            "label": "Header Selector",
-            "name": "header_layout",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "centerized-logo": "Header with Centerized Logo",
-                "minimalmenu": "Header Minimal",
-                "rightmenu": "Header Right Menu",
-                "with-announcement": "Header with Announcement Bar"
-            },
-            "default_value": "rightmenu",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
             "key": "field_6840e603fe18d",
             "label": "Header Sticky",
             "name": "sticky",
@@ -767,5 +705,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1761944138
+    "display_title": "",
+    "modified": 1767969461
 }
