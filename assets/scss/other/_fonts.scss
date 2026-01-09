@@ -1,0 +1,131 @@
+/* Fonts START*/
+
+// body{
+//     @media(min-width: 450px) { font-size: 15px; }
+//     @media(min-width: 991.98px) { font-size: 16px; }
+//     font-size: 14px;
+// }
+// .h1,h1{
+//     @media(min-width: 450px) { font-size: 36px; }
+//     @media(min-width: 991.98px) { font-size: 40px; }
+//     font-size: 24px;
+// }
+// .h2,h2{
+//     @media(min-width: 450px) { font-size: 28px; }
+//     @media(min-width: 991.98px) { font-size: 32px; }
+//     font-size: 22px;
+// }
+// .h3,h3{
+//     @media(min-width: 450px) { font-size: 24px; }
+//     @media(min-width: 991.98px) { font-size: 28px; }
+//     font-size: 18px;
+// }
+// .h4,h4{
+//     @media(min-width: 450px) { font-size: 20px; }
+//     @media(min-width: 991.98px) { font-size: 24px; }
+//     font-size: 16px;
+// }
+// .h5,h5{
+//     @media(min-width: 450px) { font-size: 18px; }
+//     @media(min-width: 991.98px) { font-size: 20px; }
+//     font-size: 14px;
+// }
+// .h6,h6{
+//     @media(min-width: 450px) { font-size: 14px; }
+//     @media(min-width: 991.98px) { font-size: 16px; }
+//     font-size: 12px;
+// }
+
+//Version used from Bootstrap which can be customized and set like this
+// font-size: calc(3.375rem + 1.5vw);
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 100; /* Thin */
+    src: url(../fonts/Montserrat-Thin.ttf) format('truetype'),
+         url(../fonts/Montserrat-Thin.woff2) format('woff2'),
+         url(../fonts/Montserrat-Thin.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 200; /* Extra Light */
+    src: url(../fonts/Montserrat-ExtraLight.ttf) format('truetype'),
+         url(../fonts/Montserrat-ExtraLight.woff2) format('woff2'),
+         url(../fonts/Montserrat-ExtraLight.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300; /* Light */
+    src: url(../fonts/Montserrat-Light.ttf) format('truetype'),
+         url(../fonts/Montserrat-Light.woff2) format('woff2'),
+         url(../fonts/Montserrat-Light.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400; /* Regular */
+    src: url(../fonts/Montserrat-Regular.ttf) format('truetype'),
+         url(../fonts/Montserrat-Regular.woff2) format('woff2'),
+         url(../fonts/Montserrat-Regular.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500; /* Medium */
+    src: url(../fonts/Montserrat-Medium.ttf) format('truetype'),
+         url(../fonts/Montserrat-Medium.woff2) format('woff2'),
+         url(../fonts/Montserrat-Medium.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600; /* Semi-Bold */
+    src: url(../fonts/Montserrat-SemiBold.ttf) format('truetype'),
+         url(../fonts/Montserrat-SemiBold.woff2) format('woff2'),
+         url(../fonts/Montserrat-SemiBold.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 700; /* Bold */
+    src: url(../fonts/Montserrat-Bold.ttf) format('truetype'),
+         url(../fonts/Montserrat-Bold.woff2) format('woff2'),
+         url(../fonts/Montserrat-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 800; /* Extra Bold */
+    src: url(../fonts/Montserrat-ExtraBold.ttf) format('truetype'),
+         url(../fonts/Montserrat-ExtraBold.woff2) format('woff2'),
+         url(../fonts/Montserrat-ExtraBold.woff) format('woff');
+}
+
+@font-face {
+    font-family: "intercoastal";
+    font-display: swap;
+    font-style: normal;
+    font-weight: 900; /* Black */
+    src: url(../fonts/Montserrat-Black.ttf) format('truetype'),
+         url(../fonts/Montserrat-Black.woff2) format('woff2'),
+         url(../fonts/Montserrat-Black.woff) format('woff');
+}
+/* Fonts END*/
