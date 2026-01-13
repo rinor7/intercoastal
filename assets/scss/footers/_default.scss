@@ -1,56 +1,878 @@
 /* Footer Default Start*/
 footer {
+    margin-top: 80px;
     padding: 0px 0px;
+    @include md {
+        margin-top: 40px;
+    }
     .site-footer-columns {
-        padding: 30px 0;
-        background: $white;
-        .col-lg-3 {
-            margin: 30px 0;
-            @include md {
-                max-width: 600px;
-                &:first-child {
-                    margin-top: 0;
-                }
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-            @include sm {
-                max-width: 90%;
-            }
-        }
-        .widget-title {
-            font-size: 30px;
-            display: block;
-            .social-media-ul {
-                display: flex;
-            }
-        }
-    }
-    .site-footer-copyrights {
-        padding: 10px 0;
+        padding: 80px 0 30px 0;
         background: $black;
-        p {
-            margin: 0;
-            text-align: center;
-            color: $white;
+        .footer-cols {
+            &.footer-0 {
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    column-gap: 48px;
+                     @include lg {
+                        flex-direction: column;
+                        row-gap: 40px;
+                    }
+                    @include xs {
+                        text-align: center;
+                    }
+                    .widget-wrapper {
+                        flex: 1;
+                        .widget-title {
+                            color: $white;
+                            font-size: 36px;
+                            display: block;
+                            font-weight: 500;
+                            @include xs {
+                                font-size: 26px;
+                            }
+                        }
+                        .textwidget {
+                            p {
+                                color: $white;
+                                font-size: 16px;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+            &.footer-1 {
+                @include lg {
+                    order: -1;
+                }
+            }
+            &.footer-2 {
+                @include lg {
+                    width: 100%;
+                    margin-bottom: 40px;
+                }
+            }
+            &:not(:last-of-type) {
+                margin-bottom: 80px;
+                @include lg {
+                    margin-bottom: 40px;
+                }
+            }
+            .footer-nav {
+                display: flex;
+                column-gap: 12px;
+                flex-wrap: wrap;
+                row-gap: 12px;
+                @include min-lg {
+                    justify-content: end;
+                }
+                @include xs {
+                    flex-direction: column;
+                    text-align: center;
+                    row-gap: 24px;
+                }
+                li {
+                    a {
+                        color: $white;
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        .copyrights {
+            display: flex;
+            column-gap: 48px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            row-gap: 40px;
+            @include xs {
+                flex-direction: column;
+            }
+            .leftside {
+                display: flex;
+                column-gap: 16px;
+                row-gap: 12px;
+                flex-wrap: wrap;
+                align-items: center;
+                @include xs {
+                    justify-content: center;
+                    flex-direction: column;
+                    row-gap: 24px;
+                }
+                p, a {
+                    color: $white;
+                    font-size: 14px;
+                    text-align: center;
+                }
+                .menu-footer-copyright-menu-container {
+                    display: flex;
+                }
+                .copyright-nav {
+                    display: flex;
+                    justify-content: center;
+                    column-gap: 16px;
+                    @include xs {
+                        flex-direction: column;
+                        row-gap: 24px;
+                    }
+                    li {
+                        display: flex;
+                        @include xs {
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            .rightside {
+                ul {
+                    ul {
+                        display: flex;
+                        column-gap: 16px;
+                        @include xs {
+                            justify-content: center;
+                        }
+                        li {
+                            a {
+                                color: $white;
+                                font-size: 24px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+
+    .footer-custom-section {
+        height: 500px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        position: relative;
+        @include md {
+            height: 400px;
+        }
+        @include xs {
+            height: 200px;
+        }
+        .footer-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+        }
+        &.footer-bg--default {
+
+        }
+        &.footer-bg--page {
+
+        }
+    }
+
+    .footer-reach-out {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        .footer-contact-inner {
+            .footer-contact-left {
+                .footer-contact-widget {
+                    margin-top: 24px;
+                    .footer-contact-widget {
+                        flex-direction: column;
+                        row-gap: 24px;
+                        display: flex;
+                        .contact-item {
+                            color: $white;
+                            display: flex;
+                            column-gap: 12px;
+                            .contact-icon {
+                                display: flex;
+                                width: 24px;
+                                height: 24px;
+                                margin-top: 2px;
+                                &--email {
+                                    content: url('data:image/svg+xml,<svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.20312 1.89746V15.1016H19.0957V2.29395L18.3203 2.80371L10.3643 8.04199C10.3039 8.07364 10.2515 8.09931 10.2061 8.11719C10.2029 8.11818 10.1861 8.12305 10.1494 8.12305C10.1121 8.12304 10.0955 8.11806 10.0928 8.11719C10.0471 8.09922 9.99432 8.07387 9.93359 8.04199L2.20312 2.95117V2.55176L9.87598 7.57715L10.1494 7.75684L10.4229 7.57812L18.7695 2.12793L19.7803 1.4668C19.7959 1.5446 19.8047 1.625 19.8047 1.70898V14.6016C19.8047 14.9228 19.6924 15.1963 19.4434 15.4443C19.1945 15.6924 18.9197 15.8047 18.5957 15.8047H1.70312C1.38141 15.8047 1.10823 15.6923 0.860352 15.4443L0.773438 15.3506C0.58577 15.1278 0.5 14.8831 0.5 14.6016V1.70898C0.500017 1.62046 0.509066 1.53575 0.526367 1.4541L1.20312 1.89746ZM1.70312 0.5H18.5957C18.9191 0.5 19.1933 0.613174 19.4424 0.862305H19.4434C19.553 0.971962 19.6346 1.08743 19.6934 1.20898H0.610352C0.669035 1.08699 0.750804 0.971226 0.860352 0.861328H0.861328C1.1093 0.612456 1.38205 0.500029 1.70312 0.5Z" fill="white" stroke="white"/></svg>');
+                                }
+                                &--phone {
+                                    content: url('data:image/svg+xml,<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.26855 0.5H4.76855C4.95229 0.500011 5.07991 0.55472 5.18457 0.65332C5.27807 0.741412 5.35658 0.855859 5.41504 1.00684L5.4668 1.16992L6.13184 4.18359C6.1645 4.41538 6.15698 4.60038 6.12207 4.74707C6.09092 4.87804 6.02914 4.98631 5.92969 5.08105L5.92285 5.08691L3.40527 7.57031L3.12598 7.8457L3.32617 8.18164C3.75291 8.89877 4.20639 9.57129 4.68652 10.1973C5.16934 10.8268 5.70553 11.4248 6.29395 11.9922C6.90732 12.6254 7.54853 13.2006 8.21777 13.7158C8.89293 14.2356 9.59837 14.6906 10.334 15.0801L10.665 15.2549L10.9258 14.9873L13.3311 12.5195L13.3408 12.5088C13.4804 12.3574 13.627 12.2663 13.7832 12.2197C13.9142 12.1809 14.044 12.1673 14.1748 12.1768L14.3066 12.1943L17.127 12.8184C17.2927 12.8645 17.4245 12.9359 17.5312 13.0303L17.6309 13.1328C17.7476 13.2738 17.8047 13.4317 17.8047 13.626V17.0361C17.8047 17.2731 17.7305 17.4447 17.5869 17.5869C17.4405 17.7319 17.2676 17.8047 17.0361 17.8047C15.161 17.8046 13.2407 17.3544 11.2715 16.4395C9.30334 15.525 7.47245 14.2244 5.7793 12.5312C4.19223 10.9442 2.9492 9.23511 2.04492 7.4043L1.86816 7.03613C0.951129 5.06465 0.5 3.14535 0.5 1.27441C0.500013 1.09656 0.541272 0.954083 0.623047 0.833008L0.71875 0.71875C0.862804 0.573905 1.03455 0.5 1.26855 0.5ZM1.21582 1.73047C1.24675 2.44345 1.35877 3.19177 1.54883 3.97363C1.7404 4.76166 2.04011 5.63145 2.44434 6.58008L2.7334 7.25879L3.25684 6.73828L5.27637 4.73047L5.46973 4.53809L5.41211 4.27148L4.84375 1.60449L4.75879 1.20898H1.19336L1.21582 1.73047ZM17.0957 13.5322L16.6973 13.4502L14.2119 12.9355L13.9404 12.8799L13.748 13.0801L11.7852 15.1377L11.3037 15.6416L11.9365 15.9365C12.6314 16.2598 13.3848 16.5217 14.1943 16.7246C15.005 16.9277 15.7972 17.0497 16.5703 17.0889L17.0957 17.1152V13.5322Z" fill="white" stroke="white"/></svg>');
+                                }
+                                &--office {
+                                    content: url('data:image/svg+xml,<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14941 0.5C10.1737 0.5 11.9524 1.2046 13.5049 2.63281C15.0284 4.03441 15.8047 5.91787 15.8047 8.33789C15.8046 9.32313 15.5877 10.3079 15.1455 11.2959C14.692 12.3093 14.1229 13.2799 13.4375 14.208C12.7461 15.1442 11.9953 16.018 11.1846 16.8291C10.3615 17.6526 9.59423 18.3811 8.88281 19.0146L8.87695 19.0195L8.87207 19.0244C8.78149 19.1101 8.67697 19.1722 8.55469 19.2119C8.40822 19.2594 8.27104 19.2812 8.1416 19.2812C8.0123 19.2812 7.87872 19.2593 7.73926 19.2129C7.62355 19.1744 7.52544 19.1143 7.43945 19.0303L7.43066 19.0215L7.4209 19.0137C6.70594 18.3805 5.93695 17.6523 5.11426 16.8291C4.30351 16.018 3.55269 15.1442 2.86133 14.208C2.17607 13.2801 1.60765 12.3099 1.15625 11.2969C0.715881 10.3087 0.500057 9.32347 0.5 8.33789C0.5 5.91758 1.27612 4.03437 2.79785 2.63281C4.34818 1.20481 6.12514 0.50002 8.14941 0.5ZM8.14941 1.20898C6.21417 1.20898 4.55935 1.87788 3.21777 3.21191C1.86819 4.55414 1.20312 6.2776 1.20312 8.33789C1.20323 9.75742 1.79704 11.2965 2.90137 12.9414C4.00622 14.587 5.6469 16.4159 7.80859 18.4268L8.14551 18.7402L8.48535 18.4316C10.6982 16.4242 12.3557 14.5934 13.4385 12.9404C14.5173 11.2933 15.0956 9.75416 15.0957 8.33789C15.0957 6.27756 14.4307 4.55416 13.0811 3.21191V3.21094C11.7392 1.87704 10.0845 1.20902 8.14941 1.20898ZM8.14746 6.85742C8.51364 6.85747 8.81143 6.9805 9.06836 7.23633C9.32453 7.49145 9.44727 7.78775 9.44727 8.15332C9.44725 8.5195 9.32428 8.81573 9.06934 9.07031C8.81447 9.3247 8.51778 9.44727 8.15137 9.44727C7.78436 9.44718 7.48863 9.32431 7.23438 9.07129C6.98086 8.81869 6.85752 8.52441 6.85742 8.1582C6.85742 7.83673 6.9517 7.56806 7.14551 7.33398L7.23438 7.23633C7.48733 6.98095 7.78191 6.85742 8.14746 6.85742Z" fill="white" stroke="white"/></svg>');
+                                }
+                            }
+                            .contact-text {
+                                flex-direction: column;
+                                display: flex;
+                                row-gap: 8px;
+                                .contact-label {
+                                    font-weight: 700;
+                                    font-size: 14px;
+                                }
+                                .contact-value {
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                }
+                            }
+                            &--email {
+                                .contact-value {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .footer-contact-right {
+                .footer-cf7-shortcode {
+                    .wpcf7 {
+                        form {
+                            .wpcf7-not-valid-tip {
+                                display: none;
+                            }
+                            .row-one, .row-two {
+                                display: flex;
+                                column-gap: 16px;
+                                @include sm {
+                                    flex-direction: column;
+                                    // row-gap: 24px;
+                                }
+                            }
+                            .row-six {
+                                margin: 24px 0;
+                            }
+                            .main-label {
+                                margin-top: 24px;
+                                display: flex;
+                                flex-direction: column;
+                                row-gap: 12px;
+                            }
+                            label {
+                                display: block;
+                                font-size: 14px;
+                                color: $white;
+                                font-weight: 700;
+
+                                .wpcf7-form-control-wrap {
+
+                                    input,
+                                    textarea,
+                                    select {
+                                        width: 100%;
+                                        background: transparent;
+                                        border: 1px solid rgba(255, 255, 255, 0.8);
+                                        padding: 14px 16px;
+                                        font-size: 14px;
+                                        color: $white;
+                                        outline: none;
+                                        &.wpcf7-not-valid {
+                                            border-color: $primaryRed;
+                                        }
+                                    }
+
+                                    textarea {
+                                        min-height: 140px;
+                                        resize: vertical;
+                                    }
+
+                                    select {
+                                        appearance: none;
+                                        cursor: pointer;
+                                    }
+
+                                    input::placeholder,
+                                    textarea::placeholder {
+                                        color: rgba(255, 255, 255, 0.6);
+                                    }
+                                }
+                            }
+                            .form-label {
+                                margin-bottom: 8px;
+                                font-size: 16px;
+                                font-weight: 700;
+                                color: $white;
+                                margin-bottom: 12px;
+                            }
+                            /* Radio buttons */
+                            .wpcf7-radio {
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 12px 32px;
+                                margin-bottom: 32px;
+                                @include xs {
+                                    grid-template-columns: 1fr;
+                                    row-gap: 18px;
+                                }
+                                .wpcf7-list-item {
+                                    margin: 0;
+
+                                    label {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 12px;
+                                        cursor: pointer;
+                                        font-size: 14px;
+                                        color: $white;
+                                        font-weight: 400;
+
+                                        input[type="radio"] {
+                                            appearance: none;
+                                            width: 16px;
+                                            height: 16px;
+                                            border: 1px solid $white;
+                                            border-radius: 50%;
+                                            position: relative;
+                                            background-color: $white;
+                                        }
+
+                                        input[type="radio"]:checked::after {
+                                            content: "";
+                                            position: absolute;
+                                            top: 2px;
+                                            left: 2px;
+                                            width: 10px;
+                                            height: 10px;
+                                            background: $primaryRed;
+                                            border-radius: 50%;
+                                        }
+                                    }
+                                }
+                            }
+
+                            /* Acceptance checkbox */
+                            .wpcf7-acceptance {
+                                margin-bottom: 32px;
+
+                                .wpcf7-list-item {
+                                    margin: 0;
+
+                                    label {
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 12px;
+                                        font-size: 14px;
+                                        color: $white;
+                                        cursor: pointer;
+
+                                        input[type="checkbox"] {
+                                            appearance: none;
+                                            width: 20px;
+                                            height: 20px;
+                                            border: 1px solid $white;
+                                            background-color: $white;
+                                            position: relative;
+                                        }
+
+                                        input[type="checkbox"]:checked::after {
+                                            content: "";
+                                            position: absolute;
+                                            top: 0px;
+                                            left: 6px;
+                                            width: 8px;
+                                            height: 15px;
+                                            border: solid $primaryRed;
+                                            border-width: 0 3px 3px 0;
+                                            transform: rotate(45deg);
+                                        }
+                                    }
+                                }
+                            }
+
+                            /* Submit button */
+                            input[type="submit"] {
+                                @include button1;
+                                margin-left: 0;
+                            }
+
+                            input[type="submit"]:hover {
+                                background: $white;
+                                color: #000000;
+                            }
+                        }
+                        .wpcf7-response-output {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-contact-section {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        min-height: 430px;
+        @include md {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+    }
+    .register-section {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        min-height: 300px;
+        @include md {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+    }
+
+    .register-section, .footer-contact-section, .footer-reach-out {
+        background-color: $secondayDarkRed;
+        display: flex;
+        align-items: center;
+        .register-inner {
+            display: flex;
+            @include md {
+                flex-direction: column;
+                row-gap: 48px;
+            }
+            .register-left {
+                flex-direction: column;
+                display: flex;
+                row-gap: 24px;
+                h2 {
+                    font-size: 36px;
+                    color: $white;
+                    line-height: 1;
+                    @include sm {
+                        font-size: 28px;
+                    }
+                }
+                p {
+                    max-width: 400px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    color: $white;
+                }
+            }
+            .register-right {
+                    display: flex;
+                    flex: auto;
+                    align-items: center;
+                    column-gap: 24px;
+                    @include min-md {
+                        justify-content: end;
+                    }
+                .default-btn {
+                    &-one {
+                       a {
+                        @include button2;
+                        margin: 0;
+                        border: 1px solid transparent;
+                        // &:hover {
+                        //     background-color: transparent;
+                        //     border: 1px solid $white;
+                        // }
+                       }
+                    }
+                    &-two {
+                        a {
+                            @include button1;
+                            margin: 0;
+                            // &:hover {
+                            //     background-color: $primaryRed;
+                            // }
+                        }
+                    }
+                }
+            }
+        }
+         &--override {
+        }
+        .footer-contact-inner {
+            @include md {
+                flex-direction: column;
+                row-gap: 48px;
+            }
+        }
+        .footer-contact-left {
+            color: $white;
+            row-gap: 16px;
+            flex-direction: column;
+            display: flex;
+            p {
+                span {
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+            }
+            h2 {
+                font-size: 36px;
+                line-height: 1;
+                font-weight: 500;
+                text-transform: uppercase;
+                @include md {
+                    font-size: 28px;
+                }
+            }   
+            p {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+        .footer-contact-right {
+            .footer-contact-widget {
+                flex-direction: column;
+                row-gap: 24px;
+                display: flex;
+                .contact-item {
+                    color: $white;
+                    display: flex;
+                    column-gap: 12px;
+                    .contact-icon {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        margin-top: 2px;
+                        &--email {
+                            content: url('data:image/svg+xml,<svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.20312 1.89746V15.1016H19.0957V2.29395L18.3203 2.80371L10.3643 8.04199C10.3039 8.07364 10.2515 8.09931 10.2061 8.11719C10.2029 8.11818 10.1861 8.12305 10.1494 8.12305C10.1121 8.12304 10.0955 8.11806 10.0928 8.11719C10.0471 8.09922 9.99432 8.07387 9.93359 8.04199L2.20312 2.95117V2.55176L9.87598 7.57715L10.1494 7.75684L10.4229 7.57812L18.7695 2.12793L19.7803 1.4668C19.7959 1.5446 19.8047 1.625 19.8047 1.70898V14.6016C19.8047 14.9228 19.6924 15.1963 19.4434 15.4443C19.1945 15.6924 18.9197 15.8047 18.5957 15.8047H1.70312C1.38141 15.8047 1.10823 15.6923 0.860352 15.4443L0.773438 15.3506C0.58577 15.1278 0.5 14.8831 0.5 14.6016V1.70898C0.500017 1.62046 0.509066 1.53575 0.526367 1.4541L1.20312 1.89746ZM1.70312 0.5H18.5957C18.9191 0.5 19.1933 0.613174 19.4424 0.862305H19.4434C19.553 0.971962 19.6346 1.08743 19.6934 1.20898H0.610352C0.669035 1.08699 0.750804 0.971226 0.860352 0.861328H0.861328C1.1093 0.612456 1.38205 0.500029 1.70312 0.5Z" fill="white" stroke="white"/></svg>');
+                        }
+                        &--phone {
+                            content: url('data:image/svg+xml,<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.26855 0.5H4.76855C4.95229 0.500011 5.07991 0.55472 5.18457 0.65332C5.27807 0.741412 5.35658 0.855859 5.41504 1.00684L5.4668 1.16992L6.13184 4.18359C6.1645 4.41538 6.15698 4.60038 6.12207 4.74707C6.09092 4.87804 6.02914 4.98631 5.92969 5.08105L5.92285 5.08691L3.40527 7.57031L3.12598 7.8457L3.32617 8.18164C3.75291 8.89877 4.20639 9.57129 4.68652 10.1973C5.16934 10.8268 5.70553 11.4248 6.29395 11.9922C6.90732 12.6254 7.54853 13.2006 8.21777 13.7158C8.89293 14.2356 9.59837 14.6906 10.334 15.0801L10.665 15.2549L10.9258 14.9873L13.3311 12.5195L13.3408 12.5088C13.4804 12.3574 13.627 12.2663 13.7832 12.2197C13.9142 12.1809 14.044 12.1673 14.1748 12.1768L14.3066 12.1943L17.127 12.8184C17.2927 12.8645 17.4245 12.9359 17.5312 13.0303L17.6309 13.1328C17.7476 13.2738 17.8047 13.4317 17.8047 13.626V17.0361C17.8047 17.2731 17.7305 17.4447 17.5869 17.5869C17.4405 17.7319 17.2676 17.8047 17.0361 17.8047C15.161 17.8046 13.2407 17.3544 11.2715 16.4395C9.30334 15.525 7.47245 14.2244 5.7793 12.5312C4.19223 10.9442 2.9492 9.23511 2.04492 7.4043L1.86816 7.03613C0.951129 5.06465 0.5 3.14535 0.5 1.27441C0.500013 1.09656 0.541272 0.954083 0.623047 0.833008L0.71875 0.71875C0.862804 0.573905 1.03455 0.5 1.26855 0.5ZM1.21582 1.73047C1.24675 2.44345 1.35877 3.19177 1.54883 3.97363C1.7404 4.76166 2.04011 5.63145 2.44434 6.58008L2.7334 7.25879L3.25684 6.73828L5.27637 4.73047L5.46973 4.53809L5.41211 4.27148L4.84375 1.60449L4.75879 1.20898H1.19336L1.21582 1.73047ZM17.0957 13.5322L16.6973 13.4502L14.2119 12.9355L13.9404 12.8799L13.748 13.0801L11.7852 15.1377L11.3037 15.6416L11.9365 15.9365C12.6314 16.2598 13.3848 16.5217 14.1943 16.7246C15.005 16.9277 15.7972 17.0497 16.5703 17.0889L17.0957 17.1152V13.5322Z" fill="white" stroke="white"/></svg>');
+                        }
+                        &--office {
+                            content: url('data:image/svg+xml,<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14941 0.5C10.1737 0.5 11.9524 1.2046 13.5049 2.63281C15.0284 4.03441 15.8047 5.91787 15.8047 8.33789C15.8046 9.32313 15.5877 10.3079 15.1455 11.2959C14.692 12.3093 14.1229 13.2799 13.4375 14.208C12.7461 15.1442 11.9953 16.018 11.1846 16.8291C10.3615 17.6526 9.59423 18.3811 8.88281 19.0146L8.87695 19.0195L8.87207 19.0244C8.78149 19.1101 8.67697 19.1722 8.55469 19.2119C8.40822 19.2594 8.27104 19.2812 8.1416 19.2812C8.0123 19.2812 7.87872 19.2593 7.73926 19.2129C7.62355 19.1744 7.52544 19.1143 7.43945 19.0303L7.43066 19.0215L7.4209 19.0137C6.70594 18.3805 5.93695 17.6523 5.11426 16.8291C4.30351 16.018 3.55269 15.1442 2.86133 14.208C2.17607 13.2801 1.60765 12.3099 1.15625 11.2969C0.715881 10.3087 0.500057 9.32347 0.5 8.33789C0.5 5.91758 1.27612 4.03437 2.79785 2.63281C4.34818 1.20481 6.12514 0.50002 8.14941 0.5ZM8.14941 1.20898C6.21417 1.20898 4.55935 1.87788 3.21777 3.21191C1.86819 4.55414 1.20312 6.2776 1.20312 8.33789C1.20323 9.75742 1.79704 11.2965 2.90137 12.9414C4.00622 14.587 5.6469 16.4159 7.80859 18.4268L8.14551 18.7402L8.48535 18.4316C10.6982 16.4242 12.3557 14.5934 13.4385 12.9404C14.5173 11.2933 15.0956 9.75416 15.0957 8.33789C15.0957 6.27756 14.4307 4.55416 13.0811 3.21191V3.21094C11.7392 1.87704 10.0845 1.20902 8.14941 1.20898ZM8.14746 6.85742C8.51364 6.85747 8.81143 6.9805 9.06836 7.23633C9.32453 7.49145 9.44727 7.78775 9.44727 8.15332C9.44725 8.5195 9.32428 8.81573 9.06934 9.07031C8.81447 9.3247 8.51778 9.44727 8.15137 9.44727C7.78436 9.44718 7.48863 9.32431 7.23438 9.07129C6.98086 8.81869 6.85752 8.52441 6.85742 8.1582C6.85742 7.83673 6.9517 7.56806 7.14551 7.33398L7.23438 7.23633C7.48733 6.98095 7.78191 6.85742 8.14746 6.85742Z" fill="white" stroke="white"/></svg>');
+                        }
+                    }
+                    .contact-text {
+                        flex-direction: column;
+                        display: flex;
+                        row-gap: 8px;
+                        .contact-label {
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                        .contact-value {
+                            font-weight: 400;
+                            font-size: 14px;
+                        }
+                    }
+                    &--email {
+                        .contact-value {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .logo_footer {
         z-index: 3;
-        .widget-wrapper {
-            height: 40px;
-            max-width: 170px;
-            img {
-                width: 100%;
-                height: 100% !important;
-                -o-object-fit: contain;
-                object-fit: contain;
-                -o-object-position: left;
-                object-position: left;
+        ul {
+            @include xs {
+                display: flex;
+                justify-content: center;
+            }
+            .widget-wrapper {
+                height: 46px;
+                max-width: 170px;
+                @include xs {
+                    max-width: 145px;
+                }
+                img {
+                    width: 100%;
+                    height: 100% !important;
+                    -o-object-fit: contain;
+                    object-fit: contain;
+                    -o-object-position: left;
+                    object-position: left;
+                }
+            }
+        }
+    }
+
+   .wpcf7 {
+        form {
+            .newsletter-form {
+                row-gap: 12px;
+                flex-direction: column;
+                display: flex;
+                @include lg {
+                    max-width: 600px;
+                    row-gap: 24px;
+                }
+                .newsletter-row {
+                    p {
+                        display: flex;
+                        column-gap: 12px;
+                        @include sm {
+                            flex-direction: column;
+                        }
+                        .wpcf7-form-control-wrap {
+                            input {
+                                height: 48px;
+                                border: 1px solid $white;
+                                background-color: transparent;
+                                padding-left: 12px;
+                                color: $white;
+                                font-weight: 500;
+                                @include xs {
+                                    text-align: center;
+                                    width: 100%;
+                                }
+                                &::placeholder {
+                                    color: $white;
+                                    @include xs {
+                                        text-align: center
+                                    }
+                                }
+                            }
+                        }
+                        .wpcf7-submit {
+                            @include button1;
+                            height: 48px;
+                            margin: 0;
+                            @include xs {
+                                margin: auto;
+                            }
+                        }
+                    }
+                    .wpcf7-spinner {
+                        display: none;
+                    }
+                }
+                .newsletter-note {
+                    font-size: 14px;
+                    font-weight: 500;
+                }
             }
         }
     }
 }
 
+
+.testimonial-slider:not(.testimonial-slider-general) {
+    &.swiper {
+        padding-top: 40px;
+        padding-bottom: 80px;
+        @include md {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+    .swiper-wrapper {
+        .swiper-slide {
+            .testimonial-content {
+                display: flex;
+                @include md {
+                    flex-direction: column;
+                    // row-gap: 32px;
+                }
+                .quote {
+                    font-size: 24px;
+                    color: $white;
+                    line-height: 1.2;
+                    font-weight: 400;
+                    @include min-md {
+                        margin-right: 32px;
+                    }
+                    @include md {
+                        margin-bottom: 32px;
+                        font-size: 20px;
+                    }
+                }
+                .testimonial-author {
+                    display: flex;
+                    column-gap: 12px;
+                    align-items: center;
+                    flex-shrink: 0;
+                    @include min-md {
+                        width: 290px;
+                        border-left: 1px solid $white;
+                        padding-left: 32px;
+                    }
+                    @include md {
+                        border-top: 1px solid $white;
+                        padding-top: 32px;
+                    }
+                    img {
+                        width: 68px;
+                        height: 87px;
+                        object-fit: cover;
+                    }
+                    .author-info {
+                        color: $white;
+                        flex-direction: column;
+                        display: flex;
+                        strong {
+                            line-height: 1.2;
+                            font-weight: 400;
+                            font-size: 24px;
+                            @include md {
+                                font-size: 20px;
+                            }
+                        }
+                        span {
+                            line-height: 1.4;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.testimonial-slider-general {
+    &.swiper {
+        padding-top: calc(120px + var(--header-height));
+        padding-bottom: 80px;
+
+        @include md {
+            padding-top: calc(80px + var(--header-height));
+            padding-bottom: 40px;
+        }
+    }
+    .swiper-wrapper {
+        .swiper-slide {
+            .testimonial-content {
+                display: flex;
+                @include md {
+                    flex-direction: column;
+                }
+                .quote {
+                    font-size: 36px;
+                    color: $white;
+                    line-height: 1.1;
+                    font-weight: 500;
+                    @include min-md {
+                        margin-right: 32px;
+                    }
+                    @include md {
+                        margin-bottom: 16px;
+                        font-size: 28px;
+                        line-height: 1;
+                    }
+                    .stars {
+                        width: 100%;
+                        max-width: 120px;
+                        background-repeat: no-repeat;
+                        height: 20px;
+                        display: flex;
+                        content: "";
+                        margin-bottom: 16px;
+                        background-image: url('data:image/svg+xml,<svg width="116" height="19" viewBox="0 0 116 19" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_1_1306)"><path d="M9.07088 0.612343C9.41462 -0.204115 10.5854 -0.204114 10.9291 0.612346L12.9579 5.43123C13.1029 5.77543 13.4306 6.01061 13.8067 6.0404L19.0727 6.45748C19.9649 6.52814 20.3267 7.62813 19.6469 8.2034L15.6348 11.5987C15.3482 11.8412 15.223 12.2218 15.3106 12.5843L16.5363 17.661C16.744 18.5211 15.7969 19.201 15.033 18.7401L10.5245 16.0196C10.2025 15.8252 9.7975 15.8252 9.47548 16.0196L4.96699 18.7401C4.20311 19.201 3.25596 18.5211 3.46363 17.661L4.68942 12.5843C4.77698 12.2218 4.65182 11.8412 4.36526 11.5987L0.353062 8.2034C-0.326718 7.62813 0.0350679 6.52814 0.927291 6.45748L6.19336 6.0404C6.5695 6.01061 6.89716 5.77543 7.04207 5.43123L9.07088 0.612343Z" fill="white"/><path d="M33.0709 0.612343C33.4146 -0.204115 34.5854 -0.204114 34.9291 0.612346L36.9579 5.43123C37.1029 5.77543 37.4306 6.01061 37.8067 6.0404L43.0727 6.45748C43.9649 6.52814 44.3267 7.62813 43.6469 8.2034L39.6348 11.5987C39.3482 11.8412 39.223 12.2218 39.3106 12.5843L40.5363 17.661C40.744 18.5211 39.7969 19.201 39.033 18.7401L34.5245 16.0196C34.2025 15.8252 33.7975 15.8252 33.4755 16.0196L28.967 18.7401C28.2031 19.201 27.256 18.5211 27.4636 17.661L28.6894 12.5843C28.777 12.2218 28.6518 11.8412 28.3653 11.5987L24.3531 8.2034C23.6733 7.62813 24.0351 6.52814 24.9273 6.45748L30.1934 6.0404C30.5695 6.01061 30.8972 5.77543 31.0421 5.43123L33.0709 0.612343Z" fill="white"/><path d="M57.0709 0.612343C57.4146 -0.204115 58.5854 -0.204114 58.9291 0.612346L60.9579 5.43123C61.1029 5.77543 61.4306 6.01061 61.8067 6.0404L67.0727 6.45748C67.9649 6.52814 68.3267 7.62813 67.6469 8.2034L63.6348 11.5987C63.3482 11.8412 63.223 12.2218 63.3106 12.5843L64.5363 17.661C64.744 18.5211 63.7969 19.201 63.033 18.7401L58.5245 16.0196C58.2025 15.8252 57.7975 15.8252 57.4755 16.0196L52.967 18.7401C52.2031 19.201 51.256 18.5211 51.4636 17.661L52.6894 12.5843C52.777 12.2218 52.6518 11.8412 52.3653 11.5987L48.3531 8.2034C47.6733 7.62813 48.0351 6.52814 48.9273 6.45748L54.1934 6.0404C54.5695 6.01061 54.8972 5.77543 55.0421 5.43123L57.0709 0.612343Z" fill="white"/><path d="M81.0709 0.612343C81.4146 -0.204115 82.5854 -0.204114 82.9291 0.612346L84.9579 5.43123C85.1029 5.77543 85.4306 6.01061 85.8067 6.0404L91.0727 6.45748C91.9649 6.52814 92.3267 7.62813 91.6469 8.2034L87.6348 11.5987C87.3482 11.8412 87.223 12.2218 87.3106 12.5843L88.5363 17.661C88.744 18.5211 87.7969 19.201 87.033 18.7401L82.5245 16.0196C82.2025 15.8252 81.7975 15.8252 81.4755 16.0196L76.967 18.7401C76.2031 19.201 75.256 18.5211 75.4636 17.661L76.6894 12.5843C76.777 12.2218 76.6518 11.8412 76.3653 11.5987L72.3531 8.2034C71.6733 7.62813 72.0351 6.52814 72.9273 6.45748L78.1934 6.0404C78.5695 6.01061 78.8972 5.77543 79.0421 5.43123L81.0709 0.612343Z" fill="white"/><path d="M105.071 0.612343C105.415 -0.204115 106.585 -0.204114 106.929 0.612346L108.958 5.43123C109.103 5.77543 109.431 6.01061 109.807 6.0404L115.073 6.45748C115.965 6.52814 116.327 7.62813 115.647 8.2034L111.635 11.5987C111.348 11.8412 111.223 12.2218 111.311 12.5843L112.536 17.661C112.744 18.5211 111.797 19.201 111.033 18.7401L106.525 16.0196C106.202 15.8252 105.797 15.8252 105.475 16.0196L100.967 18.7401C100.203 19.201 99.256 18.5211 99.4636 17.661L100.689 12.5843C100.777 12.2218 100.652 11.8412 100.365 11.5987L96.3531 8.2034C95.6733 7.62813 96.0351 6.52814 96.9273 6.45748L102.193 6.0404C102.569 6.01061 102.897 5.77543 103.042 5.43123L105.071 0.612343Z" fill="white"/></g><defs><clipPath id="clip0_1_1306"><rect width="116" height="18.8889" fill="white"/></clipPath></defs></svg>');
+                        @include md {
+                            margin-bottom: 32px;
+                        }
+                    }
+                }
+                .testimonial-author {
+                    display: flex;
+                    column-gap: 12px;
+                    align-items: center;
+                    flex-shrink: 0;
+                    @include min-md {
+                        width: 390px;
+                    }
+                    @include md {
+                        padding-top: 32px;
+                    }
+                    img {
+                        width: 185px;
+                        height: 240px;
+                        object-fit: cover;
+                        @include md {
+                            width: 78px;
+                            height: 100px;
+                        }
+                    }
+                    .author-info {
+                        color: $white;
+                        flex-direction: column;
+                        display: flex;
+                        gap: 6px;
+                        strong {
+                            line-height: 1.2;
+                            font-weight: 400;
+                            font-size: 24px;
+                            @include md {
+                                font-size: 20px;
+                            }
+                        }
+                        span {
+                            line-height: 1.4;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pagination-wrapper {
+        display: flex;
+        position: relative;
+        height: 100px;
+        bottom: -50px;
+        justify-content: space-between;
+        align-items: center;
+        @include md {
+            height: 60px;
+        }
+        .pagination {
+            flex: 1;
+            position: relative;
+            height: 12px;
+            max-width: 100px;
+            top: 12px;
+            .swiper-pagination {
+                display: flex;
+                align-items: center;
+            }
+            .swiper-pagination-bullet {
+                width: 12px;
+                height: 12px;
+                background-color: rgba(255, 255, 255, 0.5);
+                opacity: 1;
+                margin: 0 6px;
+            }
+            .swiper-pagination-bullet-active {
+                background-color: $white;
+            }
+        }
+        .arrows {
+            flex: 1;
+            position: relative;
+            max-width: 90px;
+            height: 100%;
+            @include md {
+                max-width: 130px;
+            }
+            .swiper-button-next, .swiper-button-prev {
+                width: 20px;
+                height: 20px;
+                @include md {
+                    width: 36px;
+                    height: 36px;
+                }
+                &:after {
+                    width: 20px;
+                    height: 20px;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    @include md {
+                        width: 36px;
+                        height: 36px;
+                    }
+                }
+            }
+            .swiper-button-prev {
+                &:after {
+                    content: "";
+                    background-image: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.921 7.5L7.714 13.292L7 14L0 7L7 0L7.714 0.708L1.92 6.5H14V7.5H1.921Z" fill="white"/></svg>');
+                }
+            }
+            .swiper-button-next {
+                &:after {
+                    content: "";
+                    background-image: url('data:image/svg+xml,<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.079 6.5L6.286 0.708L7 -6.11959e-07L14 7L7 14L6.286 13.292L12.08 7.5L5.68248e-07 7.5L6.55671e-07 6.5L12.079 6.5Z" fill="white"/></svg>');
+                }
+            }
+        }
+    }
+}
 /* Footer Default End*/

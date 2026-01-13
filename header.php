@@ -103,14 +103,6 @@
                                 ); 
                             ?>
 
-                            <div class="right-widget d-none-mobile">
-                                <?php if(is_active_sidebar('widget-6') ) { ?>
-                                <ul>
-                                    <?php dynamic_sidebar('widget-6');?>
-                                </ul>
-                                <?php } ?>
-                            </div>
-
 
                         </nav>
                     </div>

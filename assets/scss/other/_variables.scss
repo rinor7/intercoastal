@@ -2,13 +2,17 @@
 
 $white: #fff;
 $white-light: #f9f9f9;
-$black: #000000;
+$black: #00000F;
 $red: red;
 $primary-color: coral;
 $primary-color-light: coral;
 $secondary-color: #000;
 $secondary-color-light: #000000a4;
 $grey-color: #888;
+
+$primaryRed: #A1140B;
+$primaryBlue: #003049;
+$secondayDarkRed: #37000A;
 
 @mixin transition {
     transition: all .3s ease-in-out;
@@ -75,6 +79,49 @@ $grey-color: #888;
     &:hover {
         box-shadow: 2px 2px 2px $white-light, -2px -2px 2px #00000026;
     }    
+}
+
+@mixin button1 {
+    border: 1px solid $white;
+    padding: 8px 16px;
+    height: 42px;
+    width: fit-content;
+    min-width: 85px;
+    color: $white;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    @include transition;
+    background-color: transparent;
+    text-transform: uppercase;
+    justify-content: center;
+    &:hover {
+        background-color: $secondayDarkRed;
+        border-color: transparent;
+    }
+}
+
+@mixin button2 {
+    padding: 16px;
+    height: 42px;
+    width: fit-content;
+    min-width: 85px;
+    color: $white;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    @include transition;
+    background-color: $primaryRed;
+    justify-content: center;
+    &:hover {
+        background-color: $secondayDarkRed;
+    }
 }
 
 /* Variables END*/

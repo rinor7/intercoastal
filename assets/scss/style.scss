@@ -4,7 +4,6 @@
 @import "other/general";
 @import "layouts/error404";
 
-@import "headers/global-header-style";
 @import "headers/rightmenu";
 
 @import "layouts/home";
@@ -25,6 +24,12 @@
 @import "blocks/block-image-text";
 @import "blocks/block-text-image";
 
+@import "blocks/block-image-and-text";
+@import "blocks/block-features";
+@import "blocks/block-image-and-content-comb";
+@import "blocks/block-image-and-content-comb-rev";
+@import "blocks/block-features-four";
+@import "layouts/general-template";
 
 
 

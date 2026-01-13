@@ -24,10 +24,8 @@ if (empty($banner['disable_section'])):
         $inline_style .= 'background-image:url(' . esc_url($image_url) . ');';
     }
 ?>
-<section class="banner__section banner-all__section"
-    <?php if (!empty($inline_style)): ?>style="<?php echo $inline_style; ?>"<?php endif; ?>
-    aria-label="Banner">
-
+<section class="banner__section"
+    <?php if (!empty($inline_style)): ?>style="<?php echo $inline_style; ?>"<?php endif; ?> aria-label="Banner">
     <?php if ($video_url): ?>
         <div class="video-wrapper">
             <video autoplay muted loop playsinline preload="auto" class="banner-video">
@@ -43,35 +41,9 @@ if (empty($banner['disable_section'])):
     <div class="container">
         <div class="row">
            <?php
-            $content_width = $banner['content_width'] ?? 'two_columns';
-
-            switch ($content_width) {
-                case 'two_columns':
-                    $col_class = 'col-lg-6';
-                    break;
-                case 'wide':
-                    $col_class = 'col-lg-7';
-                    break;
-                case 'full_width':
-                default:
-                    $col_class = 'col-lg-12';
-                    break;
-            }
-
-            // Desktop alignment only for full width
-            $alignment_desktop = $banner['content_alignment'] ?? 'center'; // left | center
-
-            // Mobile alignment always available
-            $alignment_mobile  = $banner['content_alignment_mobile'] ?? 'center'; // left | center
-
-            // Build classes
-            $alignment_class = '';
-            if ($col_class === 'col-lg-12') {
-                $alignment_class .= ' align-desktop-' . $alignment_desktop;
-            }
-            $alignment_class .= ' align-mobile-' . $alignment_mobile;
+            // Removed content width and alignment options — default to single column.
             ?>
-            <div class="lefts <?php echo esc_attr($col_class . ' ' . $alignment_class); ?>">
+            <div class="centerized-content">
                 <?php if (!empty($banner['title'])): ?>
                     <h1><?php echo esc_html($banner['title']); ?></h1>
                 <?php endif; ?>
@@ -80,23 +52,15 @@ if (empty($banner['disable_section'])):
                     <p><?php echo $banner['subtitle']; ?></p>
                 <?php endif; ?>
 
-                <?php if (!empty($banner['button_name_1']) || !empty($banner['button_name_2'])): ?>
-                    <div class="buttons">
-                        <?php if (!empty($banner['button_name_1']) && !empty($banner['button_link_1'])): ?>
-                            <div class="default-btn">
-                                <a href="<?php echo esc_url($banner['button_link_1']); ?>" class="link-btn">
-                                    <?php echo esc_html($banner['button_name_1']); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($banner['button_name_2']) && !empty($banner['button_link_2'])): ?>
-                            <div class="default-btn two-btns">
-                                <a href="<?php echo esc_url($banner['button_link_2']); ?>" class="link-btn">
-                                    <?php echo esc_html($banner['button_name_2']); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
+                <?php
+                // Minimal: use only ACF Link field `button_link_1`.
+                // Expecting the Link field to return an array with 'url' and 'title'.
+                $btn = $banner['button_link_1'] ?? null;
+                if (!empty($btn) && is_array($btn) && !empty($btn['url']) && !empty($btn['title'])): ?>
+                    <div class="default-btn">
+                        <a href="<?php echo esc_url($btn['url']); ?>" class="link-btn" <?php echo !empty($btn['target']) ? 'target="' . esc_attr($btn['target']) . '" rel="noopener noreferrer"' : ''; ?>>
+                            <?php echo esc_html($btn['title']); ?>
+                        </a>
                     </div>
                 <?php endif; ?>
             </div>

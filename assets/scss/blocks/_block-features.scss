@@ -1,0 +1,89 @@
+.block-features {
+    flex-direction: column;
+    display: flex;
+    row-gap: 60px;
+    .block-features-wrapper {
+        display: flex;
+        @include md {
+            flex-direction: column;
+        }
+        .feature-card {
+            height: 1000px;
+            position: relative;
+            transition: flex 0.4s ease, transform 0.4s ease;
+            @include min-md {
+                flex: 1;
+                &:hover {
+                    flex: 1.1; // grow hovered card
+                }
+            }
+            @include lg {
+                height: 800px;
+            }
+            @include md {
+                height: 400px;
+            }
+            @include sm {
+                height: unset;
+            }
+            .feature-bg {
+                height: 100%;
+                background-repeat: no-repeat;
+                position: absolute;
+                width: 100%;
+                z-index: -1;
+                background-size: cover;
+                background-position: center;
+            }
+            .feature-overlay {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: -1;
+            }
+            .feature-content {
+                align-self: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                height: 100%;
+                row-gap: 12px;
+                padding-left: 40px;
+                padding-right: 40px;
+                @include sm {
+                    min-height: 333.3px;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                }
+                .feature-eyebrow {
+                    font-size: 14px;
+                    color: $white;
+                    line-height: 1.5;
+                }
+                .feature-title {
+                    color: $white;
+                    font-size: 36px;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    @include md {
+                        font-size: 28px;
+                    }
+                }
+                .feature-text {
+                    color: $white;  
+                    font-size: 16px;
+                    line-height: 1.5;
+                }
+                .feature-cta {
+                    @include button1;
+                    margin: 48px 0 0 0;
+                    @include sm {
+                        margin: 24px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+}

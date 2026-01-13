@@ -61,8 +61,8 @@ function standard_widgets_init() {
 			'after_title'   => '</span>',)
 	);
 	register_sidebar(
-		array('name'          => esc_html__( 'Footer Column 2', 'intercoastal' ),
-			'id'            => 'footer-2',
+		array('name'          => esc_html__( 'Newsletter', 'intercoastal' ),
+			'id'            => 'newsletter',
 			'description'   => esc_html__( 'Add widgets here to appear in your site footer.', 'intercoastal' ),
 			'before_widget' => '<div class="widget-wrapper">',
 			'after_widget'  => '</div>',
@@ -70,8 +70,8 @@ function standard_widgets_init() {
 			'after_title'   => '</span>',)
 	);
 	register_sidebar(
-		array('name'          => esc_html__( 'Footer Column 3', 'intercoastal' ),
-			'id'            => 'footer-3',
+		array('name'          => esc_html__( 'Social Media', 'intercoastal' ),
+			'id'            => 'socials',
 			'description'   => esc_html__( 'Add widgets here to appear in your site footer.', 'intercoastal' ),
 			'before_widget' => '<div class="widget-wrapper">',
 			'after_widget'  => '</div>',
@@ -82,6 +82,15 @@ function standard_widgets_init() {
 		array('name'          => esc_html__( 'Footer Column 4', 'intercoastal' ),
 			'id'            => 'footer-4',
 			'description'   => esc_html__( 'Add widgets here to appear in your site footer.', 'intercoastal' ),
+			'before_widget' => '<div class="widget-wrapper">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<span class="widget-title">',
+			'after_title'   => '</span>',)
+	);
+	register_sidebar(
+		array('name'          => esc_html__( 'Footer Contact', 'intercoastal' ),
+			'id'            => 'footer-contact',
+			'description'   => esc_html__( 'Add contact info widgets here to appear in the special footer contact area.', 'intercoastal' ),
 			'before_widget' => '<div class="widget-wrapper">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<span class="widget-title">',

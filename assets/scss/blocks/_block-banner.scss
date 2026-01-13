@@ -1,89 +1,76 @@
 .banner__section {
-    &.banner-all__section {
-        display: flex;
-        align-items: center;
-        min-height: 512px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        z-index: 1;
-        .container {
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-        .image-overlay {
+    display: flex;
+    align-items: center;
+    min-height: 512px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    height: 760px;
+    @include md {
+        height: 668px;
+    }
+    .container {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .image-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: "";
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .video-wrapper {
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        .overlay {
             position: absolute;
             width: 100%;
             height: 100%;
             content: "";
             top: 0;
             left: 0;
-            z-index: -1;
         }
-        .video-wrapper {
-                z-index: -1;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            .overlay {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                content: "";
-                top: 0;
-                left: 0;
-            }
-            video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        .lefts {
-            display: flex;
-            flex-direction: column;
-            row-gap: 16px;
-            h1 {
-                color: $white;
-            }
-            p {
-                color: $white;
-            }
-            .buttons {
-                display: flex;
-                column-gap: 20px;
-                flex-wrap: wrap;
-                row-gap: 10px;
-                a {
-                    @include button;
-                }
-                .two-btns {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 15px;
-                }
-            }
-            &.align-desktop-left { 
-                text-align: left; justify-content: flex-start; align-items: flex-start;
-            }
-            &.align-desktop-center { 
-                text-align: center; justify-content: center; align-items: center;
-            }
-            @include md {
-                &.align-mobile-left { text-align: left; justify-content: flex-start; align-items: flex-start;}
-                &.align-mobile-center { text-align: center; justify-content: center; align-items: center;}
-            }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
-    &.banner-one__section {
+    .centerized-content {
         display: flex;
-        align-items: center;
-        min-height: 312px;
-        @media(min-width: 450px) {
-            min-height: 412px;
+        flex-direction: column;
+        row-gap: 24px;
+        text-align: center;
+        @include md {
+            row-gap: 12px;
         }
-        @media(min-width: 991.98px) {
-            min-height: 512px;
+        h1 {
+            color: $white;
+            font-size: 96px;
+            font-weight: 400;
+            line-height: 1.2;
+            @include md {
+                font-size: 44px;
+            }
+        }
+        p {
+            color: $white;
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 400;
+            max-width: 570px;
+            margin: 0 auto;
+        }
+        .default-btn {
+            a {
+                @include button1;
+            }
         }
     }
 }

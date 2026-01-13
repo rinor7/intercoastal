@@ -8,7 +8,7 @@
 	wp_enqueue_style( 'intercoastal-bootstrap-style', get_template_directory_uri() . '/assets/css/libs/bootstrap.min.css', array(), null );
 	wp_enqueue_style('intercoastal-main-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), filemtime(get_template_directory() . '/assets/css/style.min.css'));
 	wp_enqueue_style( 'intercoastal-swiper-style', get_template_directory_uri() . '/assets/css/libs/swiper.css', array(), null );
-	// wp_enqueue_style( 'intercoastal-awesome-style', get_template_directory_uri() . '/assets/css/libs/fontawesome/css/all.css', array(), null );
+	wp_enqueue_style( 'intercoastal-awesome-style', get_template_directory_uri() . '/assets/css/libs/fontawesome/css/all.css', array(), null );
 	// wp_enqueue_style( 'intercoastal-slick-style', get_template_directory_uri() . '/assets/css/libs/slick.css', array(), null );
 	// wp_enqueue_style( 'google-fonts', "https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bitcount+Prop+Single+Ink:wght@100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap", array(), null );
 

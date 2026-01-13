@@ -1,0 +1,217 @@
+/* Image - Content Comb style Start */
+
+.block-image-and-content-comb {
+    row-gap: 60px;
+    display: flex;
+    flex-direction: column;
+    @include md {
+        row-gap: 48px;
+    }
+    .title-row {
+        &-wrapper {
+            display: flex;
+            column-gap: 48px;
+            justify-content: space-between;
+            .title-left {
+                color: $white;
+                flex-direction: column;
+                display: flex;
+                row-gap: 12px;
+                &-upside {
+                    font-size: 14px;
+                    line-height: 1.5;
+                    font-weight: 500;
+                }
+                &-downside {
+                    font-size: 64px;
+                    line-height: 1;
+                    font-weight: 400;
+                    @include md {
+                        font-size: 36px;
+                    }
+                }
+            }
+            &.two-cols {
+                .title-left {
+                    flex: 1;
+                }
+            }
+            &:not(.two-cols) {
+                .title-left {
+                    max-width: 800px;
+                }
+            }
+            .title-right {
+                flex: 1;
+                color: $white;
+                font-size: 16px;
+                line-height: 1.4;
+                font-weight: 400;
+                display: flex;
+                align-items: end;
+            }
+        }
+    }
+    .txt-image-row {
+        .container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            @include md {
+                flex-direction: column;
+                row-gap: 32px;
+            }
+        }
+        .img {
+            position: relative;
+            min-height: 600px;
+            @include md {
+                min-height: 400px;
+            }
+            @include xs {
+                min-height: 200px;
+            }
+            img {
+               position: absolute;
+                width: 100vw;
+                object-fit: cover;
+                height: 100%;
+                @include min-md {
+                    left: 16px;
+                }
+            }
+        }
+        .content {
+            .content-left {
+                display: flex;
+                flex-direction: column;
+                row-gap: 32px;
+                @include min-md {
+                    padding-right: 48px;
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 1.4;
+                    font-weight: 400;
+                    color: $white;
+                }
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 12px;
+                    padding-left: 20px;
+                    li {
+                        font-size: 16px;
+                        line-height: 1.4;
+                        font-weight: 400;
+                        color: $white;
+                        list-style-type: disc;
+                    }
+                }
+            }
+        }
+    }
+    .title-w-content-row {
+        .title-content-wrapper {
+            display: flex;
+            column-gap: 48px;
+            @include md {
+                flex-direction: column;
+                row-gap: 32px;
+            }
+            .title-wrapper-leftside {
+                color: $white;
+                flex-direction: column;
+                display: flex;
+                row-gap: 12px;
+                .title-leftside-up {
+                    font-size: 14px;
+                    line-height: 1.5;
+                    font-weight: 500;
+                }
+                .title-leftside-down {
+                    font-size: 36px;
+                    line-height: 1;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+            }
+            .content-wrapper-rightside {
+                display: flex;
+                flex-direction: column;
+                row-gap: 32px;
+                @include min-md {
+                    padding-right: 48px;
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 1.4;
+                    font-weight: 400;
+                    color: $white;
+                }
+                .images {
+                    display: grid;
+                    align-items: center;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 16px;
+                    br {
+                        display: none;
+                    }
+                    img {
+                        margin: 0;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+    }
+    .bg-row {
+        height: 600px;
+        @include md {
+            height: 400px;
+        }
+        @include xs {
+            height: 200px;
+        }
+        .container {
+            position: relative;
+            height: 100%;
+        }
+        .img {
+            position: absolute;
+            right: 16px;
+            height: 100%;
+            width: 100vw;
+            @include xs {
+                right: 40px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+
+
+
+
+.btns {
+    display: flex;
+    column-gap: 24px;
+    .default-btn {
+        &-one {
+        a {
+            @include button2;
+        }
+        }
+        &-two {
+            a {
+                @include button1;
+            }
+        }
+    }
+}
+/* Image - Content Comb style END */

@@ -27,6 +27,21 @@ var Menu = {
     };
 Menu.init();
 
+
+
+//Calculate Header Height START ( variable --header-height )
+function setHeaderHeightVar() {
+    const header = document.getElementById('header-site');
+    if (!header) return;
+
+    const height = header.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${height}px`);
+}
+setHeaderHeightVar();
+window.addEventListener('resize', setHeaderHeightVar);
+//Calculate Header Height END
+
+
 // Header change on scroll
 // $(document).ready(function() {
 //   $(window).scroll(function(){
@@ -187,6 +202,20 @@ var swiper = new Swiper(".mySwiper-boxes-section", {
       spaceBetween: 16,
     },
   },
+});
+
+var swiper = new Swiper(".testimonial-slider", {
+  slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 });
 
 //Calculate Header Height and set Page Offset

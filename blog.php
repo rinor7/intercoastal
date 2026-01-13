@@ -10,4 +10,4 @@ get_header();
 
 </main>
 
-<?php include("includes/footers/default.php"); ?>
+<?php get_footer(); ?>

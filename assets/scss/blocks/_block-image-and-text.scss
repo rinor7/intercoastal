@@ -1,0 +1,119 @@
+/* Image - Text style Start */
+.block-image-and-text {
+    row-gap: 80px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .content-row {
+        .content {
+            display: flex;
+            column-gap: 48px;
+            justify-content: space-between;
+            @include md {
+                flex-direction: column;
+                row-gap: 48px;
+            }
+            &-left {
+                flex: 1;
+                max-width: 500px;
+                p {
+                    font-size: 36px;
+                    color: $white;
+                    font-weight: 500;
+                    line-height: 1;
+                    @include md {
+                        font-size: 28px;
+                    }
+                }
+            }
+            &-right {
+                flex: 1;
+                max-width: 400px;
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 60%;
+                    height: 1px;
+                    border-bottom: 1px solid $white;
+                    padding-top: 12px;
+                }
+                p {
+                    font-size: 16px;
+                    color: $white;
+                    line-height: 1.5;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .image-row {
+        height: 600px;
+        @include md {
+            height: 400px;
+        }
+        @include xs {
+            height: 200px;
+        }
+        .container {
+            position: relative;
+            height: 100%;
+        }
+        .img {
+            position: absolute;
+            left: 16px;
+            height: 100%;
+            width: 100vw;
+            @include xs {
+                left: 40px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+// .image-no-container-right {
+//     position: relative;
+//     padding-bottom: 0;
+
+//     .row {
+//         @include md {
+//             row-gap: 20px;
+//         }
+
+//         @include xs {
+//             row-gap: 0;
+//         }
+//     }
+
+//     .rightside {
+//         height: 500px;
+//         .img {
+//            flex: unset;
+//             max-width: unset;
+//             position: relative;
+//             width: 100%;
+//             right: 0;
+//             height: 100%;
+//             top: 0;
+//             align-self: unset;
+
+//             @include xs {
+//                 padding-right: 0;
+//                 padding-left: 0;
+//             }
+
+//             @include min-md {
+//                 width: 50%;
+//                 position: absolute;
+//                 padding-right: 0;
+//                 // height: 500px;
+//             }
+//         }
+//     }
+// }
+
+/* Image - Text style END */

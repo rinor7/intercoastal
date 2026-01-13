@@ -1,4 +1,141 @@
-/* Header with Menu from Rightside Start*/
+/* Header Start*/
+.navbar-toggler {
+    padding: 0 !important;
+    outline: unset !important;
+    border-color: unset !important;
+    border: unset !important;
+    z-index: 99;
+
+    &:focus {
+        box-shadow: unset;
+    }
+}
+
+.menu-m {
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 40px;
+    height: 30px;
+
+    .menu-bottom-click,
+    .menu-top-click {
+        border-color: $black !important;
+    }
+
+    .menu-global.menu-top-click,
+    .menu-global.menu-bottom-click {
+        left: 20%;
+    }
+
+    span {
+        &:nth-child(1) {
+            border-color: $black;
+        }
+
+        &:nth-child(2) {
+            border-color: $black;
+        }
+
+        &:nth-child(3) {
+            border-color: $black;
+        }
+    }
+
+    .menu-global {
+        backface-visibility: hidden;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 3px solid;
+        width: 25px;
+        transition: 0.44s;
+        -webkit-transition: 0.44s;
+        -moz-transition: 0.44s;
+        -ms-transition: 0.44s;
+        -o-transition: 0.44s;
+        border-radius: 24px;
+        border-radius: 8px;
+    }
+
+    .menu-top {
+        top: 7px;
+    }
+
+    .menu-middle {
+        top: 14px;
+    }
+
+    .menu-bottom {
+        top: 21px;
+    }
+
+    .menu-top-click {
+        backface-visibility: hidden;
+        top: 15px;
+        transform: rotate(50deg);
+        transition: 0.44s;
+        -webkit-transition: 0.44s;
+        -moz-transition: 0.44s;
+        -ms-transition: 0.44s;
+        -o-transition: 0.44s;
+    }
+
+    .menu-middle-click {
+        opacity: 0;
+    }
+
+    .menu-bottom-click {
+        backface-visibility: hidden;
+        top: 15px;
+        transform: rotate(-410deg);
+        transition: 0.44s 0.4s;
+        -webkit-transition: 0.44s;
+        -moz-transition: 0.44s 0.4s;
+        -ms-transition: 0.44s 0.4s;
+        -o-transition: 0.44s 0.4s;
+    }
+}
+
+.logo_header {
+    z-index: 3;
+    .widget-wrapper {
+        height: 40px;
+        max-width: 170px;
+        img {
+            width: 100%;
+            height: 100% !important;
+            -o-object-fit: contain;
+            object-fit: contain;
+            -o-object-position: left;
+            object-position: left;
+        }
+    }
+}
+
+.header-sticky {
+    &.body-on-scroll {
+        #header-bar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+    }
+}
+
+.image-on-menu-item {
+     width: 30px;
+     height: 30px;
+     background-repeat: no-repeat;
+     background-size: contain;
+     display: inline-flex;
+ }
+ 
+ #wpadminbar {
+     position: absolute!important;
+ }
+
 header {
     width: 100%;
     position: absolute;
@@ -7,7 +144,7 @@ header {
         // background: $white;
         align-items: center;
         display: flex;
-        padding: 15px 0;
+        padding: 48px 0 0 0;
         @include transition;
         .menu-here {
             nav {
@@ -16,9 +153,10 @@ header {
                 padding-left: 0px;
                 padding-right: 0px;
                 flex-wrap: unset;
+                column-gap: 48px;
                 #navbarNav {
                     width: 100%;
-                    justify-content: center;
+                    justify-content: end;
                     text-align: center;
                     display: flex;
                     flex: 1;
@@ -29,6 +167,7 @@ header {
                         li {
                             color: $black;
                             @include transition;
+                            // padding-bottom: 16px;
                             @include min-md {
                                 display: flex;
                                 align-items: center;
@@ -41,6 +180,32 @@ header {
                                     align-items: center;
                                 }
                             }
+                            &.menu-item-has-children {
+                                &:after {
+                                    margin-left: 6px;
+                                    content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.84736 5.86126C5.6555 6.04625 5.34448 6.04625 5.15262 5.86126L0.143891 1.03192C-0.0479635 0.846927 -0.0479635 0.547055 0.143891 0.362066L0.375486 0.138741C0.56734 -0.0462471 0.878398 -0.0462471 1.07026 0.138741L5.49999 4.40983L9.92975 0.138741C10.1216 -0.0462471 10.4326 -0.0462471 10.6245 0.138741L10.8561 0.362066C11.048 0.547055 11.048 0.846927 10.8561 1.03192L5.84736 5.86126Z" fill="white"/></svg>');
+                                }
+                                &:hover {
+                                   &:after {
+                                        content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.15264 0.138741C5.3445 -0.0462475 5.65552 -0.0462475 5.84738 0.138741L10.8561 4.96808C11.048 5.15307 11.048 5.45295 10.8561 5.63793L10.6245 5.86126C10.4327 6.04625 10.1216 6.04625 9.92974 5.86126L5.50001 1.59016L1.07025 5.86126C0.878389 6.04625 0.567377 6.04625 0.375517 5.86126L0.143896 5.63793C-0.047965 5.45294 -0.047965 5.15307 0.143896 4.96808L5.15264 0.138741Z" fill="white"/></svg>');
+                                    } 
+                                    .sub-menu {
+                                        display: grid!important;
+                                        }
+                                    }
+                                }
+                            }
+                            .sub-menu {
+                                background: $black;
+                                position: fixed;
+                                left: 0;
+                                top: 122px;
+                                width: 100%;
+                                z-index: 10;
+                                display: none;
+                                cursor: auto;
+                                border-bottom: 1px solid var(--Neutral-colorNeutralLight600, #dde1e5);
+                                grid-template-columns: repeat(2, 1fr) 300px;
                         }
                     }
                     @include min-md {
@@ -82,4 +247,72 @@ header {
     }
 }
 
-/* Header with Menu from Rightside End*/
+//  body {
+//      &.menu-open {
+//          overflow: hidden;
+//          &:not(.minimalmenu) {
+//              // overflow: hidden;
+//          }
+//          &.rightmenu, &.centerized-logo {
+//              @include min-xs {
+//                  &:before {
+//                      position: fixed;
+//                      content: "";
+//                      width: 100%;
+//                      height: 100%;
+//                      opacity: 1;
+//                      @include filter-header;
+//                      transition: 1s;
+//                      background: #000000a6;
+//                      z-index: 2;
+//                  }   
+//              }
+//              .headerbar {
+//                  overflow: hidden;
+//                 //  position: fixed;
+//                  width: 100%;
+//                  #navbarNav {
+//                      height: 100%!important;
+//                      overflow-y: auto;
+//                      .navbar-nav {
+//                          height: 100%;
+//                          position: relative;
+//                          padding-top: 70px;
+//                          li {
+//                              &:last-of-type {
+//                                  padding-bottom: 20px;
+//                              }
+//                          }
+//                      }
+//                  }
+//                  @include min-xs {
+//                      &:before {
+//                          position: absolute;
+//                          content: "";
+//                          width: 100%;
+//                          height: 100%;
+//                          opacity: 1;
+//                          z-index: 11;
+//                          @include filter-header;
+//                          transition: 1s;
+//                          background: #000000a6;
+//                      } 
+//                  } 
+//             }
+//          }
+//          &.rightmenu {
+//             @include xs {
+//                 .headerbar {
+//                     #navbarNav {
+//                         height: calc(100% - var(--header-height))!important;
+//                         .navbar-nav { 
+//                             padding-top: 20px;
+//                         }
+//                     }
+//                 }
+//             }
+//          }
+//      }
+//  }
+
+/* Header End*/

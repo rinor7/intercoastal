@@ -43,6 +43,7 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     font-family: intercoastal, sans-serif;
+    background-color: $black;
     &.overflow-hidden {
         overflow: hidden;
     }
@@ -113,13 +114,26 @@ h3 {
     text-align: center;
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
+    row-gap: 24px;
+    &-uptitle {
+        font-size: 14px;
+        color: $white;
+        font-weight: 500;
+        line-height: 1.5;
+    }
     &-title {
-        font-size: 24px;
-        font-weight: 600;
+        font-size: 64px;
+        color: $white;
+        font-weight: 400;
+        line-height: 1;
+        @include md {
+            font-size: 36px;
+        }
     }
     &-subtitle {
         font-size: 16px;
+        color: $white;
+        line-height: 1.4;
         font-weight: 400;
     }
 }
@@ -140,5 +154,12 @@ h3 {
 
 #page {
     top: var(--header-height);
+}
+
+.container {
+    @include xs {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 }
 /* General style END*/
