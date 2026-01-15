@@ -52,4 +52,4 @@ get_header();
 		</div>
 	</section><!-- .content-area -->
     
-<?php include("includes/footers/default.php");  ?>
+<?php get_footer(); ?>

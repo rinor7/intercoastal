@@ -3,26 +3,16 @@
 @import "other/fonts";
 @import "other/general";
 @import "layouts/error404";
+@import "layouts/about-us";
 
-@import "headers/rightmenu";
-
+@import "layouts/header";
 @import "layouts/home";
-@import "footers/default"; 
-@import "contactform/contactform";
-@import "contactform/contactform-2";
+@import "layouts/footer"; 
 @import "layouts/singles";
 @import "layouts/archive";
 
-@import "blocks/hero";
+
 @import "blocks/block-banner";
-@import "blocks/block-four-boxes-counter"; 
-@import "blocks/four-boxes"; 
-@import "blocks/pt-boxes-swiper";
-@import "blocks/pt-boxes-noswiper";  
-@import "blocks/quick-section";
-@import "blocks/references";
-@import "blocks/block-image-text";
-@import "blocks/block-text-image";
 
 @import "blocks/block-image-and-text";
 @import "blocks/block-features";

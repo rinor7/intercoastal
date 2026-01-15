@@ -24,4 +24,4 @@ get_header();
 
 
 
-<?php include("includes/footers/default.php");  ?>
+<?php get_footer(); ?>

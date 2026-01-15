@@ -1,9 +1,6 @@
 /*Archive page Start*/
 .site-archive {
     &.archive-page {
-        &-main-posts {
-
-        }
     }
     .archive-layout {
         display: flex;
@@ -22,22 +19,12 @@
 
             .page-header {
                 margin-bottom: 10px;
-
-                .page-title {}
             }
 
             .articles {
                 display: flex;
                 flex-direction: column;
                 row-gap: 10px;
-
-                article {
-                    .entry-header {
-                        .entry-title {
-                            a {}
-                        }
-                    }
-                }
             }
         }
 

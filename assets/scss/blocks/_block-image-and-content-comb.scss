@@ -95,6 +95,20 @@
                     font-weight: 400;
                     color: $white;
                 }
+                .row {
+                    @include md {
+                        row-gap: 32px;
+                    }
+                    p {
+                        strong {
+                            margin-bottom: 16px;
+                            display: block;
+                        }
+                        br {
+                            display: none;
+                        }
+                    }
+                }
                 ul {
                     display: flex;
                     flex-direction: column;
@@ -134,6 +148,9 @@
                     line-height: 1;
                     font-weight: 500;
                     text-transform: uppercase;
+                    @include md {
+                        font-size: 28px;
+                    }
                 }
             }
             .content-wrapper-rightside {
@@ -160,6 +177,42 @@
                     img {
                         margin: 0;
                         object-fit: contain;
+                    }
+                }
+               ul:not(.ul-with-images) {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 12px;
+                    padding-left: 20px;
+                    li {
+                        font-size: 16px;
+                        line-height: 1.4;
+                        font-weight: 400;
+                        color: $white;
+                        list-style-type: disc;
+                    }
+                }
+                .ul-with-images {
+                    margin-top: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 24px;
+                    li {
+                        font-size: 16px;
+                        line-height: 1.4;
+                        font-weight: 400;
+                        color: $white;
+                        display: flex;
+                        column-gap: 12px;
+                        span {
+                            flex-shrink: auto;
+                            img {
+                                width: 24px;
+                                height: 24px;
+                                object-fit: contain;
+                                margin: 0;
+                            }
+                        }
                     }
                 }
             }

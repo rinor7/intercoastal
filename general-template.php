@@ -7,7 +7,7 @@ get_header();
 
 <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
 
-<?php get_template_part('includes/blocks/blogs', null, array()); ?>
+<?php get_template_part('includes/blocks/blogs-news', null, array()); ?>
 
 </main>
 

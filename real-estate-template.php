@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Features Template */
+/* Template Name: Real Estate Template */
 get_header();
 ?>
 

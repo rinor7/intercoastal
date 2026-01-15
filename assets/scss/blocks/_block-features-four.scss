@@ -85,5 +85,24 @@
                 }
             }
         }
+        &.gallery-layout {
+            display: flex;
+            flex-direction: column;
+            .feature-row {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                @include md {
+                    grid-template-columns: 1fr;
+                }
+                &.full-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
+    .block-features-gallery-button {
+        a {
+            @include button2;
+        }
     }
 }

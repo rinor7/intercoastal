@@ -1,6 +1,7 @@
 <?php 
 $block = get_field('block-features-four');
 $features = $block['features'] ?? [];
+$layout_type = $block['layout_type'] ?? 'default';
 
 if ( ! ($block['disable_section'] ?? false) ):
 ?>
@@ -31,57 +32,89 @@ if ( ! ($block['disable_section'] ?? false) ):
 
     <!-- FEATURE CARDS -->
     <?php if ($features): ?>
-    <div class="block-features-four-wrapper">
+        <div class="block-features-four-wrapper <?php echo $layout_type === 'gallery' ? 'gallery-layout' : ''; ?>">
+            <?php 
+            $i = 0; // feature index
+            foreach ($features as $feature): 
+                $page = $feature['choose_page'];
+                if (!$page) continue;
 
-        <?php foreach ($features as $feature): 
-            $page = $feature['choose_page'];
-            if (!$page) continue;
+                $bg = $feature['background_image']['url'] ?? '';
+                $bg_overlay_color = $feature['background_overlay_color'] ?? $block['background_overlay_color'] ?? '#000000a1';
 
-            $bg = $feature['background_image']['url'] ?? '';
-            $bg_overlay_color = $feature['background_overlay_color'] ?? $block['background_overlay_color'] ?? get_field('background_overlay_color') ?? '#000000a1';
-        ?>
-            <a href="<?php echo get_permalink($page->ID); ?>" class="feature-card">
+                // default
+                $is_full = false;
 
-                <?php if ($bg): ?>
-                    <div class="feature-bg" style="background-image:url('<?php echo esc_url($bg); ?>')"></div>
-                <?php endif; ?>
+                if ($layout_type === 'gallery') {
+                    $is_full = ($i % 3 === 0);
 
-                <div class="feature-overlay" style="background-color: <?php echo esc_attr($bg_overlay_color); ?>;"></div>
-
-                <div class="feature-content">
-
-                    <?php if (!empty($feature['eyebrow'])): ?>
-                        <span class="feature-eyebrow">
-                            <?php echo esc_html($feature['eyebrow']); ?>
-                        </span>
+                    // Start row
+                    if ($is_full) echo '<div class="feature-row full-row">';
+                    elseif ($i % 3 === 1) echo '<div class="feature-row">';
+                }
+            ?>
+                <div class="feature-card <?php echo $is_full ? 'full-width' : 'half-width'; ?>">
+                    <?php if ($bg): ?>
+                        <div class="feature-bg" style="background-image:url('<?php echo esc_url($bg); ?>')"></div>
                     <?php endif; ?>
-
-                    <!-- TITLE: allow override from ACF `title_override` -->
-                    <h3 class="feature-title">
-                        <?php
+                    <div class="feature-overlay" style="background-color: <?php echo esc_attr($bg_overlay_color); ?>;"></div>
+                    <div class="feature-content">
+                        <?php if (!empty($feature['eyebrow'])): ?>
+                            <span class="feature-eyebrow"><?php echo esc_html($feature['eyebrow']); ?></span>
+                        <?php endif; ?>
+                        <h3 class="feature-title">
+                            <?php 
                             $feature_title = $feature['text'] ?? '';
-                            if (!empty($feature_title)) {
-                                echo esc_html($feature_title);
-                            } else {
-                                echo esc_html(get_the_title($page->ID));
-                            }
-                        ?>
-                    </h3>
+                            echo !empty($feature_title) ? esc_html($feature_title) : esc_html(get_the_title($page->ID)); 
+                            ?>
+                        </h3>
+                        <?php if (!empty($feature['description'])): ?>
+                            <p class="feature-text"><?php echo esc_html($feature['description']); ?></p>
+                        <?php endif; ?>
 
-                    <?php if (!empty($feature['description'])): ?>
-                        <p class="feature-text">
-                            <?php echo esc_html($feature['description']); ?>
-                        </p>
-                    <?php endif; ?>
-
-                    <span class="feature-cta">View</span>
+                        <!-- Only the button is a link -->
+                        <span class="feature-cta">
+                            <a href="<?php echo get_permalink($page->ID); ?>" class="link-btn">View</a>
+                        </span>
+                    </div>
                 </div>
+            <?php 
+                $i++;
 
-            </a>
-        <?php endforeach; ?>
+                // Close row
+                if ($layout_type === 'gallery') {
+                    $close_row = false;
+                    if ($is_full) $close_row = true; // full row after 1
+                    elseif ($i % 3 === 0) $close_row = true; // 2x2 row after 2 items
+                    if ($close_row) echo '</div>';
+                }
+            endforeach; 
+            ?>
+        </div>
 
+<?php 
+// Optional "View All" button for gallery
+if ($layout_type === 'gallery') {
+    $gallery_link = $block['gallery_button_link'] ?? [];
+    if (!empty($gallery_link['url'])):
+        $link_url = esc_url($gallery_link['url']);
+        $link_title = !empty($gallery_link['title']) ? esc_html($gallery_link['title']) : 'View All';
+        $link_target = !empty($gallery_link['target']) ? esc_attr($gallery_link['target']) : '_self';
+?>
+    <div class="block-features-gallery-button">
+        <a href="<?php echo $link_url; ?>" target="<?php echo $link_target; ?>" class="ling-btn">
+            <?php echo $link_title; ?>
+        </a>
     </div>
-    <?php endif; ?>
+<?php 
+    endif;
+}
+?>
+<?php endif; ?>
+
+
+
+
 
 </section>
 <?php endif; ?>

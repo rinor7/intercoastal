@@ -1,9 +1,7 @@
-/* Home START*/
-// .page-template-frontpage {
-    .site-main {
+/* Home Archive Blog START*/
+    .site-main:not(.site-about-us-template) {
         display: flex;
         flex-direction: column;
         row-gap: 80px;
     }
-// }
-/* Home END*/
+/* Home Home Archive Blog END*/

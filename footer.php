@@ -4,11 +4,28 @@
  */
 ?>
 
-<footer id="footer-site" class="site-footer">
+<?php $classes = implode( ' ', get_body_class() ); ?>
+<footer id="footer-site" class="site-footer <?php echo esc_attr( $classes ); ?>">
 
-    <?php if ( !is_page_template('general-template.php') && !is_page_template('miscellaneius-template.php')) : ?>
+    <?php if ( is_page_template('about-us-template.php')) : ?>
+
+        <?php get_template_part('includes/blocks/block-we-are-hiring', null, array()); ?>
+
+    <?php endif; ?>
+
+    <?php if (
+        !is_page_template('general-template.php') &&
+        !is_page_template('miscellaneius-template.php') &&
+        !is_page_template('about-us-template.php') &&
+        !is_page_template('real-estate-template.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
+
+    <?php endif; ?>
+
+
+
+    <?php if ( !is_page_template('general-template.php') && !is_page_template('miscellaneius-template.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-register', null, array()); ?>
 
