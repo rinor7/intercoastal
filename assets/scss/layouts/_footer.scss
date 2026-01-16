@@ -663,6 +663,12 @@ footer {
                                         text-align: center
                                     }
                                 }
+                                &.wpcf7-not-valid {
+                                    border: 1px solid $red;
+                                }
+                            }
+                            .wpcf7-not-valid-tip {
+                                display: none
                             }
                         }
                         .wpcf7-submit {
@@ -682,6 +688,9 @@ footer {
                     font-size: 14px;
                     font-weight: 500;
                 }
+            }
+            .wpcf7-response-output {
+                display: none;
             }
         }
     }

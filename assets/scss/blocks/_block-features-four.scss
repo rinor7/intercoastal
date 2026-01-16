@@ -77,10 +77,12 @@
                     line-height: 1.5;
                 }
                 .feature-cta {
-                    @include button1;
-                    margin: 48px 0 0 0;
-                    @include sm {
-                        margin: 24px 0 0 0;
+                    a {
+                        @include button1;
+                        margin: 48px 0 0 0;
+                        @include sm {
+                            margin: 24px 0 0 0;
+                        }
                     }
                 }
             }
