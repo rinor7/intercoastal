@@ -73,7 +73,7 @@
     <?php endif; ?>
 
     <div class="site-footer-columns">
-        <div class="container" id="foooter">
+        <div class="container" id="footer">
             <div class="row">
                 <div class="col-lg-12 footer-0 footer-cols">
                     <?php if(is_active_sidebar('newsletter') ) { ?>

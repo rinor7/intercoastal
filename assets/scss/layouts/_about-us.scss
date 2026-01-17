@@ -94,65 +94,198 @@
         display: flex;
         row-gap: 60px;
         margin-bottom: 80px;
-        .team-members-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            column-gap: 60px;
-            row-gap: 60px;
-            @include md {
-                grid-template-columns: repeat(2, 1fr);
-                row-gap: 40px;
+
+        .team-tabs {
+            display: flex;
+            column-gap: 12px;
+            justify-content: center;
+            .team-tab {
+                display: inline-block;         
+                text-transform: uppercase;
+                font-size: 16px;
+                color: $white;
+                background: transparent;
+                line-height: 1.2;
+                font-weight: 600;
+                text-align: left;
+                opacity: .6;
+                &.is-active {
+                    opacity: 1;
+                }
             }
-            @include xs {
-                grid-template-columns: repeat(1, 1fr);
+            &.desktop-only {
+                @include md {
+                    // overflow: auto;
+                }
+                .team-tab {
+                    @include min-md {
+                        max-width: max-content;        
+                        overflow: hidden;             
+                        white-space: normal;           
+                        max-height: calc(1.2em * 2);
+                        flex: 1;
+                    }
+                    @include md {
+                        // display: inline;
+                    }
+                } 
             }
-            .team-member {
-                flex-direction: column;
+            &-swiper {
+                // overflow: unset;
+                height: 90px;
+                align-items: center;
+                .swiper-wrapper {
+                    .swiper-slide {
+                         display: inline-block;         
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        color: $white;
+                        background: transparent;
+                        line-height: 1.5;
+                        font-weight: 500;
+                        text-align: center;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 55px;
+                        overflow: hidden;
+                        @include sm {
+                            &:not(.swiper-slide-active) {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+                .team-tabs-pagination {
+                    bottom: 0;
+                    .swiper-pagination-bullet {
+                        background-color: $white;
+                        opacity: .6;
+                        &-active {
+                            opacity: 1;
+                            
+                        }
+                    }
+                }
+                .team-tabs-next, .team-tabs-prev {
+                    width: 55px;
+                    height: 55px;
+                    top: unset;
+                    &:after {
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        content: '';
+                        width: 26px;
+                        height: 26px;
+                        display: flex;
+                        top: -8px;
+                        position: relative;
+                    }
+                }
+                .team-tabs-prev{
+                    &:after {
+                        background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.20167 12.5L12.8567 22.1533L11.6667 23.3333L0 11.6667L11.6667 0L12.8567 1.18L3.2 10.8333H23.3333V12.5H3.20167Z" fill="white"/></svg>');
+                    }
+                    // @include xxs {
+                    //     left: 0;
+                    // }
+                }
+                .team-tabs-next{
+                    &:after {
+                        background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.1323 10.8335L10.4773 1.18016L11.6673 0.000163012L23.334 11.6668L11.6673 23.3335L10.4773 22.1535L20.134 12.5002L0.00065326 12.5002L0.000653406 10.8335L20.1323 10.8335Z" fill="white"/></svg>');
+                    }
+                    // @include xxs {
+                    //     right: 0;
+                    // }
+                }
+            }
+        }
+
+        .team-content {
+            margin-top: 60px;
+            .team-panel {
+                display: none;
+                &.is-active {
+                    display: block;
+                }
+            }
+        }
+        
+        .mobile-only {
+            display: none;
+        }
+        @include sm {
+            .desktop-only {
+                display: none!important;
+            }
+
+            .mobile-only {
                 display: flex;
-                row-gap: 24px;
-                &-photo {
-                    margin: auto;
-                    justify-content: center;
-                    display: flex;
-                    width: 80px;
-                    height: 80px;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
+            }
+        }
+        @include xs {
+            .container {
+                overflow: unset;
+                padding: 0;
+                .desktop-only, .mobile-only {
+                    padding: 0 40px;
                 }
-                &-info {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 6px;
-                    text-align: center;
-                    color: $white;
-                    .team-member-name {
-                        font-size: 24px;
-                        line-height: 1.2;
-                        @include md {
-                            font-size: 20px;
-                        }
-                    }
-                    .team-member-role {
-                        font-size: 16px;
-                        line-height: 1.4;
-                    }
-                    .team-member-description {
-                        font-size: 16px;
-                        line-height: 1.4;
-                    }
+            }
+        }
+    }
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 60px;
+        row-gap: 60px;
+        display: grid;
+        text-align: center;
+        @include md {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 40px;
+        }
+        @include sm {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .team-member {
+            text-align: center;
+            color: $white;
+            .team-thumbnail {
+                justify-content: center;
+                display: flex;
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px auto;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
-                .team-member-socials {
-                    display: flex;
-                    column-gap: 24px;
-                    justify-content: center;
-                    a {
-                        font-size: 24px;
-                        i {
-                            color: $white;
-                        }
+            }
+            .team-name {
+                font-size: 24px;
+                line-height: 1.2;
+                @include md {
+                    font-size: 20px;
+                }
+            }
+            .team-position {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.4;
+            }
+            .description {
+                font-size: 16px;
+                line-height: 1.4;
+                margin: 16px 0;
+            }
+            .team-social {
+                display: flex;
+                column-gap: 24px;
+                justify-content: center;
+                a {
+                    font-size: 24px;
+                    i {
+                        color: $white;
                     }
                 }
             }

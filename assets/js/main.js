@@ -251,3 +251,66 @@ jQuery(document).ready(function($) {
         adjustPageOffset();
     });
 });
+
+
+
+// TEAM MEMBERS JS START
+document.querySelectorAll('.team-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const index = tab.dataset.index;
+        document.querySelectorAll('.team-tab, .team-panel')
+            .forEach(el => el.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        document.querySelector(`.team-panel[data-index="${index}"]`)
+            .classList.add('is-active');
+    });
+});
+let tabsSwiper, contentSwiper;
+
+function initTeamSwiper() {
+    if (window.innerWidth <= 768 && !tabsSwiper) {
+        tabsSwiper = new Swiper('.js-team-tabs-swiper', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            slideToClickedSlide: true,
+        });
+        contentSwiper = new Swiper('.js-team-content-swiper', {
+            autoHeight: true,
+            navigation: {
+              nextEl: '.team-tabs-next',
+              prevEl: '.team-tabs-prev',
+            },
+            pagination: {
+              el: '.team-tabs-pagination',
+              clickable: true,
+            },
+        });
+        tabsSwiper.controller.control = contentSwiper;
+        contentSwiper.controller.control = tabsSwiper;
+    }
+    if (window.innerWidth > 768 && tabsSwiper) {
+        tabsSwiper.destroy(true, true);
+        contentSwiper.destroy(true, true);
+        tabsSwiper = contentSwiper = null;
+    }
+}
+window.addEventListener('load', initTeamSwiper);
+window.addEventListener('resize', initTeamSwiper);
+
+// Function to split text into two lines 
+function splitTextTwoLines(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+        const text = el.textContent.trim();
+        const words = text.split(' ');
+
+        if (words.length > 1) {
+            const half = Math.ceil(words.length / 2);
+            el.innerHTML = words.slice(0, half).join(' ') + '<br>' + words.slice(half).join(' ');
+        }
+    });
+}
+// Apply to mobile swiper slides
+splitTextTwoLines('.team-tabs-swiper .swiper-slide');
+// Apply to desktop tabs
+splitTextTwoLines('.team-tabs .team-tab');
+// TEAM MEMBERS JS END

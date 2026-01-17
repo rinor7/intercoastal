@@ -4,6 +4,7 @@
     row-gap: 60px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     @include md {
         row-gap: 48px;
     }
