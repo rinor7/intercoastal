@@ -210,6 +210,15 @@
                 }
             }
         }
+        .team-content-swiper {
+            .swiper-slide {
+                @include sm {
+                    &:not(.swiper-slide-active) {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
         
         .mobile-only {
             display: none;
