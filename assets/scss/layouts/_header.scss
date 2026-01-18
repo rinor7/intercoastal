@@ -284,6 +284,9 @@ header {
                             flex-direction: column;
                             display: flex;
                             height: 100%;
+                            padding-bottom: env(safe-area-inset-bottom);
+                            min-height: 100dvh;
+                            inset: 0;
                             @include min-md {
                                 display: none!important;
                                 opacity: 0;
