@@ -38,8 +38,6 @@
     left: 0;
     color: $white;
     width: 100%;
-    background: $black;
-    z-index: 1;
     @include min-md {
         display: none!important;
     }
@@ -263,7 +261,6 @@ header {
                         transition: .2s ease-out;
                         z-index: 12;
                         justify-content: center;
-                        height: 100vh;
                         &.show {
                             right: 0 !important;
                             transition: .2s ease-in-out;
@@ -278,12 +275,11 @@ header {
                         right: -100%;
                     }
                     .mobile-mega-menu {
-                            // height: calc(100% - 80px);
+                            height: calc(100% - 80px);
                             overflow: auto;
                             width: 100%;
                             flex-direction: column;
                             display: flex;
-                            height: 100%;
                             @include min-md {
                                 display: none!important;
                                 opacity: 0;
@@ -291,9 +287,7 @@ header {
                             }
                         .mobile-mega-submenu {
                             display: flex;
-                            padding: 80px 40px 0 40px;
-                            background: $black;
-                            background: red;
+                            padding: 20px 40px 0 40px;
                             flex-direction: column;
                             li {
                                 margin-bottom: 16px;
