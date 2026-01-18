@@ -259,11 +259,16 @@ header {
                         right: -80%;
                         height: 100%;
                         width: 75%;
-                        bottom: 0;
+                        // bottom: 0;
                         background: $black;
                         transition: .2s ease-out;
                         z-index: 12;
                         justify-content: center;
+
+                        padding-bottom: env(safe-area-inset-bottom);
+                            height: 100dvh;
+                            inset: 0;
+                            top: 0;
                         &.show {
                             right: 0 !important;
                             transition: .2s ease-in-out;
@@ -284,10 +289,6 @@ header {
                             flex-direction: column;
                             display: flex;
                             height: 100%;
-                            padding-bottom: env(safe-area-inset-bottom);
-                            height: 100dvh;
-                            inset: 0;
-                            top: 0;
                             @include min-md {
                                 display: none!important;
                                 opacity: 0;
