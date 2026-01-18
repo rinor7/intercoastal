@@ -50,6 +50,7 @@ $secondayDarkRed: #37000A;
     align-items: center;
     font-weight: 600;
     font-size: 16px;
+    text-transform: uppercase;
     @include transition;
     background-color: $primaryRed;
     justify-content: center;

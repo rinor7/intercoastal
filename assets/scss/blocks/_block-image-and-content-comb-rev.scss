@@ -66,7 +66,7 @@
             display: flex;
             @include md {
                 flex-direction: column;
-                row-gap: 32px;
+                row-gap: 48px;
             }
         }
         .img {

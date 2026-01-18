@@ -631,6 +631,10 @@ footer {
                         column-gap: 12px;
                         @include sm {
                             flex-direction: column;
+                            row-gap: 16px;
+                            br {
+                                display: none;
+                            }
                         }
                         .wpcf7-form-control-wrap {
                             input {
@@ -662,6 +666,7 @@ footer {
                             @include button1;
                             height: 48px;
                             margin: 0;
+                            text-transform: capitalize;
                             @include xs {
                                 margin: auto;
                             }

@@ -57,6 +57,9 @@
             display: flex;
             column-gap: 24px;
             justify-content: center;
+            @include md {
+                row-gap: 16px;
+            }
             .default-btn {
             &-one {
             a {

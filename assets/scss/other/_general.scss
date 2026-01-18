@@ -165,6 +165,9 @@ h3 {
 .btns {
     display: flex;
     column-gap: 24px;
+    @include md {
+        column-gap: 16px;
+    }
     .default-btn {
         &-one {
         a {
