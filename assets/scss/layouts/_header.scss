@@ -254,28 +254,30 @@ header {
                         flex: 1;
                     }
                     @include md {
-                        position: fixed;
-                        display: flex;
-                        right: -80%;
-                        height: 100%;
-                        width: 75%;
-                        // bottom: 0;
-                        background: $black;
-                        transition: .2s ease-out;
-                        z-index: 12;
-                        justify-content: center;
+    position: fixed;
+    display: flex;
+    right: -80%;
+    top: 0;
+    left: auto;
+    width: 75%;
+    height: 100%; // <-- prefer 100% over 100vh
+    background: $black;
+    z-index: 12;
+    justify-content: center;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: 0.2s ease-out;
 
-                        padding-bottom: env(safe-area-inset-bottom);
-                            height: 100vh;
-                        &.show {
-                            right: 0 !important;
-                            transition: .2s ease-in-out;
-                            &:before {
-                                right: 0 !important;
-                                transition: .2s ease-in-out;
-                            }
-                        }
-                    }
+    &.show {
+        right: 0 !important;
+        transition: 0.2s ease-in-out;
+        &:before {
+            right: 0 !important;
+            transition: 0.2s ease-in-out;
+        }
+    }
+}
+
                     @include sm {
                         width: 100%;
                         right: -100%;
