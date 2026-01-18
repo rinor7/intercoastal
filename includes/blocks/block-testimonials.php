@@ -2,7 +2,7 @@
 <?php 
 $testimonials = get_field('testimonial_slider', 'option'); // get repeater from options page
 if( $testimonials ): ?>
-<div class="swiper testimonial-slider <?php if (is_page_template('general-template.php')) : ?>testimonial-slider-general<?php endif; ?>">
+<div class="swiper testimonial-slider <?php if (is_page_template('template-general.php')) : ?>testimonial-slider-general<?php endif; ?>">
     <div class="swiper-wrapper">
         <?php foreach( $testimonials as $t ): ?>
         <div class="swiper-slide">
@@ -24,7 +24,7 @@ if( $testimonials ): ?>
         </div>
         <?php endforeach; ?>
     </div>
-   <?php if (is_page_template('general-template.php')) : ?>
+   <?php if (is_page_template('template-general.php')) : ?>
     <div class="pagination-wrapper">
        <div class="pagination">
          <div class="swiper-pagination"></div>

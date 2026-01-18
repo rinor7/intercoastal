@@ -1,0 +1,28 @@
+.page-template-template-yachtclub {
+    .block-image-and-content-comb {
+        .btns {
+            .default-btn {
+                &-one {
+                    a {
+                        background-color: $primaryBlue;
+                    }
+                }
+            }
+        }
+    }
+    .register-right {
+        .default-btn {
+            &-one {
+                a {
+                    background-color: $primaryBlue!important;
+                }
+            }
+        }
+    }
+}
+
+.page-template-template-real-estate {
+    footer {
+        margin-top: 0;
+    }
+}

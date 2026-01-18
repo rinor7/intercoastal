@@ -59,23 +59,18 @@ if ( ! ($block['disable_section'] ?? false) ):
                     <?php endif; ?>
                     <div class="feature-overlay" style="background-color: <?php echo esc_attr($bg_overlay_color); ?>;"></div>
                     <div class="feature-content">
-                        <?php if (!empty($feature['eyebrow'])): ?>
-                            <span class="feature-eyebrow"><?php echo esc_html($feature['eyebrow']); ?></span>
-                        <?php endif; ?>
                         <h3 class="feature-title">
                             <?php 
                             $feature_title = $feature['text'] ?? '';
                             echo !empty($feature_title) ? esc_html($feature_title) : esc_html(get_the_title($page->ID)); 
                             ?>
                         </h3>
+                        <?php if (!empty($feature['eyebrow'])): ?>
+                            <span class="feature-eyebrow"><?php echo esc_html($feature['eyebrow']); ?></span>
+                        <?php endif; ?>
                         <?php if (!empty($feature['description'])): ?>
                             <p class="feature-text"><?php echo esc_html($feature['description']); ?></p>
                         <?php endif; ?>
-
-                        <!-- Only the button is a link -->
-                        <span class="feature-cta">
-                            <a href="<?php echo get_permalink($page->ID); ?>" class="link-btn">View</a>
-                        </span>
                     </div>
                 </div>
             <?php 

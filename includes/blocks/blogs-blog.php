@@ -1,6 +1,6 @@
 <section class="blogs__section">
 
-    <?php if (is_page_template('general-template.php') || is_page_template('miscellaneius-template.php')): ?>
+    <?php if (is_page_template('template-general.php') || is_page_template('template-miscellaneius.php')): ?>
         <div class="section-header">
              <?php 
             $section_uptitle = get_field('section_uptitle-blog');

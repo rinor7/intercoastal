@@ -1,31 +1,36 @@
 //Hamburger Menu
 var Menu = {
     el: {
-    ham: jQuery('.menu-m'),
-    menuTop: jQuery('.menu-top'),
-    menuMiddle: jQuery('.menu-middle'),
-    menuBottom: jQuery('.menu-bottom')
+        menuTop: jQuery('.menu-top'),
+        menuMiddle: jQuery('.menu-middle'),
+        menuBottom: jQuery('.menu-bottom')
     },
-    init: function() {
-    Menu.bindUIactions();
+
+    init: function () {
+        jQuery('#navbarNav')
+            .on('show.bs.collapse', Menu.open)
+            .on('hide.bs.collapse', Menu.close);
     },
-    bindUIactions: function() {
-    Menu.el.ham
-    .on(
-    'click',
-    function(event) {
-    Menu.activateMenu(event);
-    event.preventDefault();
+
+    open: function () {
+        Menu.el.menuTop.addClass('menu-top-click');
+        Menu.el.menuMiddle.addClass('menu-middle-click');
+        Menu.el.menuBottom.addClass('menu-bottom-click');
+    },
+
+    close: function () {
+        Menu.el.menuTop.removeClass('menu-top-click');
+        Menu.el.menuMiddle.removeClass('menu-middle-click');
+        Menu.el.menuBottom.removeClass('menu-bottom-click');
     }
-    );
-    },
-    activateMenu: function() {
-    Menu.el.menuTop.toggleClass('menu-top-click');
-    Menu.el.menuMiddle.toggleClass('menu-middle-click');
-    Menu.el.menuBottom.toggleClass('menu-bottom-click'); 
-    }
-    };
+};
+
 Menu.init();
+
+
+jQuery('.menu-close').on('click', function () {
+    jQuery('#navbarNav').collapse('hide');
+});
 
 
 

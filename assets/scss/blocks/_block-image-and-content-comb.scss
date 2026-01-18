@@ -127,6 +127,9 @@
         }
     }
     .title-w-content-row {
+        @include min-md {
+            padding: 40px 0;
+        }
         .title-content-wrapper {
             display: flex;
             column-gap: 48px;
@@ -143,12 +146,18 @@
                     font-size: 14px;
                     line-height: 1.5;
                     font-weight: 500;
+                     @include min-md {
+                        max-width: 500px;
+                    }
                 }
                 .title-leftside-down {
                     font-size: 36px;
                     line-height: 1;
                     font-weight: 500;
                     text-transform: uppercase;
+                     @include min-md {
+                        max-width: 500px;
+                    }
                     @include md {
                         font-size: 28px;
                     }

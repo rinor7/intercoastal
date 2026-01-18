@@ -2,6 +2,9 @@
     .site-main:not(.site-about-us-template) {
         display: flex;
         flex-direction: column;
-        row-gap: 80px;
+        row-gap: 100px;
+        @include md {
+            row-gap: 80px;
+        }
     }
 /* Home Home Archive Blog END*/

@@ -1,5 +1,5 @@
 /* Home START*/
-.page-template-about-us-template {
+.page-template-template-about-us {
     .simple-section-with-buttons {
         background-color: $secondayDarkRed;
         display: flex;
@@ -298,6 +298,12 @@
                     }
                 }
             }
+        }
+    }
+    .testimonial-slider {
+        margin-top: 80px;
+        @include md {
+            margin-top: 40px;
         }
     }
 }

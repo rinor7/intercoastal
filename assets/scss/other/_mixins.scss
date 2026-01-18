@@ -48,6 +48,12 @@
     @media (min-width: 450px) { @content; }
 }
 
+@mixin md-until-sm {
+    @media (max-width: 991.98px) and (min-width: 767.98px) { 
+        @content; 
+    }
+}
+
 // TODO Placeholder
 @mixin placeholder {
     &.placeholder { @content; }

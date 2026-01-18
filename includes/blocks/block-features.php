@@ -9,6 +9,13 @@ if ( ! ($block['disable_section'] ?? false) ):
 
     <!-- SECTION HEADER -->
     <div class="section-header">
+
+        <?php if (!empty($block['section_uptitle'])): ?>
+            <div class="section-header-uptitle">
+                <?php echo wp_kses_post($block['section_uptitle']); ?>
+            </div>
+        <?php endif; ?>
+
         <?php if (!empty($block['section_title'])): ?>
             <div class="section-header-title">
                 <?php echo wp_kses_post($block['section_title']); ?>
@@ -20,6 +27,7 @@ if ( ! ($block['disable_section'] ?? false) ):
                 <?php echo wp_kses_post($block['section_subtitle']); ?>
             </div>
         <?php endif; ?>
+
     </div>
 
     <!-- FEATURE CARDS -->
@@ -33,7 +41,7 @@ if ( ! ($block['disable_section'] ?? false) ):
             $bg = $feature['background_image']['url'] ?? '';
             $bg_overlay_color = $feature['background_overlay_color'] ?? $block['background_overlay_color'] ?? get_field('background_overlay_color') ?? '#000000a1';
         ?>
-            <a href="<?php echo get_permalink($page->ID); ?>" class="feature-card">
+            <div class="feature-card">
 
                 <?php if ($bg): ?>
                     <div class="feature-bg" style="background-image:url('<?php echo esc_url($bg); ?>')"></div>
@@ -67,10 +75,16 @@ if ( ! ($block['disable_section'] ?? false) ):
                         </p>
                     <?php endif; ?>
 
-                    <span class="feature-cta">Explore</span>
+                    <!-- CTA button: only this is a link -->
+                    <?php if (!empty($feature['cta_text'])): ?>
+                        <a href="<?php echo get_permalink($page->ID); ?>" class="feature-cta">
+                            <?php echo esc_html($feature['cta_text']); ?>
+                        </a>
+                    <?php endif; ?>
+
                 </div>
 
-            </a>
+            </div>
         <?php endforeach; ?>
 
     </div>
