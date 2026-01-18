@@ -66,7 +66,7 @@
     </section>
     <?php endif; ?>
 
-    <?php if ( is_page_template('miscellaneius-template.php')) : ?>
+    <?php if ( is_page_template('template-miscellaneius.php')) : ?>
         
         <?php get_template_part('includes/blocks/block-reach-out', null, array()); ?>
 
