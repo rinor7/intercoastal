@@ -263,6 +263,7 @@ header {
                         transition: .2s ease-out;
                         z-index: 12;
                         justify-content: center;
+                        height: 100vh;
                         &.show {
                             right: 0 !important;
                             transition: .2s ease-in-out;
