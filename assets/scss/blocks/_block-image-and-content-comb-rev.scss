@@ -83,6 +83,7 @@
                 width: 100vw;
                 object-fit: cover;
                 height: 100%;
+                right: 0;
                 @include min-md {
                     right: 16px;
                 }
