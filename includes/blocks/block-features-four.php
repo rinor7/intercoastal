@@ -71,6 +71,14 @@ if ( ! ($block['disable_section'] ?? false) ):
                         <?php if (!empty($feature['description'])): ?>
                             <p class="feature-text"><?php echo esc_html($feature['description']); ?></p>
                         <?php endif; ?>
+
+                        <!-- CTA button: only this is a link -->
+                        <?php if (!empty($feature['cta_text'])): ?>
+                            <a href="<?php echo get_permalink($page->ID); ?>" class="feature-cta">
+                                <?php echo esc_html($feature['cta_text']); ?>
+                            </a>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             <?php 

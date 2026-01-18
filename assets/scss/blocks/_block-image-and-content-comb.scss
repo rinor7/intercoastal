@@ -60,6 +60,9 @@
                 flex-direction: column;
                 row-gap: 32px;
             }
+            @include sm {
+                row-gap: 40px;
+            }
         }
         .img {
             position: relative;
@@ -87,6 +90,9 @@
                 row-gap: 32px;
                 @include min-md {
                     padding-right: 48px;
+                }
+                @include sm {
+                    row-gap: 24px;
                 }
                 p {
                     font-size: 16px;
@@ -127,6 +133,9 @@
     .title-w-content-row {
         @include min-md {
             padding: 40px 0;
+        }
+        @include sm {
+            margin-top: 40px;
         }
         .title-content-wrapper {
             display: flex;
@@ -230,6 +239,10 @@
         height: 600px;
         @include md {
             height: 400px;
+        }
+        @include sm {
+            margin-top: 24px;
+            margin-bottom: 24px;
         }
         @include xs {
             height: 200px;

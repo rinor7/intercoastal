@@ -772,6 +772,24 @@ footer {
     }
 }
 
+.container-testimonials {
+    @include xs {
+        padding: 0;
+        .testimonial-slider {
+            padding-left: 40px;
+            padding-right: 40px;
+            .swiper-slide {
+                opacity: 0;
+                visibility: hidden;
+                &-active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
 .testimonial-slider-general {
     &.swiper {
         padding-top: calc(120px + var(--header-height));
@@ -895,7 +913,7 @@ footer {
             max-width: 90px;
             height: 100%;
             @include md {
-                max-width: 130px;
+                max-width: 140px;
             }
             .swiper-button-next, .swiper-button-prev {
                 width: 20px;

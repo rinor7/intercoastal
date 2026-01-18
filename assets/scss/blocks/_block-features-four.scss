@@ -2,6 +2,11 @@
     flex-direction: column;
     row-gap: 60px;
     display: flex;
+    .section-header {
+        @include md {
+            padding: 0 40px;
+        }
+    }
     .block-features-four-wrapper {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -77,12 +82,10 @@
                     line-height: 1.5;
                 }
                 .feature-cta {
-                    a {
-                        @include button1;
-                        margin: 48px 0 0 0;
-                        @include sm {
-                            margin: 24px 0 0 0;
-                        }
+                    @include button1;
+                    margin: 48px 0 0 0;
+                    @include sm {
+                        margin: 24px 0 0 0;
                     }
                 }
             }

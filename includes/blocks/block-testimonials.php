@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container-testimonials">
     <?php 
     $testimonials = get_field('testimonial_slider', 'option'); // get repeater from options page
     if( $testimonials ): ?>

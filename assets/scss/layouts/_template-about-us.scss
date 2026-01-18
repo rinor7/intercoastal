@@ -73,9 +73,10 @@
     }
     .block-image-and-content-comb {
         padding: 100px 0;
-        row-gap: 100px;
+        row-gap: 70px;
         @include md {
-            
+            padding: 60px 0;
+            row-gap: 24px;
         }
     }
     .title-row {
@@ -91,9 +92,20 @@
     .block-team {
         flex-direction: column;
         display: flex;
-        row-gap: 60px;
+        row-gap: 80px;
         margin-bottom: 80px;
-
+        @include md {
+            row-gap: 40px;
+            margin-bottom: 40px;
+        }
+        .section-header {
+            @include md {
+                .section-header-subtitle {
+                    max-width: 350px;
+                    margin: auto;
+                }
+            }
+        }
         .team-tabs {
             display: flex;
             @include min-lg {
@@ -203,7 +215,6 @@
                 }
             }
         }
-
         .team-content {
             margin-top: 60px;
             .team-panel {
@@ -222,7 +233,6 @@
                 }
             }
         }
-        
         .mobile-only {
             display: none;
         }
@@ -237,10 +247,12 @@
         }
         @include xs {
             .container {
-                overflow: unset;
-                padding: 0;
-                .desktop-only, .mobile-only {
-                    padding: 0 40px;
+                &-slider {
+                     overflow: unset;
+                    padding: 0;
+                    .desktop-only, .mobile-only {
+                        padding: 0 40px;
+                    }
                 }
             }
         }
@@ -306,7 +318,7 @@
     .testimonial-slider {
         margin-top: 80px;
         @include md {
-            margin-top: 40px;
+            margin-top: 0px;
         }
     }
 }

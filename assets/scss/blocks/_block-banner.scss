@@ -48,7 +48,7 @@
         row-gap: 24px;
         text-align: center;
         @include md {
-            row-gap: 12px;
+            row-gap: 16px;
         }
         h1 {
             color: $white;
@@ -68,6 +68,9 @@
             margin: 0 auto;
         }
         .default-btn {
+            @include md {
+                margin-top: 24px;
+            }
             a {
                 @include button1;
             }
