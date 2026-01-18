@@ -2,6 +2,11 @@
     flex-direction: column;
     display: flex;
     row-gap: 60px;
+    .section-header {
+        @include md {
+            padding: 0 40px;
+        }
+    }
     .block-features-wrapper {
         display: flex;
         @include md {
