@@ -11,8 +11,6 @@ get_header();
 
 <?php get_template_part('includes/blocks/block-features-four', null, array()); ?>
 
-<?php get_template_part('includes/blocks/block-features', null, array()); ?>
-
 </main>
 
 <?php get_footer(); ?>
