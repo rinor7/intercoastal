@@ -430,6 +430,7 @@ footer {
                     font-size: 36px;
                     color: $white;
                     line-height: 1;
+                    text-transform: uppercase;
                     @include sm {
                         font-size: 28px;
                     }
