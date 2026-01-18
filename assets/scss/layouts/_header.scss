@@ -268,7 +268,6 @@ header {
                         padding-bottom: env(safe-area-inset-bottom);
                             height: 100vh;
                             inset: 0;
-                            top: 0;
                         &.show {
                             right: 0 !important;
                             transition: .2s ease-in-out;
