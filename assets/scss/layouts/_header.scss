@@ -275,9 +275,8 @@ header {
                         right: -100%;
                     }
                     .mobile-mega-menu {
-                            // height: calc(100% - 80px);
+                            height: calc(100% - 80px);
                             overflow: auto;
-                            height: 100vh;
                             width: 100%;
                             flex-direction: column;
                             display: flex;
