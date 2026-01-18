@@ -57,10 +57,19 @@
                 }
                 .blog__readmore {
                     margin-top: 12px;
-                    font-size: 16px;
+                    font-size: 14px;
                     line-height: 1;
                     text-transform: uppercase;
                     font-weight: 600;
+                    span {
+                        margin-left: 6px;
+                        top: -1px;
+                        position: relative;
+                        svg {
+                            width: 5px;
+                            height: 10px;
+                        }
+                    }
                 }
             }
         }
