@@ -3,6 +3,8 @@
         margin-bottom: 60px;
         @include md {
             margin-bottom: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
     }
     .row {
