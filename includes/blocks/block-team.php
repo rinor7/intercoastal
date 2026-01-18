@@ -36,15 +36,23 @@ if ( empty($has_team_posts) ) {
 }
 
 /* ------------------------------------
- * 5. Get valid categories
- * ------------------------------------ */
+// 5. Get valid categories (with optional ACF order)
+/* ------------------------------------ */
 $terms = get_terms([
     'taxonomy'   => 'team_category',
     'hide_empty' => true,
-    'meta_key'   => 'order',        // ACF field for category order
-    'orderby'    => 'meta_value_num',
-    'order'      => 'ASC',
 ]);
+
+if ( ! empty($terms) && ! is_wp_error($terms) ) {
+    // Sort terms by ACF 'order' field if it exists, otherwise leave default order
+    usort($terms, function($a, $b) {
+        $a_order = get_field('order', $a) ?: 9999; // fallback to high number
+        $b_order = get_field('order', $b) ?: 9999;
+        return $a_order - $b_order;
+    });
+} else {
+    return;
+}
 
 if ( empty($terms) || is_wp_error($terms) ) {
     return;
