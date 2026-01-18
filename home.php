@@ -4,8 +4,6 @@ get_header();
 
 <main id="primary" class="site-archive archive-page-main-posts">
 
-	<?php include("includes/blocks/hero.php"); ?>
-
     <div class="container">
         <div class="archive-layout">
             <div class="archive-content">

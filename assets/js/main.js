@@ -27,12 +27,9 @@ var Menu = {
 
 Menu.init();
 
-
 jQuery('.menu-close').on('click', function () {
     jQuery('#navbarNav').collapse('hide');
 });
-
-
 
 //Calculate Header Height START ( variable --header-height )
 function setHeaderHeightVar() {
@@ -45,103 +42,6 @@ function setHeaderHeightVar() {
 setHeaderHeightVar();
 window.addEventListener('resize', setHeaderHeightVar);
 //Calculate Header Height END
-
-
-// Header change on scroll
-// $(document).ready(function() {
-//   $(window).scroll(function(){
-//       if ($(this).scrollTop() > 70) {
-//          $('.logo_header').addClass('logo-change-on-scroll'); 
-//          $('.logo_site').addClass('logo-change-on-scroll'); 
-//          $('.headerbar').addClass('reduce-header-height-on-scroll');
-//         //  $('.navbar-toggler2').addClass('scroll-hamburger');
-//          $('header').addClass('shadow-show-on-scroll');
-//          $('body').addClass('body-on-scroll');
-//       } else {
-//          $('.logo_header').removeClass('logo-change-on-scroll');
-//          $('.logo_site').removeClass('logo-change-on-scroll');
-//          $('.headerbar').removeClass('reduce-header-height-on-scroll');
-//         //  $('.navbar-toggler2').removeClass('scroll-hamburger');
-//          $('header').removeClass('shadow-show-on-scroll');
-//          $('body').removeClass('body-on-scroll');
-//       }
-//       if ($(this).scrollTop() > 30) {
-//         $('body').addClass('body-on-scroll');
-//      } else {
-//         $('body').removeClass('body-on-scroll');
-//      }
-//   });
-// });
-
-// for rightmenu.php header
-// $(document).ready(function() {
-//   $('.navbar-toggler').click(function() {
-//     $('.menu-menu-1-container').toggleClass('act');
-//   });
-
-//   $('li a').click(function() {
-//     $('.menu-menu-1-container').removeClass('act');
-//     $('.menu-bottom').removeClass('menu-bottom-click');
-//     $('.menu-top').removeClass('menu-top-click');
-//   });
-// });
- 
-// Search Result
-// $('.control').click( function(){
-//   $('body').addClass('search-active');
-//   $('.fa-search-loc').addClass('d-none');
-//   $('.input-search').focus();
-// });
-// Search Result END
-
-// $('.icon-close').click( function(){
-//   $('body').removeClass('search-active');
-//   $('.fa-search-loc').removeClass('d-none');
-// });
-
-
-
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-// var currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     document.getElementById("standard-header").style.cssText = "top: 0px; transition: .5s";
-//   } else {
-//     document.getElementById("standard-header").style.cssText = "top: -45px; transition: .5s;";
-//   }
-//   prevScrollpos = currentScrollPos;
-// }
-
-// $(document).ready(function() {
-//   const navbarToggler = $('.navbar-toggler');
-//   const site = $('.site-home, .site, .site-main, .page-all, .site-other');
-//   const body = $('html');
-//   navbarToggler.on('click', function() {
-//     body.toggleClass('no-scroll');
-//     site.toggleClass('filter-style');
-//   });
-//   });
-
-
-// Menu for standard header with blur effect
-$(document).ready(function() {
-  const navbarToggler = $('.navbar-toggler-standard');
-  const site = $('.site');
-  const body = $('body');
-
-  navbarToggler.on('click', function() {
-    if (body.hasClass('no-scroll')) {
-      body.removeClass('no-scroll');
-      site.removeClass('filter-style');
-      $(window).scrollTop(body.data('scroll-position')); // Restore previous scroll position
-    } else {
-      body.data('scroll-position', $(window).scrollTop()); // Save current scroll position
-      body.addClass('no-scroll');
-      site.addClass('filter-style');
-    }
-  });
-});
-
 
 // Close navbar when click on link ( used for Landingpages )
 function closeNavbar() {
@@ -159,26 +59,16 @@ $(".navbar-collapse li a").on("click", function() {
   closeNavbar();
 });
 
-
 //For all navigation, add menu-open class on body
 document.addEventListener('DOMContentLoaded', function () {
   var navbar = document.getElementById('navbarNav');
-
   navbar.addEventListener('show.bs.collapse', function () {
     document.body.classList.add('menu-open');
   });
-
   navbar.addEventListener('hide.bs.collapse', function () {
     document.body.classList.remove('menu-open');
   });
 });
-
-
-// var swiper = new Swiper(".mySwiper", {
-//   pagination: {
-//     el: ".swiper-pagination",
-//   },
-// });
 
 var swiper = new Swiper(".mySwiper-boxes-section", {
   slidesPerView: 1,
@@ -223,42 +113,6 @@ var swiper = new Swiper(".testimonial-slider", {
     },
 });
 
-//Calculate Header Height and set Page Offset
-// jQuery(document).ready(function($) {
-//     function adjustPageOffset() {
-//         var headerHeight = $('header').outerHeight(); // measure <header> height
-//         $('#page').css('top', headerHeight + 'px');
-//     }
-
-//     // Run on load
-//     adjustPageOffset();
-
-//     // Run again on resize (in case header height changes)
-//     $(window).on('resize', function() {
-//         adjustPageOffset();
-//     });
-// });
-
-// Calculate Header Height
-jQuery(document).ready(function($) {
-    function adjustPageOffset() {
-        var headerHeight = $('header').outerHeight(); // Measure <header> height
-
-        // Set the header height as a global CSS variable
-        document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
-    }
-
-    // Run on load
-    adjustPageOffset();
-
-    // Run again on resize (in case header height changes)
-    $(window).on('resize', function() {
-        adjustPageOffset();
-    });
-});
-
-
-
 // TEAM MEMBERS JS START
 document.querySelectorAll('.team-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -302,7 +156,7 @@ function initTeamSwiper() {
 window.addEventListener('load', initTeamSwiper);
 window.addEventListener('resize', initTeamSwiper);
 
-// Function to split text into two lines 
+// Function to split text into two lines ( used for team members )
 function splitTextTwoLines(selector) {
     document.querySelectorAll(selector).forEach(el => {
         const text = el.textContent.trim();

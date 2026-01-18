@@ -4,12 +4,8 @@ get_header();
 
 	<main id="primary" class="site-single single-page">
 
-	<?php include("includes/blocks/hero.php"); ?>
-
-
-	
 	<div class="intro">
-		<img src="<?php the_post_thumbnail_url();?>" alt="">
+		<!-- <img src="<?php the_post_thumbnail_url();?>" alt=""> -->
 	</div>
 	
 	<div class="container">

@@ -103,11 +103,11 @@ h3 {
     display: block;
 }
 
-#primary {
-    @include min-md {
-        min-height: 75vh;
-    }
-}
+// #primary {
+//     @include min-md {
+//         min-height: 75vh;
+//     }
+// }
 
 //class for title
 .section-header {
@@ -146,7 +146,6 @@ h3 {
              top: 0;
          }
          #page {
-            // top: 70px;
             position: relative;
          }
      }
@@ -162,4 +161,30 @@ h3 {
         padding-right: 40px;
     }
 }
+
+.btns {
+    display: flex;
+    column-gap: 24px;
+    .default-btn {
+        &-one {
+        a {
+            @include button2;
+        }
+        }
+        &-two {
+            a {
+                @include button1;
+            }
+        }
+    }
+}
+
+.site-main:not(.site-about-us-template) {
+        display: flex;
+        flex-direction: column;
+        row-gap: 100px;
+        @include md {
+            row-gap: 80px;
+        }
+    }
 /* General style END*/

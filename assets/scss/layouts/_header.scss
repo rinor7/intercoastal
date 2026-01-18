@@ -1,18 +1,14 @@
-/* Header Start*/
 .navbar-toggler {
     padding: 0 !important;
     outline: unset !important;
     border-color: unset !important;
     border: unset !important;
-    // z-index: 99;
     display: flex;
     align-items: center;
-    // gap: 12px;
     &:focus {
         box-shadow: unset;
     }
 }
-
 
 .menu-label {
     font-size: 14px;
@@ -78,18 +74,18 @@
 }
 
 .image-on-menu-item {
-     width: 30px;
-     height: 30px;
-     background-repeat: no-repeat;
-     background-size: contain;
-     display: inline-flex;
- }
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-flex;
+}
  
- #wpadminbar {
-     position: absolute!important;
- }
+#wpadminbar {
+    position: absolute!important;
+}
 
- body.menu-open {
+body.menu-open {
     overflow: hidden;
     height: 100vh;
 }
@@ -99,7 +95,6 @@ header {
     position: absolute;
     z-index: 3;
     .headerbar {
-        // background: $white;
         align-items: center;
         display: flex;
         padding: 48px 0 0 0;
@@ -162,14 +157,12 @@ header {
                                 @include min-md {
                                     display: flex;
                                     align-items: center;
-                                    // padding-bottom: 10px;
                                 }
                             }
                             &.menu-item {
                                  &.is-mega {   
                                      &:after {
                                         padding-left: 6px;
-                                        // pointer-events: none;
                                         cursor: pointer;
                                         content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.84736 5.86126C5.6555 6.04625 5.34448 6.04625 5.15262 5.86126L0.143891 1.03192C-0.0479635 0.846927 -0.0479635 0.547055 0.143891 0.362066L0.375486 0.138741C0.56734 -0.0462471 0.878398 -0.0462471 1.07026 0.138741L5.49999 4.40983L9.92975 0.138741C10.1216 -0.0462471 10.4326 -0.0462471 10.6245 0.138741L10.8561 0.362066C11.048 0.547055 11.048 0.846927 10.8561 1.03192L5.84736 5.86126Z" fill="white"/></svg>');
                                     }
@@ -257,12 +250,6 @@ header {
                     @include min-md {
                         flex: 1;
                     }
-                    // &.collapsing {
-                    //     position: relative;
-                    //     overflow: hidden;
-                    //     height: 0;
-                    //     transition: height .35s ease;
-                    // }
                     @include md {
                         position: fixed;
                         display: flex;
@@ -299,7 +286,6 @@ header {
                                 visibility: hidden;
                             }
                         .mobile-mega-submenu {
-                            // row-gap: 10px;
                             display: flex;
                             padding: 20px 40px 0 40px;
                             flex-direction: column;
@@ -349,4 +335,3 @@ header {
         }
     }
 }
-/* Header End*/

@@ -4,8 +4,6 @@ get_header();
 
 <main id="primary" class="site-archive archive-page">
 
-	<?php include("includes/blocks/hero.php"); ?>
-
     <div class="container">
         <div class="archive-content">
         <?php if (have_posts()) : ?>
@@ -32,6 +30,7 @@ get_header();
 
         <?php endif; ?>
         </div>
+        <?php get_sidebar(); ?>
     </div>
 </main>
 

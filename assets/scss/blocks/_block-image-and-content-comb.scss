@@ -1,5 +1,3 @@
-/* Image - Content Comb style Start */
-
 .block-image-and-content-comb {
     row-gap: 60px;
     display: flex;
@@ -256,25 +254,3 @@
         }
     }
 }
-
-
-
-
-
-.btns {
-    display: flex;
-    column-gap: 24px;
-    .default-btn {
-        &-one {
-        a {
-            @include button2;
-        }
-        }
-        &-two {
-            a {
-                @include button1;
-            }
-        }
-    }
-}
-/* Image - Content Comb style END */

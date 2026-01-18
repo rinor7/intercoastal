@@ -2,9 +2,9 @@
 @import "other/variables";
 @import "other/fonts";
 @import "other/general";
-@import "layouts/error404";
-@import "layouts/about-us";
 
+@import "layouts/error404";
+@import "layouts/template-about-us";
 @import "layouts/header";
 @import "layouts/home";
 @import "layouts/footer"; 
@@ -12,17 +12,13 @@
 @import "layouts/archive";
 @import "layouts/page-templates";
 
-
 @import "blocks/block-banner";
-
 @import "blocks/block-image-and-text";
 @import "blocks/block-features";
 @import "blocks/block-image-and-content-comb";
 @import "blocks/block-image-and-content-comb-rev";
 @import "blocks/block-features-four";
-@import "layouts/general-template";
-
-
+@import "layouts/template-general";
 
 /* WordPress Core
 -------------------------------------------------------------- */

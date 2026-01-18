@@ -1,8 +1,7 @@
 <?php
-if ( is_active_sidebar( 'widget-6' ) ) : ?>
+// here is added get_sidebar
+if ( is_active_sidebar( 'footer-1' ) ) : ?>
 	<aside id="secondary" class="widget-area" role="complementary">
-		<?php dynamic_sidebar( 'widget-6' ); ?>
-
 		<?php dynamic_sidebar( 'footer-1' ); ?>
 	</aside><!-- #secondary -->
 <?php endif; ?>

@@ -1,4 +1,3 @@
-/* Image - Text style Start */
 .block-image-and-text {
     row-gap: 80px;
     display: flex;
@@ -74,46 +73,3 @@
         }
     }
 }
-
-// .image-no-container-right {
-//     position: relative;
-//     padding-bottom: 0;
-
-//     .row {
-//         @include md {
-//             row-gap: 20px;
-//         }
-
-//         @include xs {
-//             row-gap: 0;
-//         }
-//     }
-
-//     .rightside {
-//         height: 500px;
-//         .img {
-//            flex: unset;
-//             max-width: unset;
-//             position: relative;
-//             width: 100%;
-//             right: 0;
-//             height: 100%;
-//             top: 0;
-//             align-self: unset;
-
-//             @include xs {
-//                 padding-right: 0;
-//                 padding-left: 0;
-//             }
-
-//             @include min-md {
-//                 width: 50%;
-//                 position: absolute;
-//                 padding-right: 0;
-//                 // height: 500px;
-//             }
-//         }
-//     }
-// }
-
-/* Image - Text style END */

@@ -1,20 +1,31 @@
 <?php
+// Register Taxonomy: Team Categories (Admin only)
+function register_team_category_taxonomy() {
+    $labels = array(
+        'name'              => 'Categories',
+        'singular_name'     => 'Team Category',
+        'search_items'      => 'Search Team Categories',
+        'all_items'         => 'All Categories',
+        'parent_item'       => 'Parent Category',
+        'parent_item_colon' => 'Parent Category:',
+        'edit_item'         => 'Edit Category',
+        'update_item'       => 'Update Category',
+        'add_new_item'      => 'Add New Category',
+        'new_item_name'     => 'New Category Name',
+        'menu_name'         => 'Team Categories',
+    );
 
-// register_taxonomy('custom_taxonomy', 'posttype', array( //if you need "Uncategorized" category, replace "custom_taxonomy" with "category"
-//     'hierarchical' => true,
-//     'labels' => array('name' => 'Categories', 'singular_name' => 'Custom Taxonomy'),
-//     'show_ui' => true,
-//     'show_admin_column' => true,
-//     'query_var' => true,
-//     'rewrite' => array('slug' => 'custom_taxonomy'),//if you need "Uncategorized" category, replace "custom_taxonomy" with "category"
-// ));
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => false,     // disables front-end query
+        'rewrite'           => false,     // disables public URLs
+        'public'            => false,     // hide completely from front-end
+        'show_in_nav_menus' => false,     // not available in menus
+    );
 
-
-register_taxonomy('team_category', 'team', array( //if you need "Uncategorized" category, replace "page-category" with "category"
-    'hierarchical' => true,
-    'labels' => array('name' => 'Categories', 'singular_name' => 'Team Category'),
-    'show_ui' => true,
-    'show_admin_column' => true,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'team_category'),//if you need "Uncategorized" category, replace "page-category" with "category"
-));
+    register_taxonomy('team_category', array('team'), $args);
+}
+add_action('init', 'register_team_category_taxonomy');

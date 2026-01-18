@@ -1,10 +1,14 @@
-/* Home Archive Blog START*/
-    .site-main:not(.site-about-us-template) {
-        display: flex;
-        flex-direction: column;
-        row-gap: 100px;
+.site-archive {
+    &.archive-page-main-posts {
+        padding-top: calc(120px + var(--header-height));
+
         @include md {
-            row-gap: 80px;
+            padding-top: calc(80px + var(--header-height));
+        }
+        .archive-layout {
+            .archive-content {
+                color: $white;
+            }
         }
     }
-/* Home Home Archive Blog END*/
+}

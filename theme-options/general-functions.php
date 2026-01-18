@@ -6,12 +6,12 @@ function remove_wp_block_menu() {
 add_action('admin_init', 'remove_wp_block_menu', 100);
 
 // Disable Theme FileEditor from Appearance
-function disable_theme_file_editor() {
-    if ( ! defined('DISALLOW_FILE_EDIT') ) {
-        define('DISALLOW_FILE_EDIT', true);
-    }
-}
-add_action('init', 'disable_theme_file_editor');
+// function disable_theme_file_editor() {
+//     if ( ! defined('DISALLOW_FILE_EDIT') ) {
+//         define('DISALLOW_FILE_EDIT', true);
+//     }
+// }
+// add_action('init', 'disable_theme_file_editor');
 
 //Remove Comments Option from Admin Menu 
 function df_disable_comments_admin_menu() {
@@ -55,7 +55,6 @@ function df_hide_existing_comments($comments) {
     return $comments;
 }
 add_filter('comments_array', 'df_hide_existing_comments', 10, 2);
-
 
 //Function for rendering section headers
 function strip_outer_p_tags($content) {
