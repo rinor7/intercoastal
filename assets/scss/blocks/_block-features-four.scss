@@ -105,6 +105,9 @@
             }
             .feature-card {
                 .feature-content {
+                    .feature-title {
+                        order: -1;
+                    }
                     .feature-text {
                         font-size: 24px;
                         line-height: 1.2;

@@ -41,6 +41,9 @@ if ( empty($has_team_posts) ) {
 $terms = get_terms([
     'taxonomy'   => 'team_category',
     'hide_empty' => true,
+    'meta_key'   => 'order',        // ACF field for category order
+    'orderby'    => 'meta_value_num',
+    'order'      => 'ASC',
 ]);
 
 if ( empty($terms) || is_wp_error($terms) ) {
