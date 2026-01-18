@@ -4,7 +4,7 @@
     flex-direction: column;
     overflow: hidden;
     @include md {
-        row-gap: 48px;
+        row-gap: 32px;
     }
     .title-row {
         &-wrapper {
