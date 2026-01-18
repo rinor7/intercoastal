@@ -26,3 +26,15 @@
         margin-top: 80px;
     }
 }
+
+.page-template-frontpage {
+    .block-image-and-text {
+        .content-row {
+            .content-left {
+                p {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
