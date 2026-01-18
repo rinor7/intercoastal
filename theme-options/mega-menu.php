@@ -9,6 +9,21 @@ class Mega_Menu_Walker extends Walker_Nav_Menu {
         $this->is_mobile = wp_is_mobile();
     }
 
+    public function start_lvl( &$output, $depth = 0, $args = null ) {
+        if ( $this->is_mobile ) {
+            return; // prevent <ul class="sub-menu"> on mobile
+        }
+        $output .= '<ul class="sub-menu">';
+    }
+
+    public function end_lvl( &$output, $depth = 0, $args = null ) {
+        if ( $this->is_mobile ) {
+            return;
+        }
+        $output .= '</ul>';
+    }
+
+
     public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 
         $is_mega = in_array( 'is-mega', (array) $item->classes );

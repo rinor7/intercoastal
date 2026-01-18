@@ -38,6 +38,8 @@
     left: 0;
     color: $white;
     width: 100%;
+    background: $black;
+    z-index: 1;
     @include min-md {
         display: none!important;
     }
@@ -275,11 +277,12 @@ header {
                         right: -100%;
                     }
                     .mobile-mega-menu {
-                            height: calc(100% - 80px);
+                            // height: calc(100% - 80px);
                             overflow: auto;
                             width: 100%;
                             flex-direction: column;
                             display: flex;
+                            height: 100%;
                             @include min-md {
                                 display: none!important;
                                 opacity: 0;
@@ -287,7 +290,7 @@ header {
                             }
                         .mobile-mega-submenu {
                             display: flex;
-                            padding: 20px 40px 0 40px;
+                            padding: 80px 40px 0 40px;
                             flex-direction: column;
                             li {
                                 margin-bottom: 16px;
