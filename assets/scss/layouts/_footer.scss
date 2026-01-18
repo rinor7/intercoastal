@@ -453,6 +453,9 @@ footer {
                     @include min-md {
                         justify-content: end;
                     }
+                    @include md {
+                        row-gap: 16px
+                    }
                 .default-btn {
                     &-one {
                        a {
