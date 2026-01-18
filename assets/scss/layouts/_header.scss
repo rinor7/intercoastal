@@ -27,7 +27,7 @@
 
 .menu-close {
     position: absolute;
-    top: 24px;
+    top: -1px;
     right: 24px;
     background: none;
     border: 0;
@@ -39,6 +39,7 @@
     color: $white;
     width: 100%;
     background: $black;
+    height: 65px;
     @include min-md {
         display: none!important;
     }
