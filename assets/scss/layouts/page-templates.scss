@@ -38,3 +38,29 @@
         }
     }
 }
+
+.page-template-default {
+    .site-page {
+        color: $white;
+        padding-top: calc(120px + var(--header-height));
+        padding-bottom: 80px;
+
+        @include md {
+            padding-top: calc(80px + var(--header-height));
+            padding-bottom: 40px;
+        }
+    }
+}
+
+.page-template-template-privacy {
+    .site-privacy {
+        color: $white;
+        padding-top: calc(120px + var(--header-height));
+        padding-bottom: 80px;
+
+        @include md {
+            padding-top: calc(80px + var(--header-height));
+            padding-bottom: 40px;
+        }
+    }
+}

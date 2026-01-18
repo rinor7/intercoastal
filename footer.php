@@ -17,7 +17,8 @@
         !is_page_template('template-general.php') &&
         !is_page_template('template-miscellaneius.php') &&
         !is_page_template('template-about-us-.php') &&
-        !is_page_template('template-real-estate.php')) : ?>
+        !is_page_template('template-real-estate.php') && 
+        !is_page_template('template-privacy.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
 
