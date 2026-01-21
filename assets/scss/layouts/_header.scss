@@ -66,11 +66,20 @@
 }
 
 .header-sticky {
-    &.body-on-scroll {
-        #header-bar {
-            width: 100%;
-            position: fixed;
-            top: 0;
+    // &.body-on-scroll {
+    //     #header-bar {
+    //         width: 100%;
+    //         position: fixed;
+    //         top: 0;
+    //     }
+    // }
+    .site-header {
+        position: sticky;
+        top: 0;
+        background-color: $black;
+        .headerbar {
+            padding-bottom: 20px;
+            padding-top: 20px;
         }
     }
 }
@@ -171,10 +180,12 @@ header {
                                         content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.84736 5.86126C5.6555 6.04625 5.34448 6.04625 5.15262 5.86126L0.143891 1.03192C-0.0479635 0.846927 -0.0479635 0.547055 0.143891 0.362066L0.375486 0.138741C0.56734 -0.0462471 0.878398 -0.0462471 1.07026 0.138741L5.49999 4.40983L9.92975 0.138741C10.1216 -0.0462471 10.4326 -0.0462471 10.6245 0.138741L10.8561 0.362066C11.048 0.547055 11.048 0.846927 10.8561 1.03192L5.84736 5.86126Z" fill="white"/></svg>');
                                     }
                                     &:hover {
-                                        &:after {
-                                                content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.15264 0.138741C5.3445 -0.0462475 5.65552 -0.0462475 5.84738 0.138741L10.8561 4.96808C11.048 5.15307 11.048 5.45295 10.8561 5.63793L10.6245 5.86126C10.4327 6.04625 10.1216 6.04625 9.92974 5.86126L5.50001 1.59016L1.07025 5.86126C0.878389 6.04625 0.567377 6.04625 0.375517 5.86126L0.143896 5.63793C-0.047965 5.45294 -0.047965 5.15307 0.143896 4.96808L5.15264 0.138741Z" fill="white"/></svg>');
+                                        @include min-md {
+                                                &:after {
+                                                    content: url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.15264 0.138741C5.3445 -0.0462475 5.65552 -0.0462475 5.84738 0.138741L10.8561 4.96808C11.048 5.15307 11.048 5.45295 10.8561 5.63793L10.6245 5.86126C10.4327 6.04625 10.1216 6.04625 9.92974 5.86126L5.50001 1.59016L1.07025 5.86126C0.878389 6.04625 0.567377 6.04625 0.375517 5.86126L0.143896 5.63793C-0.047965 5.45294 -0.047965 5.15307 0.143896 4.96808L5.15264 0.138741Z" fill="white"/></svg>');
+                                                } 
                                             } 
-                                        } 
+                                        }
                                     .mega-menu {
                                         
                                         width: 100%;

@@ -138,18 +138,18 @@ h3 {
     }
 }
 
-.header-sticky {
-     &.body-on-scroll {
-         header {
-             width: 100%;
-             position: fixed;
-             top: 0;
-         }
-         #page {
-            position: relative;
-         }
-     }
- }
+// .header-sticky {
+//      &.body-on-scroll {
+//          header {
+//              width: 100%;
+//              position: fixed;
+//              top: 0;
+//          }
+//          #page {
+//             position: relative;
+//          }
+//      }
+//  }
 
 #page {
     top: var(--header-height);
