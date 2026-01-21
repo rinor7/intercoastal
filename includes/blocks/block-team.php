@@ -150,28 +150,30 @@ if ( empty($terms) || is_wp_error($terms) ) {
                                         <?php the_content(); ?>
                                     </div>
 
-                                    <?php
-                                    $social_links = array_filter([
-                                        ['url' => get_field('social_media_1'), 'icon' => get_field('social_1_icon')],
-                                        ['url' => get_field('social_media_2'), 'icon' => get_field('social_2_icon')],
-                                        ['url' => get_field('social_media_3'), 'icon' => get_field('social_3_icon')],
-                                        ['url' => get_field('social_media_4'), 'icon' => get_field('social_4_icon')],
-                                    ], fn($item) => !empty($item['url']));
-                                    ?>
-
-                                    <?php if ($social_links): ?>
+                                    <?php if (have_rows('social_links')): ?>
                                         <div class="team-social">
-                                            <?php foreach ($social_links as $item): 
-                                                $icon = is_array($item['icon']) ? $item['icon']['url'] : $item['icon'];
+                                            <?php while (have_rows('social_links')): the_row(); 
+                                                $link = get_sub_field('social_link');
+                                                $icon = get_sub_field('icon');
+
+                                                // Skip if no link URL
+                                                if (!$link || empty($link['url'])) continue;
+
+                                                $url    = $link['url'];
+                                                $target = $link['target'] ?: '_blank'; // default to _blank
+
+                                                // Handle icon
+                                                $icon_url = is_array($icon) ? $icon['url'] : $icon;
                                             ?>
-                                                <a href="<?php echo esc_url($item['url']); ?>" target="_blank" rel="noopener">
-                                                    <?php if ($icon): ?>
-                                                        <img src="<?php echo esc_url($icon); ?>" alt="">
+                                                <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>" rel="noopener">
+                                                    <?php if ($icon_url): ?>
+                                                        <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($link['title'] ?: ''); ?>">
                                                     <?php endif; ?>
                                                 </a>
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </div>
                                     <?php endif; ?>
+
 
                                 </article>
 
