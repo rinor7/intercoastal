@@ -46,3 +46,15 @@
         }
     }
 }
+
+body {
+    &.category, &.tag, &.author {
+        .site-blog-category, .site-tag-archive, .site-author-archive {
+            padding-top: calc(80px + var(--header-height));
+            padding-bottom: 40px;
+            @include md {
+                padding-top: calc(80px + var(--header-height));
+            }
+        }
+    }
+}

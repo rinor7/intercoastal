@@ -130,3 +130,29 @@ function modify_post_type_archive_query($query) {
     }
 }
 add_action('pre_get_posts', 'modify_post_type_archive_query');
+
+
+//Redirect TAGs into Hompage URL:
+// Disable public tag archive pages
+// add_action('template_redirect', function() {
+//     if (is_tag()) {
+//         // Option 1: redirect to homepage
+//         wp_redirect(home_url());
+//         exit;
+
+//         // Option 2: show 404
+//         // global $wp_query;
+//         // $wp_query->set_404();
+//         // status_header(404);
+//         // get_template_part(404);
+//         // exit;
+//     }
+// });
+
+// Disable author archive pages
+add_action('template_redirect', function() {
+    if (is_author()) {
+        wp_redirect(home_url());
+        exit;
+    }
+});

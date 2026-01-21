@@ -10,23 +10,20 @@ class Mega_Menu_Walker extends Walker_Nav_Menu {
     }
 
     public function start_lvl( &$output, $depth = 0, $args = null ) {
-        if ( $this->is_mobile ) {
-            return; // prevent <ul class="sub-menu"> on mobile
-        }
-        $output .= '<ul class="sub-menu">';
+        // Never render default <ul class="sub-menu">
+        return;
     }
 
     public function end_lvl( &$output, $depth = 0, $args = null ) {
-        if ( $this->is_mobile ) {
-            return;
-        }
-        $output .= '</ul>';
+        // Never render default </ul>
+        return;
     }
+
 
 
     public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 
-        $is_mega = in_array( 'is-mega', (array) $item->classes );
+        $is_mega = in_array( 'menu-item-has-children', (array) $item->classes );
 
         /*
          |--------------------------------------------------------------------------
@@ -41,6 +38,21 @@ class Mega_Menu_Walker extends Walker_Nav_Menu {
             }
             return;
         }
+
+        // MOBILE: render parent + mega submenu ( if you uncomment this part, need to comment above one )
+        // if ( $this->is_mobile && $depth === 0 && $is_mega ) {
+
+        //     $this->current_mega = $item;
+        //     $this->mega_items   = [];
+        //     // Start parent container
+        //     $output .= '<div class="mobile-mega-menu">';
+        //     // Parent link
+        //     $output .= '<a class="mobile-mega-parent" href="' . esc_url( $item->url ?: '#' ) . '">';
+        //     $output .= esc_html( $item->title );
+        //     $output .= '</a>';
+        //     return; // children will be rendered in end_el
+        // }
+
 
         /*
          |--------------------------------------------------------------------------

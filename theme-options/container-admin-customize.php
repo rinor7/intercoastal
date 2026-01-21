@@ -74,22 +74,22 @@ add_action('wp_head', 'theme_custom_css');
 function theme_custom_css() {
     ?>
     <style>
-       @media (min-width: 576px) {
+       @media (min-width: 575.98px) {
             .container {
                 max-width: <?php echo get_theme_mod('container_max_width_extra_small_setting', 540); ?>px;
             }
         }
-		@media (min-width: 768px) {
+		@media (min-width: 767.98px) {
             .container {
                 max-width: <?php echo get_theme_mod('container_max_width_small_setting', 720); ?>px;
             }
         }
-		@media (min-width: 992px) {
+		@media (min-width: 991.98px) {
             .container {
                 max-width: <?php echo get_theme_mod('container_max_width_medium_setting', 960); ?>px;
             }
         }
-        @media (min-width: 1200px) {
+        @media (min-width: 1199px) {
             .container {
                 max-width: <?php echo get_theme_mod('container_max_width_large_setting', 1140); ?>px;
             }
