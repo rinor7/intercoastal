@@ -34,5 +34,10 @@
 	}
 	.navbar-back {
 		background: transparent;
+		.menu-label-back {
+			a {
+				@include button1;
+			}
+		}
 	}
   }

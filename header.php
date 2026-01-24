@@ -84,7 +84,7 @@
 
                             <?php if (is_404()) : ?>
                                 <button class="navbar-back" type="button">
-                                    <span class="menu-label">
+                                    <span class="menu-label-back">
                                         <a href="<?php echo esc_url( home_url('/') ); ?>">Back</a>
                                     </span>
                                 </button>
