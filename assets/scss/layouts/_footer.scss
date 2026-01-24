@@ -263,6 +263,9 @@ footer {
                                         &.wpcf7-not-valid {
                                             border-color: $primaryRed;
                                         }
+                                        &.wpcf7-not-valid {
+                                            border: 1px solid $primaryRed;
+                                        }
                                     }
 
                                     textarea {
@@ -332,6 +335,18 @@ footer {
                                         }
                                     }
                                 }
+                                &.wpcf7-not-valid {
+                                    border: unset!important;
+                                    .wpcf7-list-item {
+                                        label {
+                                            input {
+                                                border: 1px solid $white;
+                                                background-color: $primaryRed;
+                                            }
+                                        }
+                                    }
+                                    border: 1px solid $primaryRed;
+                                }
                             }
 
                             /* Acceptance checkbox */
@@ -382,6 +397,23 @@ footer {
                             input[type="submit"]:hover {
                                 background: $white;
                                 color: #000000;
+                            }
+                            &.invalid {
+                                .wpcf7-response-output {
+                                    display: none;
+                                }
+                            }
+                            &.sent {
+                                .wpcf7-response-output {
+                                    margin: 0;
+                                    color: #46b450;
+                                    border: unset;
+                                    padding: 0;
+                                    font-size: 14px;
+                                    @include sm {
+                                        width: 100%;
+                                    }
+                                }
                             }
                         }
                         .wpcf7-response-output {
@@ -614,89 +646,91 @@ footer {
         }
     }
 
-   .wpcf7 {
-        form {
-            position: relative;
-            .newsletter-form {
-                row-gap: 12px;
-                flex-direction: column;
-                display: flex;
-                @include lg {
-                    max-width: 600px;
-                    row-gap: 24px;
-                }
-                .newsletter-row {
-                    p {
-                        display: flex;
-                        column-gap: 12px;
-                        @include sm {
-                            flex-direction: column;
-                            row-gap: 16px;
-                            br {
-                                display: none;
-                            }
-                        }
-                        .wpcf7-form-control-wrap {
-                            input {
-                                height: 48px;
-                                border: 1px solid $white;
-                                background-color: transparent;
-                                padding-left: 12px;
-                                color: $white;
-                                font-weight: 500;
-                                @include xs {
-                                    text-align: center;
-                                    width: 100%;
+    .footer-cols {
+        .wpcf7 {
+            form {
+                position: relative;
+                .newsletter-form {
+                    row-gap: 12px;
+                    flex-direction: column;
+                    display: flex;
+                    @include lg {
+                        max-width: 600px;
+                        row-gap: 24px;
+                    }
+                    .newsletter-row {
+                        p {
+                            display: flex;
+                            column-gap: 12px;
+                            @include sm {
+                                flex-direction: column;
+                                row-gap: 16px;
+                                br {
+                                    display: none;
                                 }
-                                &::placeholder {
+                            }
+                            .wpcf7-form-control-wrap {
+                                input {
+                                    height: 48px;
+                                    border: 1px solid $white;
+                                    background-color: transparent;
+                                    padding-left: 12px;
                                     color: $white;
+                                    font-weight: 500;
                                     @include xs {
-                                        text-align: center
+                                        text-align: center;
+                                        width: 100%;
+                                    }
+                                    &::placeholder {
+                                        color: $white;
+                                        @include xs {
+                                            text-align: center
+                                        }
+                                    }
+                                    &.wpcf7-not-valid {
+                                        border: 1px solid $primaryRed;
                                     }
                                 }
-                                &.wpcf7-not-valid {
-                                    border: 1px solid $primaryRed;
+                                .wpcf7-not-valid-tip {
+                                    display: none
                                 }
                             }
-                            .wpcf7-not-valid-tip {
-                                display: none
+                            .wpcf7-submit {
+                                @include button1;
+                                height: 48px;
+                                margin: 0;
+                                text-transform: capitalize;
+                                @include xs {
+                                    margin: auto;
+                                }
                             }
                         }
-                        .wpcf7-submit {
-                            @include button1;
-                            height: 48px;
-                            margin: 0;
-                            text-transform: capitalize;
-                            @include xs {
-                                margin: auto;
-                            }
+                        .wpcf7-spinner {
+                            display: none;
                         }
                     }
-                    .wpcf7-spinner {
+                    .newsletter-note {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+                &.invalid {
+                    .wpcf7-response-output {
                         display: none;
                     }
                 }
-                .newsletter-note {
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-            }
-            &.invalid {
-                .wpcf7-response-output {
-                    display: none;
-                }
-            }
-            &.sent {
-                .wpcf7-response-output {
-                    margin: 0;
-                    top: -25px;
-                    position: absolute;
-                    color: #46b450;
-                    border: unset;
-                    padding: 0;
-                    font-size: 13px;
-                    @include sm {
-                        width: 100%;
+                &.sent {
+                    .wpcf7-response-output {
+                        margin: 0;
+                        top: -25px;
+                        position: absolute;
+                        color: #46b450;
+                        border: unset;
+                        padding: 0;
+                        font-size: 13px;
+                        @include sm {
+                            width: 100%;
+                        }
                     }
                 }
             }

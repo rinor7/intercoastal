@@ -173,3 +173,25 @@ splitTextTwoLines('.team-tabs-swiper .swiper-slide');
 // Apply to desktop tabs
 splitTextTwoLines('.team-tabs .team-tab');
 // TEAM MEMBERS JS END
+
+// Disable first option in select
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('select[name="inquiry-topic"]').forEach(select => {
+    // Disable placeholder
+    if (select.options.length) {
+      select.options[0].disabled = true;
+    }
+    select.addEventListener('change', function () {
+      // remove invalid class from select only
+      select.classList.remove('wpcf7-not-valid');
+      select.setAttribute('aria-invalid', 'false');
+      // remove error message
+      const wrap = select.closest('.wpcf7-form-control-wrap');
+      if (wrap) {
+        const tip = wrap.querySelector('.wpcf7-not-valid-tip');
+        if (tip) tip.remove();
+      }
+
+    });
+  });
+});
