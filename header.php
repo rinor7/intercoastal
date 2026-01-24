@@ -83,52 +83,49 @@
                             <?php } ?>
 
                             <?php if (is_404()) : ?>
-                                <!-- <a aria-label="logo" class="logo_header" href="<?php echo esc_url( home_url('/') ); ?>">
-                                </a> -->
-                                
                                 <button class="navbar-back" type="button">
-                                <span class="menu-label">
-                                    <a href="<?php echo esc_url( home_url('/') ); ?>">Back</a>
-                                </span>
+                                    <span class="menu-label">
+                                        <a href="<?php echo esc_url( home_url('/') ); ?>">Back</a>
+                                    </span>
                                 </button>
                             <?php else : ?>
-                            <button class="navbar-toggler" type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#navbarNav"
-                                aria-controls="navbarNav"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNav"
+                                    aria-controls="navbarNav"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation">
 
-                                <span class="menu-label">Menu</span>
+                                    <span class="menu-label">Menu</span>
 
-                                <div class="menu-m">
-                                    <span class="menu-global menu-top"></span>
-                                    <span class="menu-global menu-middle"></span>
-                                    <span class="menu-global menu-bottom"></span>
-                                </div>
-                            </button>
-
-                            <div class="collapse navbar-collapse main-nav-toggle right-canvas-menu" id="navbarNav">
-                                <button class="menu-close" aria-label="Close menu">
-                                    ✕
+                                    <div class="menu-m">
+                                        <span class="menu-global menu-top"></span>
+                                        <span class="menu-global menu-middle"></span>
+                                        <span class="menu-global menu-bottom"></span>
+                                    </div>
                                 </button>
 
-                               <?php
-                                $menu_classes = 'navbar-nav'; // default class
-                                if ( wp_is_mobile() ) {
-                                    $menu_classes .= ' mobile-nav'; // add extra class for mobile if needed
-                                }
+                                <div class="collapse navbar-collapse main-nav-toggle right-canvas-menu" id="navbarNav">
+                                    <button class="menu-close" aria-label="Close menu">
+                                        ✕
+                                    </button>
 
-                                wp_nav_menu([
-                                    'theme_location' => 'menu-1',
-                                    'menu_id'        => 'primary-menu',
-                                    'menu_class'     => $menu_classes,
-                                    'container'      => false,
-                                    'depth'          => 3,
-                                    'walker'         => new Mega_Menu_Walker(),
-                                ]);
-                                ?>
-                            </div>
+                                <?php
+                                    $menu_classes = 'navbar-nav'; // default class
+                                    if ( wp_is_mobile() ) {
+                                        $menu_classes .= ' mobile-nav'; // add extra class for mobile if needed
+                                    }
+
+                                    wp_nav_menu([
+                                        'theme_location' => 'menu-1',
+                                        'menu_id'        => 'primary-menu',
+                                        'menu_class'     => $menu_classes,
+                                        'container'      => false,
+                                        'depth'          => 3,
+                                        'walker'         => new Mega_Menu_Walker(),
+                                    ]);
+                                    ?>
+                                </div>
                             <?php endif; ?>
 
                         </nav>
