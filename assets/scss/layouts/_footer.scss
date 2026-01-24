@@ -400,7 +400,14 @@ footer {
                             }
                             &.invalid {
                                 .wpcf7-response-output {
-                                    display: none;
+                                    margin: 0;
+                                    color: $primaryRed;
+                                    border: unset;
+                                    padding: 0;
+                                    font-size: 14px;
+                                    @include sm {
+                                        width: 100%;
+                                    }
                                 }
                             }
                             &.sent {
