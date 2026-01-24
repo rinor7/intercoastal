@@ -96,7 +96,11 @@ footer {
                     flex-direction: column;
                     row-gap: 24px;
                 }
-                p, a {
+                .copyright {
+                    display: flex;
+                    column-gap: 4px;
+                }
+                p, a, .copyright {
                     color: $white;
                     font-size: 14px;
                     text-align: center;

@@ -46,5 +46,14 @@ function standard_widgets_init() {
 			'before_title'  => '<span class="widget-title">',
 			'after_title'   => '</span>',)
 	);
+	register_sidebar(
+		array('name'          => esc_html__( 'Copyright Text', 'intercoastal' ),
+			'id'            => 'copyright-text',
+			'description'   => esc_html__( 'Add contact info widgets here to appear in the special footer contact area.', 'intercoastal' ),
+			'before_widget' => '<div class="widget-wrapper">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<span class="widget-title">',
+			'after_title'   => '</span>',)
+	);
 }
 add_action( 'widgets_init', 'standard_widgets_init' );

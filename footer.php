@@ -46,12 +46,12 @@
         return;
     }
     $footer_image = get_field('image_bg', $page_id);
-    $default_footer_image = get_template_directory_uri() . '/assets/img/default_image.jpg';
+    $option_footer_image = get_field('footer_default_bg', 'option');
     if ( $footer_image && ! empty( $footer_image['url'] ) ) {
         $image_url    = $footer_image['url'];
         $image_source = 'page';
     } else {
-        $image_url    = $default_footer_image;
+        $image_url    = $option_footer_image;
         $image_source = 'default';
     }
     $bg_overlay_color = get_field('background_overlay_color', $page_id) ?: '#000000a1';
@@ -104,7 +104,7 @@
 
             <div class="copyrights">
                 <div class="leftside">
-                    <p>&copy;<?php echo date(' Y  ') ;?>Hero Experience Project<a href="/"></a> </p>
+                    <div class="copyright"><span>&copy;<?php echo date(' Y  ') ;?></span><?php if(is_active_sidebar('copyright-text') ) { ?><ul><?php dynamic_sidebar('copyright-text');?></ul><?php } ?></div>
                     <?php wp_nav_menu(
                         array(
                         'theme_location'    => 'menu-3',
