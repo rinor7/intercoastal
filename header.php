@@ -82,7 +82,16 @@
                                 </a>
                             <?php } ?>
 
-
+                            <?php if (is_404()) : ?>
+                                <!-- <a aria-label="logo" class="logo_header" href="<?php echo esc_url( home_url('/') ); ?>">
+                                </a> -->
+                                
+                                <button class="navbar-back" type="button">
+                                <span class="menu-label">
+                                    <a href="<?php echo esc_url( home_url('/') ); ?>">Back</a>
+                                </span>
+                                </button>
+                            <?php else : ?>
                             <button class="navbar-toggler" type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#navbarNav"
@@ -120,7 +129,7 @@
                                 ]);
                                 ?>
                             </div>
-
+                            <?php endif; ?>
 
                         </nav>
                     </div>
