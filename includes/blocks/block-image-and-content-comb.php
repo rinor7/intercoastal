@@ -118,50 +118,83 @@ $image_col_class   = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-7';
         </div>
     </div>
 
+
+     <?php
+        $has_left_content =
+            !empty($block_fields['title_up']) ||
+            !empty($block_fields['title_downside']);
+
+        $has_right_content =
+            !empty($block_fields['upside-right-content']) ||
+            !empty($comb_btn_1_1['title']) ||
+            !empty($comb_btn_2_2['title']);
+
+        $show_section = $has_left_content || $has_right_content;
+    ?>
+   <?php if ( $show_section ) : ?>
     <!-- TITLE + CONTENT ROW -->
     <div class="title-w-content-row">
         <div class="container">
             <div class="title-content-wrapper">
 
                 <div class="title-wrapper-leftside col-lg-7">
-                    <div class="title-leftside-up"><?php echo $block_fields['title_up'] ?? ''; ?></div>
-                    <div class="title-leftside-down"><?php echo $block_fields['title_downside'] ?? ''; ?></div>
+                    <?php if (!empty($block_fields['title_up'])): ?>
+                        <div class="title-leftside-up">
+                            <?php echo $block_fields['title_up']; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($block_fields['title_downside'])): ?>
+                        <div class="title-leftside-down">
+                            <?php echo $block_fields['title_downside']; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="content-wrapper-rightside col-lg-5">
-                    <?php echo $block_fields['upside-right-content'] ?? ''; ?>
+                    <?php if (!empty($block_fields['upside-right-content'])): ?>
+                        <?php echo $block_fields['upside-right-content']; ?>
+                    <?php endif; ?>
 
-                    <div class="btns">
-                        <?php if ( ! empty($comb_btn_1_1['url']) && ! empty($comb_btn_1_1['title']) ) : ?>
-                            <div class="default-btn default-btn-one">
-                                <a href="<?php echo esc_url($comb_btn_1_1['url']); ?>"
-                                   class="link-btn"
-                                   <?php echo ! empty($comb_btn_1_1['target'])
-                                       ? 'target="' . esc_attr($comb_btn_1_1['target']) . '" rel="noopener noreferrer"'
-                                       : ''; ?>>
-                                    <?php echo esc_html($comb_btn_1_1['title']); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
+                    <?php if (
+                        !empty($comb_btn_1_1['title']) ||
+                        !empty($comb_btn_2_2['title'])
+                    ) : ?>
+                        <div class="btns">
 
-                        <?php if ( ! empty($comb_btn_2_2['url']) && ! empty($comb_btn_2_2['title']) ) : ?>
-                            <div class="default-btn default-btn-two">
-                                <a href="<?php echo esc_url($comb_btn_2_2['url']); ?>"
-                                   class="link-btn"
-                                   <?php echo ! empty($comb_btn_2_2['target'])
-                                       ? 'target="' . esc_attr($comb_btn_2_2['target']) . '" rel="noopener noreferrer"'
-                                       : ''; ?>>
-                                    <?php echo esc_html($comb_btn_2_2['title']); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+                            <?php if ( ! empty($comb_btn_1_1['url']) && ! empty($comb_btn_1_1['title']) ) : ?>
+                                <div class="default-btn default-btn-one">
+                                    <a href="<?php echo esc_url($comb_btn_1_1['url']); ?>"
+                                    class="link-btn"
+                                    <?php echo ! empty($comb_btn_1_1['target'])
+                                        ? 'target="' . esc_attr($comb_btn_1_1['target']) . '" rel="noopener noreferrer"'
+                                        : ''; ?>>
+                                        <?php echo esc_html($comb_btn_1_1['title']); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
 
+                            <?php if ( ! empty($comb_btn_2_2['url']) && ! empty($comb_btn_2_2['title']) ) : ?>
+                                <div class="default-btn default-btn-two">
+                                    <a href="<?php echo esc_url($comb_btn_2_2['url']); ?>"
+                                    class="link-btn"
+                                    <?php echo ! empty($comb_btn_2_2['target'])
+                                        ? 'target="' . esc_attr($comb_btn_2_2['target']) . '" rel="noopener noreferrer"'
+                                        : ''; ?>>
+                                        <?php echo esc_html($comb_btn_2_2['title']); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+                    <?php endif; ?>
                 </div>
 
             </div>
         </div>
     </div>
+    <?php endif; ?>
+
 
     <!-- BACKGROUND IMAGE ROW -->
     <div class="bg-row">
