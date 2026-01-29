@@ -45,78 +45,90 @@ if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
         </div>
     </div>
 
+
+    <?php
+    $image = $block_fields['image'] ?? null;
+    ?>
+    <?php if ( ! empty($image) ) : ?>
     <!-- TEXT + IMAGE ROW -->
     <div class="txt-image-row">
         <div class="container">
-
             <?php
-// Determine column classes based on layout
-$content_col_class = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-5';
-$image_col_class   = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-7';
-?>
+            // Determine column classes based on layout
+            $content_col_class = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-5';
+            $image_col_class   = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-7';
+            ?>
 
-<div class="content <?php echo esc_attr($content_col_class); ?>">
-    <div class="content-left">
+            <div class="content <?php echo esc_attr($content_col_class); ?>">
+                <div class="content-left">
 
-        <?php if ($content_layout === 'double') : ?>
-            
-            <?php if (!empty($content_top)) : ?>
-                <div class="content-top">
-                    <?php echo $content_top; ?>
-                </div>
-            <?php endif; ?>
+                    <?php if ($content_layout === 'double') : ?>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <?php echo $content_left; ?>
-                </div>
-                <div class="col-lg-6">
-                    <?php echo $content_right; ?>
+                        <?php if (!empty($content_top)) : ?>
+                            <div class="content-top">
+                                <?php echo $content_top; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <?php echo $content_left; ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?php echo $content_right; ?>
+                            </div>
+                        </div>
+
+                    <?php else : ?>
+                        <?php echo $content_left; ?>
+                    <?php endif; ?>
+
+                    <?php if (
+                        !empty($comb_btn_1['title']) ||
+                        !empty($comb_btn_2['title'])
+                    ) : ?>
+                        <div class="btns">
+
+                            <?php if (!empty($comb_btn_1['url']) && !empty($comb_btn_1['title'])) : ?>
+                                <div class="default-btn default-btn-one">
+                                    <a href="<?php echo esc_url($comb_btn_1['url']); ?>"
+                                    class="link-btn"
+                                    <?php echo !empty($comb_btn_1['target'])
+                                        ? 'target="' . esc_attr($comb_btn_1['target']) . '" rel="noopener noreferrer"'
+                                        : ''; ?>>
+                                        <?php echo esc_html($comb_btn_1['title']); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty($comb_btn_2['url']) && !empty($comb_btn_2['title'])) : ?>
+                                <div class="default-btn default-btn-two">
+                                    <a href="<?php echo esc_url($comb_btn_2['url']); ?>"
+                                    class="link-btn"
+                                    <?php echo !empty($comb_btn_2['target'])
+                                        ? 'target="' . esc_attr($comb_btn_2['target']) . '" rel="noopener noreferrer"'
+                                        : ''; ?>>
+                                        <?php echo esc_html($comb_btn_2['title']); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+                    <?php endif; ?>
+
                 </div>
             </div>
 
-        <?php else : ?>
-            <?php echo $content_left; ?>
-        <?php endif; ?>
-
-        <div class="btns">
-            <?php if (!empty($comb_btn_1['url']) && !empty($comb_btn_1['title'])) : ?>
-                <div class="default-btn default-btn-one">
-                    <a href="<?php echo esc_url($comb_btn_1['url']); ?>"
-                       class="link-btn"
-                       <?php echo !empty($comb_btn_1['target'])
-                           ? 'target="' . esc_attr($comb_btn_1['target']) . '" rel="noopener noreferrer"'
-                           : ''; ?>>
-                        <?php echo esc_html($comb_btn_1['title']); ?>
-                    </a>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($comb_btn_2['url']) && !empty($comb_btn_2['title'])) : ?>
-                <div class="default-btn default-btn-two">
-                    <a href="<?php echo esc_url($comb_btn_2['url']); ?>"
-                       class="link-btn"
-                       <?php echo !empty($comb_btn_2['target'])
-                           ? 'target="' . esc_attr($comb_btn_2['target']) . '" rel="noopener noreferrer"'
-                           : ''; ?>>
-                        <?php echo esc_html($comb_btn_2['title']); ?>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-
-    </div>
-</div>
-
-<div class="img <?php echo esc_attr($image_col_class); ?>">
-    <img src="<?php echo esc_url($block_fields['image'] ?? ''); ?>"
-         alt="Background"
-         loading="lazy">
-</div>
-
+            <div class="img <?php echo esc_attr($image_col_class); ?>">
+                <img src="<?php echo esc_url($image); ?>"
+                    alt=""
+                    loading="lazy">
+            </div>
 
         </div>
     </div>
+    <?php endif; ?>
+
 
 
      <?php $has_left_content =
