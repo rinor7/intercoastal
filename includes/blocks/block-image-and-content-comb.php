@@ -119,16 +119,13 @@ $image_col_class   = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-7';
     </div>
 
 
-     <?php
-        $has_left_content =
+     <?php $has_left_content =
             !empty($block_fields['title_up']) ||
             !empty($block_fields['title_downside']);
-
         $has_right_content =
             !empty($block_fields['upside-right-content']) ||
             !empty($comb_btn_1_1['title']) ||
             !empty($comb_btn_2_2['title']);
-
         $show_section = $has_left_content || $has_right_content;
     ?>
    <?php if ( $show_section ) : ?>
@@ -196,16 +193,18 @@ $image_col_class   = ($content_layout === 'double') ? 'col-lg-6' : 'col-lg-7';
     <?php endif; ?>
 
 
+    <?php if ( ! empty($block_fields['image_bg']) ) : ?>
     <!-- BACKGROUND IMAGE ROW -->
     <div class="bg-row">
         <div class="container">
             <div class="img">
-                <img src="<?php echo esc_url($block_fields['image_bg'] ?? ''); ?>"
-                     alt="Background"
-                     loading="lazy">
+                <img src="<?php echo esc_url($block_fields['image_bg']); ?>"
+                    alt=""
+                    loading="lazy">
             </div>
         </div>
     </div>
+    <?php endif; ?>
 
 </section>
 <?php endif; ?>
