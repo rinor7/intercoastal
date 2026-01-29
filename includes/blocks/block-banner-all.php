@@ -64,8 +64,19 @@ if (empty($banner['disable_section'])):
             // Removed content width and alignment options — default to single column.
             ?>
             <div class="centerized-content">
-                <?php if (!empty($banner['title'])): ?>
-                    <h1><?php echo esc_html($banner['title']); ?></h1>
+                <?php
+                if (!empty($banner['title'])) {
+                    $title = $banner['title'];
+                    $title_class = 'is-custom-title';
+                } else {
+                    $title = get_the_title();
+                    $title_class = 'is-page-title';
+                }
+                ?>
+                <?php if (!empty($title)): ?>
+                    <h1 class="<?php echo esc_attr($title_class); ?>">
+                        <?php echo esc_html($title); ?>
+                    </h1>
                 <?php endif; ?>
 
                 <?php if (!empty($banner['subtitle'])): ?>
