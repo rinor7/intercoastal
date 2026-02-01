@@ -94,6 +94,8 @@ if ( $cta_heading || $cta_text || $cta_button_1 || $cta_button_2 || $cta_icon ) 
 <?php get_template_part('includes/blocks/block-team', null, array()); ?>
 
 
+<?php get_template_part('includes/blocks/block-we-are-hiring', null, array()); ?>
+
 </main>
 
 <?php get_footer(); ?>

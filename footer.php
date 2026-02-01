@@ -9,7 +9,7 @@
 
     <?php if ( is_page_template('template-about-us.php')) : ?>
 
-        <?php get_template_part('includes/blocks/block-we-are-hiring', null, array()); ?>
+        
 
     <?php endif; ?>
 

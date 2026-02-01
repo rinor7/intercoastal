@@ -1,10 +1,9 @@
 <?php
-// Simple CTA section (Options)
-$cta_disable = get_field('cta_simple_disable', 'option');
-$cta_heading = get_field('cta_simple_heading', 'option');
-$cta_text    = get_field('cta_simple_text', 'option');
-$cta_button  = get_field('cta_simple_button', 'option');
-
+// Simple CTA section (PER PAGE now)
+$cta_disable = get_field('cta_simple_disable');
+$cta_heading = get_field('cta_simple_heading');
+$cta_text    = get_field('cta_simple_text');
+$cta_button  = get_field('cta_simple_button');
 
 if ( $cta_disable ) {
     return;

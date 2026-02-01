@@ -326,4 +326,40 @@
             margin-top: 0px;
         }
     }
+    .simple-cta {
+        background-color: $primaryBlue;
+        display: flex;
+        align-items: center;
+        min-height: 300px;
+        padding: 40px 0;
+        @include md {
+            min-height: 260px;
+        }
+        &__inner {
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+            text-align: center;
+            color: $white;
+        }
+        &__title {
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 1;
+            @include md {
+                font-size: 36px;
+            }
+        }
+        &__text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            @include xs {
+                font-size: 14px;
+            }
+        }
+        .link-btn {
+            @include button1;
+        }
+    }
 }
