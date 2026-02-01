@@ -181,3 +181,25 @@ function s25_load_post_categories_into_select($field) {
 
     return $field;
 }
+
+
+// Count time of read - used ofr blog posts
+/**
+ * Estimate reading time in minutes from post content.
+ * ~200 words per minute by default.
+ */
+function s25_get_read_time_minutes($post_id = 0, $wpm = 200) {
+    $post_id = $post_id ? (int) $post_id : get_the_ID();
+    if (!$post_id) return 1;
+
+    $content = get_post_field('post_content', $post_id);
+
+    // Strip shortcodes + tags, count words
+    $text  = wp_strip_all_tags(strip_shortcodes($content));
+    $words = str_word_count($text);
+
+    $wpm = max(50, (int) $wpm);
+    $minutes = (int) ceil($words / $wpm);
+
+    return max(1, $minutes);
+}

@@ -92,7 +92,10 @@ $cat_slug = ($cat_obj && !is_wp_error($cat_obj)) ? $cat_obj->slug : '';
               if ($tags && !is_wp_error($tags)) : ?>
                 <span class="blog__tag"><?php echo esc_html($tags[0]->name); ?></span>
               <?php endif; ?>
-              <span class="blog__readtime">3 min read</span>
+              <?php $mins = s25_get_read_time_minutes(get_the_ID(), 200); ?>
+                <span class="blog__readtime">
+                    <?php echo esc_html($mins . ' min read'); ?>
+                </span>
             </div>
 
             <h3 class="blog__title">
