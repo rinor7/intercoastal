@@ -7,12 +7,6 @@
 <?php $classes = implode( ' ', get_body_class() ); ?>
 <footer id="footer-site" class="site-footer <?php echo esc_attr( $classes ); ?>">
 
-    <?php if ( is_page_template('template-about-us.php')) : ?>
-
-        
-
-    <?php endif; ?>
-
     <?php if (
         !is_page_template('template-general.php') &&
         !is_page_template('template-miscellaneius.php') &&

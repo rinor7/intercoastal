@@ -1,7 +1,7 @@
 <!-- if its needed background without container 
 add image-no-container-right class on parent div block-image-and-text-->
 <?php if (!get_field('block-image-and-text')['disable_section'] ?? false): ?>
-<section class="block-image-and-text image-no-container-right" aria-label="Image with Content Section">
+<section class="block-image-and-text image-no-container-right">
     <div class="content-row">
         <div class="container">
             <div class="content">

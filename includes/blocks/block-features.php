@@ -5,7 +5,7 @@ $features = $block['features'] ?? [];
 if ( ! ($block['disable_section'] ?? false) ):
 ?>
 
-<section class="block-features" aria-label="Features Section">
+<section class="block-features" aria-label="Features Block Section">
 
     <!-- SECTION HEADER -->
     <div class="section-header">

@@ -59,7 +59,7 @@ if ( empty($terms) || is_wp_error($terms) ) {
 }
 ?>
 
-<section class="block-team" aria-label="Team Section">
+<section class="block-team" aria-label="Team">
 
     <div class="container">
         <div class="section-header">

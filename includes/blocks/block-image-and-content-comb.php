@@ -13,7 +13,7 @@ $content_left   = $block_fields['content-upside'] ?? '';
 $content_right  = $block_fields['content-upside-double'] ?? '';
 
 if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
-<section class="block-image-and-content-comb" aria-label="Image with Content Section">
+<section class="block-image-and-content-comb">
 
     <!-- TITLE ROW -->
     <div class="title-row">

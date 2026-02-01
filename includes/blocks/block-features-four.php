@@ -6,7 +6,7 @@ $layout_type = $block['layout_type'] ?? 'default';
 if ( ! ($block['disable_section'] ?? false) ):
 ?>
 
-<section class="block-features-four" aria-label="Features Section">
+<section class="block-features-four" aria-label="Features Block">
 
     <!-- SECTION HEADER -->
     <div class="section-header">

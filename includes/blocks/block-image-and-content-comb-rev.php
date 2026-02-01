@@ -3,7 +3,7 @@ $block_fields = get_field('block-image-and-content-comb-rev') ?: [];
 $comb_btn_1 = $block_fields['comb_btn_1'] ?? [];
 $comb_btn_2 = $block_fields['comb_btn_2'] ?? [];
 if (! ($block_fields['disable_section'] ?? false) ): ?>
-<section class="block-image-and-content-comb-rev" aria-label="Image with Content Section">
+<section class="block-image-and-content-comb-rev">
 
      <div class="title-row">
         <div class="container">
