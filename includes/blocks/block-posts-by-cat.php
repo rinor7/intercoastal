@@ -1,3 +1,45 @@
+<?php
+/**
+ * Reusable Blogs Section
+ * Usage: get_template_part('includes/blocks/blogs-section', null, [
+ *   'cat' => 'news', // slug or ID
+ *   'uptitle' => 'Latest',
+ *   'title' => 'News',
+ *   'subtitle' => 'Updates from us',
+ *   'posts_per_page' => 3,
+ * ]);
+ */
+
+$args_in = is_array($args ?? null) ? $args : [];
+
+$cat_in = $args_in['cat'] ?? '';
+
+// ✅ if no category selected, don't render this section
+if (empty($cat_in)) {
+  return;
+}
+    
+$posts_per_page = intval($args_in['posts_per_page'] ?? 3);
+
+$uptitle  = $args_in['uptitle'] ?? '';
+$title    = $args_in['title'] ?? '';
+$subtitle = $args_in['subtitle'] ?? '';
+
+$read_more_text = get_field('blog_read_more_text', 'option') ?: 'READ MORE';
+$view_all_text  = get_field('blog_view_all_text', 'option') ?: 'VIEW ALL';
+
+// Resolve category
+$cat_obj = null;
+
+if (is_numeric($cat_in)) {
+  $cat_obj = get_category(intval($cat_in));
+} elseif (!empty($cat_in)) {
+  $cat_obj = get_category_by_slug(sanitize_title($cat_in));
+}
+
+$cat_slug = ($cat_obj && !is_wp_error($cat_obj)) ? $cat_obj->slug : '';
+
+?>
 <section class="blogs__section">
 
   <?php if ($uptitle || $title || $subtitle): ?>
