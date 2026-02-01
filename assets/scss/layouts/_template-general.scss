@@ -88,4 +88,10 @@
             @include button2;
         }        
     } 
+    .blogs__empty {
+        color: $white;
+        text-align: center;
+           font-style: italic;
+        margin-top: 60px;
+    }
 }

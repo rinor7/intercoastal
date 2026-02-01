@@ -156,3 +156,28 @@ add_action('template_redirect', function() {
         exit;
     }
 });
+
+// Function to add post type post categories into select drop down on acf
+add_filter('acf/load_field/name=misc_blog_cat_1', 's25_load_post_categories_into_select');
+add_filter('acf/load_field/name=misc_blog_cat_2', 's25_load_post_categories_into_select');
+
+function s25_load_post_categories_into_select($field) {
+    $field['choices'] = [];
+    $field['choices'][''] = '— Select category —';
+
+    $terms = get_terms([
+        'taxonomy'   => 'category',
+        'hide_empty' => false,
+        'exclude'    => [ get_option('default_category') ], // 🚫 exclude Uncategorized
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+    ]);
+
+    if (!is_wp_error($terms) && $terms) {
+        foreach ($terms as $term) {
+            $field['choices'][$term->slug] = $term->name;
+        }
+    }
+
+    return $field;
+}
