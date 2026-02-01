@@ -51,9 +51,20 @@
     $bg_overlay_color = get_field('background_overlay_color', $page_id) ?: '#000000a1';
     ?>
     <?php if ( $image_url ): ?>
-    <section class="footer-custom-section footer-bg--<?php echo esc_attr( $image_source ); ?>"
-        style="background-image: url('<?php echo esc_url( $image_url ); ?>');">
+        
+    <?php
+    // Background position logic (same as banner)
+    $bg_position = get_field('background_position_desktop', $page_id) ?: '';
+    if ( wp_is_mobile() && get_field('background_position_mobile', $page_id) ) {
+        $bg_position = get_field('background_position_mobile', $page_id);
+    }
+    ?>
 
+    <section class="footer-custom-section footer-bg--<?php echo esc_attr( $image_source ); ?>" style="background-image: url('<?php echo esc_url( $image_url ); ?>');<?php
+        if ( ! empty( $bg_position ) ) {
+            echo 'background-position:' . esc_attr( $bg_position ) . ';';
+        }
+    ?>">
         <span class="footer-overlay"
             style="background-color: <?php echo esc_attr( $bg_overlay_color ); ?>;">
         </span>
