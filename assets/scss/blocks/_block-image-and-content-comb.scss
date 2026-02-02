@@ -255,6 +255,7 @@
             right: 16px;
             height: 100%;
             width: 100vw;
+            max-width: 1640px;
             @include xs {
                 right: 40px;
             }

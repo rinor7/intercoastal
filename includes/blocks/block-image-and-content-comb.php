@@ -48,6 +48,12 @@ if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
 
     <?php
     $image = $block_fields['image'] ?? null;
+
+    // position fields inside this block
+    $img_position = $block_fields['background_position_desktop'] ?? '';
+    if ( wp_is_mobile() && !empty($block_fields['background_position_mobile']) ) {
+        $img_position = $block_fields['background_position_mobile'];
+    }
     ?>
     <?php if ( ! empty($image) ) : ?>
     <!-- TEXT + IMAGE ROW -->
@@ -122,14 +128,15 @@ if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
             <div class="img <?php echo esc_attr($image_col_class); ?>">
                 <img src="<?php echo esc_url($image); ?>"
                     alt=""
-                    loading="lazy">
+                    loading="lazy"
+                    <?php if ( !empty($img_position) ) : ?>
+                        style="object-position: <?php echo esc_attr($img_position); ?>;"
+                    <?php endif; ?>>
             </div>
 
         </div>
     </div>
     <?php endif; ?>
-
-
 
      <?php $has_left_content =
             !empty($block_fields['title_up']) ||
@@ -141,6 +148,7 @@ if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
         $show_section = $has_left_content || $has_right_content;
     ?>
    <?php if ( $show_section ) : ?>
+
     <!-- TITLE + CONTENT ROW -->
     <div class="title-w-content-row">
         <div class="container">
@@ -205,17 +213,26 @@ if ( ! ($block_fields['disable_section'] ?? false) ) : ?>
     <?php endif; ?>
 
 
-    <?php if ( ! empty($block_fields['image_bg']) ) : ?>
-    <!-- BACKGROUND IMAGE ROW -->
-    <div class="bg-row">
-        <div class="container">
-            <div class="img">
+    <?php
+    $img_position2 = $block_fields['background_position_desktop2'] ?? '';
+    if ( wp_is_mobile() && !empty($block_fields['background_position_mobile2']) ) {
+        $img_position2 = $block_fields['background_position_mobile2'];
+    }
+    ?>
+    <?php if ( ! empty($block_fields['image_bg']) ) : ?> 
+    <!-- BACKGROUND IMAGE ROW --> 
+    <div class="bg-row"> 
+        <div class="container"> 
+            <div class="img"> 
                 <img src="<?php echo esc_url($block_fields['image_bg']); ?>"
                     alt=""
-                    loading="lazy">
-            </div>
-        </div>
-    </div>
+                    loading="lazy"
+                    <?php if ( !empty($img_position2) ) : ?>
+                        style="object-position: <?php echo esc_attr($img_position2); ?>;"
+                    <?php endif; ?>>
+            </div> 
+        </div> 
+    </div> 
     <?php endif; ?>
 
 </section>
