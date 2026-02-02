@@ -78,6 +78,7 @@
                 width: 100vw;
                 object-fit: cover;
                 height: 100%;
+                max-width: 1640px;
                 @include min-md {
                     left: 16px;
                 }
