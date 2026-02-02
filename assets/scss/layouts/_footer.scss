@@ -667,7 +667,13 @@ footer {
                                     }
                                 }
                                 .wpcf7-not-valid-tip {
-                                    display: none
+                                    // display: none
+                                    margin: 0;
+                                    top: -25px;
+                                    position: absolute;
+                                    border: unset;
+                                    padding: 0;
+                                    font-size: 13px;
                                 }
                             }
                             .wpcf7-submit {
