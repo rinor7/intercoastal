@@ -195,3 +195,76 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+function initReadmore() {
+  document.querySelectorAll(".js-readmore").forEach((wrap) => {
+    const inner = wrap.querySelector(".js-readmore-inner");
+    const btn = wrap.querySelector(".js-readmore-btn");
+    if (!inner || !btn) return;
+
+    const lines = parseInt(wrap.dataset.lines || "5", 10);
+
+    // reset
+    wrap.classList.remove("is-expanded");
+    btn.classList.remove("is-visible");
+    btn.setAttribute("aria-expanded", "false");
+
+    // skip if hidden
+    if (wrap.offsetParent === null) return;
+
+    // Apply clamp by CSS already, but keep dynamic support
+    inner.style.webkitLineClamp = String(lines);
+
+    // Force a paint, then measure properly
+    requestAnimationFrame(() => {
+      // measure collapsed
+      const collapsed = inner.getBoundingClientRect().height;
+
+      // measure full (temporarily expand)
+      wrap.classList.add("is-expanded");
+      const full = inner.getBoundingClientRect().height;
+      wrap.classList.remove("is-expanded");
+
+      if (full > collapsed + 2) {
+        btn.classList.add("is-visible");
+      }
+
+      if (!btn.dataset.bound) {
+        btn.dataset.bound = "1";
+        btn.addEventListener("click", () => {
+          wrap.classList.add("is-expanded");
+          btn.classList.remove("is-visible"); // hide when expanded (your rule)
+          btn.setAttribute("aria-expanded", "true");
+        });
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initReadmore);
+window.addEventListener("load", initReadmore);
+
+document.addEventListener("DOMContentLoaded", () => {
+  // run once for first visible tab
+  initReadmore();
+
+  // DESKTOP tabs click
+  document.querySelectorAll(".team-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const index = tab.getAttribute("data-index");
+
+      // 1) activate tab button
+      document.querySelectorAll(".team-tab").forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
+      // 2) activate correct panel
+      document.querySelectorAll(".team-panel").forEach((panel) => {
+        panel.classList.toggle("is-active", panel.getAttribute("data-index") === index);
+      });
+
+      // 3) IMPORTANT: recalc readmore in the now-visible panel
+      initReadmore();
+    });
+  });
+});

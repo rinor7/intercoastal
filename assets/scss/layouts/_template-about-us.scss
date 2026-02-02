@@ -306,6 +306,29 @@
                 font-size: 16px;
                 line-height: 1.4;
                 margin: 16px 0;
+                &__inner {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 5; // ✅ fallback
+                    overflow: hidden;
+                }
+
+                &.is-expanded {
+                    .description__inner {
+                        -webkit-line-clamp: unset;
+                        display: block!important;
+                        overflow: visible;
+                    }
+                }
+                .readmore-btn {
+                    display: none; // ✅ IMPORTANT
+                    background-color: unset;
+                    border: unset;
+                    margin-top: 6px;
+                    text-decoration: underline;
+                    color: $orima;
+                      &.is-visible { display: inline-flex !important; }
+                }
             }
             .team-social {
                 display: flex;
