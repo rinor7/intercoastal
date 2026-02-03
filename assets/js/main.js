@@ -114,47 +114,82 @@ var swiper = new Swiper(".testimonial-slider", {
 });
 
 // TEAM MEMBERS JS START
-document.querySelectorAll('.team-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        const index = tab.dataset.index;
-        document.querySelectorAll('.team-tab, .team-panel')
-            .forEach(el => el.classList.remove('is-active'));
-        tab.classList.add('is-active');
-        document.querySelector(`.team-panel[data-index="${index}"]`)
-            .classList.add('is-active');
-    });
-});
 let tabsSwiper, contentSwiper;
 
+// Desktop tabs
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".team-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const index = tab.dataset.index;
+
+      // activate tab button
+      document.querySelectorAll(".team-tab").forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
+      // activate correct panel
+      document.querySelectorAll(".team-panel").forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.index === index);
+      });
+
+      // recalc readmore for newly visible content
+      initReadmore();
+    });
+  });
+
+  // initial readmore for first visible tab (desktop)
+  initReadmore();
+});
+
+// Mobile swipers
 function initTeamSwiper() {
-    if (window.innerWidth <= 768 && !tabsSwiper) {
-        tabsSwiper = new Swiper('.js-team-tabs-swiper', {
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            slideToClickedSlide: true,
-        });
-        contentSwiper = new Swiper('.js-team-content-swiper', {
-            autoHeight: true,
-            navigation: {
-              nextEl: '.team-tabs-next',
-              prevEl: '.team-tabs-prev',
-            },
-            pagination: {
-              el: '.team-tabs-pagination',
-              clickable: true,
-            },
-        });
-        tabsSwiper.controller.control = contentSwiper;
-        contentSwiper.controller.control = tabsSwiper;
-    }
-    if (window.innerWidth > 768 && tabsSwiper) {
-        tabsSwiper.destroy(true, true);
-        contentSwiper.destroy(true, true);
-        tabsSwiper = contentSwiper = null;
-    }
+  if (window.innerWidth <= 768 && !tabsSwiper) {
+    tabsSwiper = new Swiper(".js-team-tabs-swiper", {
+      slidesPerView: "auto",
+      centeredSlides: true,
+      slideToClickedSlide: true,
+    });
+
+    contentSwiper = new Swiper(".js-team-content-swiper", {
+      autoHeight: true,
+      navigation: {
+        nextEl: ".team-tabs-next",
+        prevEl: ".team-tabs-prev",
+      },
+      pagination: {
+        el: ".team-tabs-pagination",
+        clickable: true,
+      },
+      on: {
+        init: function () {
+          initReadmore();
+          this.updateAutoHeight(0);
+        },
+        slideChangeTransitionEnd: function () {
+          initReadmore();
+          this.updateAutoHeight(0);
+        },
+      },
+    });
+
+    tabsSwiper.controller.control = contentSwiper;
+    contentSwiper.controller.control = tabsSwiper;
+  }
+
+  if (window.innerWidth > 768 && tabsSwiper) {
+    tabsSwiper.destroy(true, true);
+    contentSwiper.destroy(true, true);
+    tabsSwiper = contentSwiper = null;
+
+    // back to desktop layout
+    initReadmore();
+  }
 }
-window.addEventListener('load', initTeamSwiper);
-window.addEventListener('resize', initTeamSwiper);
+
+window.addEventListener("load", initTeamSwiper);
+window.addEventListener("resize", initTeamSwiper);
+// TEAM MEMBERS JS END
+
+
 
 // Function to split text into two lines ( used for team members )
 function splitTextTwoLines(selector) {
@@ -231,12 +266,18 @@ function initReadmore() {
       }
 
       if (!btn.dataset.bound) {
-        btn.dataset.bound = "1";
         btn.addEventListener("click", () => {
-          wrap.classList.add("is-expanded");
-          btn.classList.remove("is-visible"); // hide when expanded (your rule)
-          btn.setAttribute("aria-expanded", "true");
-        });
+  wrap.classList.add("is-expanded");
+  btn.classList.remove("is-visible");
+  btn.setAttribute("aria-expanded", "true");
+
+  // ✅ IMPORTANT: update mobile swiper height
+  if (typeof contentSwiper !== "undefined" && contentSwiper) {
+    contentSwiper.updateAutoHeight(300);
+    contentSwiper.update();
+  }
+});
+
       }
     });
   });
