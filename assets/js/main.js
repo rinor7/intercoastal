@@ -163,10 +163,12 @@ function initTeamSwiper() {
         init: function () {
           initReadmore();
           this.updateAutoHeight(0);
+          this.update();
         },
         slideChangeTransitionEnd: function () {
           initReadmore();
           this.updateAutoHeight(0);
+          this.update();
         },
       },
     });
@@ -176,9 +178,11 @@ function initTeamSwiper() {
   }
 
   if (window.innerWidth > 768 && tabsSwiper) {
-    tabsSwiper.destroy(true, true);
-    contentSwiper.destroy(true, true);
-    tabsSwiper = contentSwiper = null;
+    // destroy safely
+    if (tabsSwiper) tabsSwiper.destroy(true, true);
+    if (contentSwiper) contentSwiper.destroy(true, true);
+    tabsSwiper = null;
+    contentSwiper = null;
 
     // back to desktop layout
     initReadmore();
@@ -188,6 +192,7 @@ function initTeamSwiper() {
 window.addEventListener("load", initTeamSwiper);
 window.addEventListener("resize", initTeamSwiper);
 // TEAM MEMBERS JS END
+
 
 
 
@@ -240,51 +245,75 @@ function initReadmore() {
 
     const lines = parseInt(wrap.dataset.lines || "5", 10);
 
-    // reset
-    wrap.classList.remove("is-expanded");
-    btn.classList.remove("is-visible");
-    btn.setAttribute("aria-expanded", "false");
-
-    // skip if hidden
+    // Don't run when hidden (inactive tab/slide)
     if (wrap.offsetParent === null) return;
 
-    // Apply clamp by CSS already, but keep dynamic support
-    inner.style.webkitLineClamp = String(lines);
-
-    // Force a paint, then measure properly
-    requestAnimationFrame(() => {
-      // measure collapsed
-      const collapsed = inner.getBoundingClientRect().height;
-
-      // measure full (temporarily expand)
-      wrap.classList.add("is-expanded");
-      const full = inner.getBoundingClientRect().height;
+    // Helper: apply collapsed styles
+    const setCollapsed = () => {
       wrap.classList.remove("is-expanded");
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = "Read more";
 
-      if (full > collapsed + 2) {
-        btn.classList.add("is-visible");
-      }
+      inner.style.display = "-webkit-box";
+      inner.style.webkitBoxOrient = "vertical";
+      inner.style.overflow = "hidden";
+      inner.style.webkitLineClamp = String(lines);
+    };
 
-      if (!btn.dataset.bound) {
-        btn.addEventListener("click", () => {
-  wrap.classList.add("is-expanded");
-  btn.classList.remove("is-visible");
-  btn.setAttribute("aria-expanded", "true");
+    // Helper: apply expanded styles
+    const setExpanded = () => {
+      wrap.classList.add("is-expanded");
+      btn.setAttribute("aria-expanded", "true");
+      btn.textContent = "Read less";
 
-  // ✅ IMPORTANT: update mobile swiper height
-  if (typeof contentSwiper !== "undefined" && contentSwiper) {
-    contentSwiper.updateAutoHeight(300);
-    contentSwiper.update();
-  }
-});
+      inner.style.display = "block";
+      inner.style.overflow = "visible";
+      inner.style.webkitLineClamp = "unset";
+    };
 
-      }
-    });
+    // Always start collapsed on init (so measurement is correct)
+    setCollapsed();
+
+    // Decide if button needed (compare collapsed vs expanded height)
+    const collapsedH = inner.getBoundingClientRect().height;
+    setExpanded();
+    const fullH = inner.getBoundingClientRect().height;
+
+    // restore collapsed default
+    setCollapsed();
+
+    const needsToggle = fullH > collapsedH + 2;
+    btn.style.display = needsToggle ? "inline-flex" : "none";
+
+    // Bind once
+    if (!btn.dataset.bound) {
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", () => {
+        const expandedNow = wrap.classList.contains("is-expanded");
+
+        if (expandedNow) {
+          setCollapsed();
+        } else {
+          setExpanded();
+        }
+
+        // ✅ Swiper height update (mobile)
+        if (typeof contentSwiper !== "undefined" && contentSwiper) {
+          contentSwiper.updateAutoHeight(300);
+          contentSwiper.update();
+        }
+      });
+    }
   });
 }
 
 document.addEventListener("DOMContentLoaded", initReadmore);
 window.addEventListener("load", initReadmore);
+
+
+document.addEventListener("DOMContentLoaded", initReadmore);
+window.addEventListener("load", initReadmore);
+
 
 document.addEventListener("DOMContentLoaded", () => {
   // run once for first visible tab

@@ -147,13 +147,13 @@ if ( empty($terms) || is_wp_error($terms) ) {
                                     <?php endif; ?>
 
                                     <div class="description js-readmore" data-lines="5">
-                                    <div class="description__inner js-readmore-inner">
-                                        <?php the_content(); ?>
-                                    </div>
+                                        <div class="description__inner js-readmore-inner">
+                                            <?php the_content(); ?>
+                                        </div>
 
-                                    <button type="button" class="readmore-btn js-readmore-btn" aria-expanded="false">
-                                        Read more
-                                    </button>
+                                        <button type="button" class="readmore-btn js-readmore-btn" aria-expanded="false">
+                                            Read more
+                                        </button>
                                     </div>
 
                                     <?php if (have_rows('social_links')): ?>

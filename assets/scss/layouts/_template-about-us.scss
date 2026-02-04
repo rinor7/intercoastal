@@ -309,25 +309,38 @@
                 &__inner {
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 5; // ✅ fallback
+                    -webkit-line-clamp: 5;
                     overflow: hidden;
                 }
 
                 &.is-expanded {
                     .description__inner {
+                        display: block;
                         -webkit-line-clamp: unset;
-                        display: block!important;
                         overflow: visible;
                     }
                 }
                 .readmore-btn {
-                    display: none; // ✅ IMPORTANT
-                    background-color: unset;
-                    border: unset;
+                    display: inline-flex; 
+                    background: none;
+                    border: 0;
                     margin-top: 6px;
-                    text-decoration: underline;
-                    color: $orima;
-                      &.is-visible { display: inline-flex !important; }
+                    cursor: pointer;
+                    color: $white;
+                    letter-spacing: 1.5px;
+                    position: relative;
+                    width: fit-content;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        width: 100%;
+                        bottom: 1px;
+                        border-bottom: 1px solid $white;
+                    }
+                    &.is-visible {
+                        display: inline-flex !important;
+                    }
                 }
             }
             .team-social {
