@@ -356,12 +356,12 @@
             }
         }
     }
-    .testimonial-slider {
-        margin-top: 80px;
-        @include md {
-            margin-top: 0px;
-        }
-    }
+    // .testimonial-slider {
+    //     margin-top: 80px;
+    //     @include md {
+    //         margin-top: 0px;
+    //     }
+    // }
     .simple-cta {
         background-color: $primaryBlue;
         display: flex;
