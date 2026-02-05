@@ -97,5 +97,24 @@ if (empty($banner['disable_section'])):
             </div>
         </div>
     </div>
+
+    <?php
+    $show_address = $banner['show_address_line'] ?? false;
+    $address_link = $banner['address_link'] ?? null;
+
+    if ($show_address && !empty($address_link['url']) && !empty($address_link['title'])) :
+    ?>
+        <div class="banner-address">
+            <a href="<?php echo esc_url($address_link['url']); ?>"
+            <?php echo !empty($address_link['target']) ? 'target="' . esc_attr($address_link['target']) . '" rel="noopener noreferrer"' : ''; ?>>
+                <span class="icon-location"></span>
+                <span class="address-text">
+                    <?php echo esc_html($address_link['title']); ?>
+                </span>
+            </a>
+        </div>
+    <?php endif; ?>
+
+
 </section>
 <?php endif; ?>
