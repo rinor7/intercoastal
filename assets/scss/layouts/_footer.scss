@@ -227,7 +227,10 @@ footer {
                     .wpcf7 {
                         form {
                             .wpcf7-not-valid-tip {
-                                display: none;
+                                // display: none;
+                                position: absolute;
+                                border: 0;
+                                font-size: 13px;
                             }
                             .row-one, .row-two {
                                 display: flex;
@@ -235,6 +238,12 @@ footer {
                                 @include sm {
                                     flex-direction: column;
                                     // row-gap: 24px;
+                                }
+                            }
+                            .row-four {
+                                position: relative;
+                                .wpcf7-not-valid-tip {
+                                        bottom: -22px;
                                 }
                             }
                             .row-six {
@@ -354,7 +363,7 @@ footer {
                             }
 
                             /* Acceptance checkbox */
-                            .wpcf7-acceptance {
+                            .wpcf7-acceptance, .wpcf7-checkbox {
                                 margin-bottom: 32px;
 
                                 .wpcf7-list-item {
@@ -390,6 +399,7 @@ footer {
                                         }
                                     }
                                 }
+
                             }
 
                             /* Submit button */
