@@ -236,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
 function initReadmore() {
   document.querySelectorAll(".js-readmore").forEach((wrap) => {
     const inner = wrap.querySelector(".js-readmore-inner");
