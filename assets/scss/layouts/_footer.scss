@@ -241,6 +241,7 @@ footer {
                                 }
                             }
                             .row-four {
+                                margin-bottom: 32px;
                                 .wpcf7-form-control-wrap {
                                      position: relative;
                                      flex-direction: column;
@@ -249,6 +250,7 @@ footer {
                                         bottom: -22px;
                                         width: 100%;
                                         display: flex;
+                                        margin-bottom: 0;
                                         justify-content: center;
                                     }
                                 }
