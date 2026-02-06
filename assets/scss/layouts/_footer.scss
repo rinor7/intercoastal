@@ -241,12 +241,16 @@ footer {
                                 }
                             }
                             .row-four {
-                                position: relative;
-                                .wpcf7-not-valid-tip {
-                                    bottom: -22px;
-                                    width: 100%;
-                                    display: flex;
-                                    justify-content: center;
+                                .wpcf7-form-control-wrap {
+                                     position: relative;
+                                     flex-direction: column;
+                                     display: flex;
+                                    .wpcf7-not-valid-tip {
+                                        bottom: -22px;
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: center;
+                                    }
                                 }
                             }
                             .row-six {
