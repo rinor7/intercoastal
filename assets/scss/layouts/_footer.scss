@@ -246,6 +246,9 @@ footer {
                                      position: relative;
                                      flex-direction: column;
                                      display: flex;
+                                     .wpcf7-form-control {
+                                        margin-bottom: 0;
+                                     }
                                     .wpcf7-not-valid-tip {
                                         bottom: -22px;
                                         width: 100%;
