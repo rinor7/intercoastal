@@ -290,6 +290,9 @@ footer {
                                         &.wpcf7-not-valid {
                                             border: 1px solid $primaryRed;
                                         }
+                                        option {
+                                            background-color: $black;
+                                        }
                                     }
 
                                     textarea {
