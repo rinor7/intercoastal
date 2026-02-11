@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Caommunity Template */
+/* Template Name: Community Template */
 get_header();
 ?>
 
