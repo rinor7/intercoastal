@@ -1,9 +1,9 @@
 <?php
-/* Template Name: Miscellaneius Template */
+/* Template Name: Caommunity Template */
 get_header();
 ?>
 
-<main id="primary" class="site-main site-miscellaneius-template">
+<main id="primary" class="site-main site-community-template">
 
 <?php get_template_part('includes/blocks/block-banner-all', null, array()); ?>
 

@@ -9,7 +9,7 @@
 
     <?php if (
         !is_page_template('template-general.php') &&
-        !is_page_template('template-miscellaneius.php') &&
+        !is_page_template('template-community.php') &&
         !is_page_template('template-about-us-.php') &&
         !is_page_template('template-real-estate.php') && 
         !is_page_template('template-privacy.php')) : ?>
@@ -20,13 +20,13 @@
 
 
 
-    <?php if ( !is_page_template('template-general.php') && !is_page_template('template-miscellaneius.php')) : ?>
+    <?php if ( !is_page_template('template-general.php') && !is_page_template('template-community.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-register', null, array()); ?>
 
     <?php endif; ?>
 
-    <?php if ( is_page_template('template-general.php') || is_page_template('template-miscellaneius.php')) : ?>
+    <?php if ( is_page_template('template-general.php') || is_page_template('template-community.php')) : ?>
         
         <?php get_template_part('includes/blocks/block-get-in-touch', null, array()); ?>
 
@@ -72,7 +72,7 @@
     </section>
     <?php endif; ?>
 
-    <?php if ( is_page_template('template-miscellaneius.php')) : ?>
+    <?php if ( is_page_template('template-community.php')) : ?>
         
         <?php get_template_part('includes/blocks/block-reach-out', null, array()); ?>
 
