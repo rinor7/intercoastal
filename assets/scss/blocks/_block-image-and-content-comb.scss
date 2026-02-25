@@ -99,6 +99,9 @@
                 @include sm {
                     row-gap: 24px;
                 }
+                @include xs {
+                    max-width: 295px;
+                }
                 p {
                     font-size: 16px;
                     line-height: 1.4;
@@ -182,6 +185,9 @@
                 @include min-md {
                     // padding-right: 48px;
                     max-width: 400px;
+                }
+                @include xs {
+                    max-width: 295px;
                 }
                 p {
                     font-size: 16px;
