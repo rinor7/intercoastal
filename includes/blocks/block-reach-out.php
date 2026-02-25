@@ -10,7 +10,7 @@
 ?>
 
 <?php if ( $footer_reach_out_content || is_active_sidebar('footer-contact') || $footer_reach_out_cf7_shortcode ): ?>
-    <section class="footer-reach-out">
+    <section class="footer-reach-out" aria-label="Reach Out" id="reach-out">
         <div class="container">
             <div class="row footer-contact-inner">
                 <div class="col-lg-6 footer-contact-left">

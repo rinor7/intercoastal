@@ -31,11 +31,11 @@ if (! ($block_fields['disable_section'] ?? false) ): ?>
 
     <div class="txt-image-row">
         <div class="container">
-            <div class="img col-lg-7">
+            <div class="img col-lg-8">
                 <img src="<?php echo ( get_field('block-image-and-content-comb-rev')['image'] );?>" alt="Background"
                     loading=“lazy”>
             </div>
-            <div class="content col-lg-5">
+            <div class="content col-lg-4">
                 <div class="content-left">
                     <div class="content-wrapper">
                         <div class="up-title"><?php echo ( get_field('block-image-and-content-comb-rev')['content-upside1'] );?></div>

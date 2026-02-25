@@ -67,6 +67,9 @@
         .img {
             position: relative;
             min-height: 600px;
+            // @include min-md {
+            //     width: calc(58.33333333% + 100px);
+            // }
             @include md {
                 min-height: 400px;
             }
@@ -80,7 +83,7 @@
                 height: 100%;
                 max-width: 1124px;
                 @include min-md {
-                    left: 16px;
+                    left: -20px;
                 }
             }
         }
@@ -90,7 +93,8 @@
                 flex-direction: column;
                 row-gap: 32px;
                 @include min-md {
-                    padding-right: 48px;
+                    // padding-right: 48px;
+                    max-width: 300px;
                 }
                 @include sm {
                     row-gap: 24px;
@@ -176,7 +180,8 @@
                 flex-direction: column;
                 row-gap: 32px;
                 @include min-md {
-                    padding-right: 48px;
+                    // padding-right: 48px;
+                    max-width: 400px;
                 }
                 p {
                     font-size: 16px;
