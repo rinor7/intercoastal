@@ -800,9 +800,9 @@ footer {
                     align-items: center;
                     flex-shrink: 0;
                     @include min-md {
-                        width: 290px;
+                        width: 330px;
                         border-left: 1px solid $white;
-                        padding-left: 32px;
+                        padding-left: 50px;
                     }
                     @include md {
                         border-top: 1px solid $white;

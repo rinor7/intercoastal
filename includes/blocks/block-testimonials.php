@@ -9,7 +9,7 @@
                     <div class="testimonial-content">
                         <p class="quote">
                             <span class="stars"></span>
-                            "<?php echo esc_html($t['quote']); ?>"
+                            <?php echo esc_html($t['quote']); ?>
                         </p>
                         <div class="testimonial-author">
                             <?php if( $t['photo'] ): ?>
