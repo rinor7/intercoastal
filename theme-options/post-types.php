@@ -22,7 +22,7 @@ function register_team_post_type() {
         'show_ui'            => true,        // show in admin
         'show_in_menu'       => true,
         'has_archive'        => false,
-        'supports'           => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions'),
+        'supports'           => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes'),
         'menu_position'      => 8,
         'menu_icon'          => 'dashicons-groups',
         'exclude_from_search'=> true,

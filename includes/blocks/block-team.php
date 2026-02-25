@@ -57,6 +57,15 @@ if ( ! empty($terms) && ! is_wp_error($terms) ) {
 if ( empty($terms) || is_wp_error($terms) ) {
     return;
 }
+
+add_filter('posts_orderby', function ($orderby, $query) {
+    if (!is_admin() && $query->get('post_type') === 'team') {
+        global $wpdb;
+        $orderby = "CASE WHEN {$wpdb->posts}.menu_order = 0 THEN 9999 ELSE {$wpdb->posts}.menu_order END ASC";
+    }
+    return $orderby;
+}, 10, 2);
+
 ?>
 
 <section class="block-team" aria-label="Team">
@@ -125,6 +134,10 @@ if ( empty($terms) || is_wp_error($terms) ) {
                             'taxonomy' => 'team_category',
                             'terms'    => $term->term_id,
                         ]],
+                        'orderby' => [
+                            'menu_order' => 'ASC',
+                            'date'       => 'DESC',
+                        ],
                     ]);
                     ?>
 
@@ -205,6 +218,10 @@ if ( empty($terms) || is_wp_error($terms) ) {
                                     'taxonomy' => 'team_category',
                                     'terms'    => $term->term_id,
                                 ]],
+                                'orderby' => [
+                                    'menu_order' => 'ASC',
+                                    'date'       => 'DESC',
+                                ],
                             ]);
                             ?>
 
