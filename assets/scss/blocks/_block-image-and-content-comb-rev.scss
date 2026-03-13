@@ -76,6 +76,9 @@
                 min-height: 400px;
             }
             @include xs {
+                min-height: 300px;
+            }
+            @include xxs {
                 min-height: 200px;
             }
             img {

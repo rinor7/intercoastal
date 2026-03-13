@@ -337,3 +337,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+// add specific class on body after 1440.98px
+function checkWidth() {
+  if (window.innerWidth <= 1440.98) {
+    document.body.classList.add('below-1440');
+  } else {
+    document.body.classList.remove('below-1440');
+  }
+}
+
+checkWidth();
+window.addEventListener('resize', checkWidth);

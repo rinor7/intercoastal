@@ -51,6 +51,9 @@
             height: 400px;
         }
         @include xs {
+            height: 300px;
+        }
+        @include xxs {
             height: 200px;
         }
         .container {
