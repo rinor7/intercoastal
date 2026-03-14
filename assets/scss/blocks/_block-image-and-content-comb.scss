@@ -97,7 +97,9 @@
                 row-gap: 32px;
                 @include min-md {
                     // padding-right: 48px;
-                    max-width: 300px;
+                    & > p {
+                        max-width: 300px;
+                    }
                 }
                 @include sm {
                     row-gap: 24px;
