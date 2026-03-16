@@ -857,7 +857,7 @@ footer {
 .testimonial-slider-general {
     &.swiper {
         padding-top: calc(120px + var(--header-height));
-        padding-bottom: 80px;
+        padding-bottom: 30px;
 
         @include md {
             padding-top: calc(80px + var(--header-height));
