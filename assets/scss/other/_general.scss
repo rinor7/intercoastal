@@ -158,6 +158,9 @@ body {
     &.page-template-template-motorclub {
         .block-image-and-content-comb {
             .bg-row {
+                @include sm {
+                    margin: 0;
+                }
                 .img {
                     img {
                         object-fit: contain;
