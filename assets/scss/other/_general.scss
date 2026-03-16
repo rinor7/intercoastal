@@ -107,7 +107,7 @@ body {
         .block-image-and-content-comb {
             .bg-row {
                 .img {
-                    width: 105%;
+                    width: 115%;
                     @include md {
                         width: 118%;
                     }
@@ -156,12 +156,18 @@ body {
             }
         }
     }
-    &.page-template-template-motorclub {
+    &.page-template-template-motorclub, &.page-template-template-livestyle {
         .block-image-and-content-comb {
             .bg-row {
                 @include sm {
                     margin: 0;
                 }
+            }
+        }
+    }
+    &.page-template-template-motorclub {
+        .block-image-and-content-comb {
+            .bg-row {
                 .img {
                     img {
                         object-fit: contain;
