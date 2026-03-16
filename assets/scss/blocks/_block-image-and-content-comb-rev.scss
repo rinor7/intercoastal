@@ -121,6 +121,9 @@
                         line-height: 1;
                         font-weight: 500;
                         text-transform: uppercase;
+                        @include md {
+                            font-size: 28px;
+                        }
                     }
                     .down-title {
                         font-size: 16px;

@@ -106,7 +106,7 @@ body {
         .block-image-and-content-comb {
             .bg-row {
                 .img {
-                    width: 115%;
+                    width: 105%;
                     @include md {
                         width: 118%;
                     }
@@ -152,6 +152,17 @@ body {
         footer {
             .footer-custom-section {
                 height: 600px;
+            }
+        }
+    }
+    &.page-template-template-motorclub {
+        .block-image-and-content-comb {
+            .bg-row {
+                .img {
+                    img {
+                        object-fit: contain;
+                    }
+                }
             }
         }
     }

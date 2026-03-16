@@ -23,6 +23,11 @@
                     @include md {
                         font-size: 28px;
                     }
+                    @include xs {
+                        br {
+                            display: none;
+                        }
+                    }
                 }
             }
             &-right {
