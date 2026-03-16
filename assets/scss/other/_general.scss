@@ -43,7 +43,8 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     font-family: intercoastal, sans-serif;
-    background-color: $black;
+    // background-color: $black;
+    background-color: #00000F;
     &.overflow-hidden {
         overflow: hidden;
     }
