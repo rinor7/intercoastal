@@ -8,6 +8,7 @@
         }
     }
     .row {
+        row-gap: 50px;
         @include md {
             row-gap: 40px;
         }
