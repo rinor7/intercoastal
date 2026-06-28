@@ -292,7 +292,7 @@ h3 {
     }
 }
 
-.site-main:not(.site-about-us-template) {
+.site-main:not(.site-about-us-template), .site-main:not(.site-contact-template) {
         display: flex;
         flex-direction: column;
         row-gap: 100px;
