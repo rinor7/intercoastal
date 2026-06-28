@@ -92,6 +92,11 @@ if (empty($banner['disable_section'])):
                 if (!empty($banner['title'])) {
                     $title = $banner['title'];
                     $title_class = 'is-custom-title';
+                } elseif (is_front_page()) {
+                    // Homepage: leave empty when no custom title (no page-title fallback,
+                    // so the title doesn't show over the banner video).
+                    $title = '';
+                    $title_class = '';
                 } else {
                     $title = get_the_title();
                     $title_class = 'is-page-title';
