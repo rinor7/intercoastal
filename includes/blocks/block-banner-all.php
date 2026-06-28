@@ -84,7 +84,9 @@ if (empty($banner['disable_section'])):
 
     <?php
     // Resolve the title first so we can decide whether the content block renders at all.
-    if (!empty($banner['title'])) {
+    // Treat whitespace-only / &nbsp; custom titles as empty so we don't render a blank <h1>.
+    $custom_title = trim(str_replace("\xc2\xa0", ' ', strip_tags($banner['title'] ?? '')));
+    if ($custom_title !== '') {
         $title = $banner['title'];
         $title_class = 'is-custom-title';
     } elseif (is_front_page()) {
