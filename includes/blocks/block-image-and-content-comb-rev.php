@@ -42,8 +42,13 @@ if (! ($block_fields['disable_section'] ?? false) ): ?>
                         <div class="middle-title"><?php echo ( get_field('block-image-and-content-comb-rev')['content-upside2'] );?></div>
                         <div class="down-title"><?php echo ( get_field('block-image-and-content-comb-rev')['content-upside3'] );?></div>
                     </div>
+                    <?php
+                    $has_btn_1 = ! empty($comb_btn_1['url']) && ! empty($comb_btn_1['title']);
+                    $has_btn_2 = ! empty($comb_btn_2['url']) && ! empty($comb_btn_2['title']);
+                    if ( $has_btn_1 || $has_btn_2 ):
+                    ?>
                     <div class="btns">
-                        <?php if ( ! empty($comb_btn_1['url']) && ! empty($comb_btn_1['title']) ): ?>
+                        <?php if ( $has_btn_1 ): ?>
                             <div class="default-btn default-btn-one">
                                 <a href="<?php echo esc_url($comb_btn_1['url']); ?>"
                                 class="link-btn"
@@ -53,7 +58,7 @@ if (! ($block_fields['disable_section'] ?? false) ): ?>
                             </div>
                         <?php endif; ?>
 
-                        <?php if ( ! empty($comb_btn_2['url']) && ! empty($comb_btn_2['title']) ): ?>
+                        <?php if ( $has_btn_2 ): ?>
                             <div class="default-btn default-btn-two">
                                 <a href="<?php echo esc_url($comb_btn_2['url']); ?>"
                                 class="link-btn"
@@ -63,6 +68,7 @@ if (! ($block_fields['disable_section'] ?? false) ): ?>
                             </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
 
                 </div>
             </div>
