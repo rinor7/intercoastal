@@ -76,7 +76,11 @@ if ( ! ($block['disable_section'] ?? false) ):
                     <?php endif; ?>
 
                     <!-- CTA button: only this is a link -->
-                    <?php if (!empty($feature['cta_text'])): ?>
+                    <?php if (!empty($feature['coming_soon'])): ?>
+                        <span class="feature-cta is-coming-soon" aria-disabled="true">
+                            <?php esc_html_e('Coming Soon', 'intercoastal'); ?>
+                        </span>
+                    <?php elseif (!empty($feature['cta_text'])): ?>
                         <a href="<?php echo get_permalink($page->ID); ?>" class="feature-cta">
                             <?php echo esc_html($feature['cta_text']); ?>
                         </a>

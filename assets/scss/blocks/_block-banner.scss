@@ -41,6 +41,28 @@
             height: 100%;
             object-fit: cover;
         }
+        &.is-vimeo {
+            overflow: hidden;
+            background-size: cover;       // fallback image covers the banner
+            background-position: center;
+            iframe {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100vw;
+                height: 56.25vw;      // 16:9 height derived from width
+                min-width: 177.78vh;  // 16:9 width derived from height
+                min-height: 100%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                border: 0;
+                opacity: 0;           // hidden until JS confirms the video is playing
+                transition: opacity .4s ease;
+            }
+            &.video-ready iframe {
+                opacity: 1;           // reveal only on successful playback
+            }
+        }
     }
     .centerized-content {
         display: flex;

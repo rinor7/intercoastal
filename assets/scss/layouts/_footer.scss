@@ -542,10 +542,14 @@ footer {
                     }
                 .default-btn {
                     &-one {
-                       a {
+                       a, .link-btn {
                         @include button2;
                         margin: 0;
                         border: 1px solid transparent;
+                       }
+                       .link-btn.is-coming-soon {
+                        cursor: default;
+                        pointer-events: none;
                        }
                     }
                     &-two {

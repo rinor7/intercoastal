@@ -5,13 +5,15 @@
 ?>
 
 <?php $classes = implode( ' ', get_body_class() ); ?>
+<?php $is_default_template = is_page() && '' === get_page_template_slug(); ?>
 <footer id="footer-site" class="site-footer <?php echo esc_attr( $classes ); ?>">
 
     <?php if (
+        !$is_default_template &&
         !is_page_template('template-general.php') &&
         !is_page_template('template-community.php') &&
         !is_page_template('template-about-us-.php') &&
-        !is_page_template('template-real-estate.php') && 
+        !is_page_template('template-real-estate.php') &&
         !is_page_template('template-privacy.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
@@ -50,8 +52,8 @@
     }
     $bg_overlay_color = get_field('background_overlay_color', $page_id) ?: '#000000a1';
     ?>
-    <?php if ( $image_url ): ?>
-        
+    <?php if ( $image_url && !$is_default_template ): ?>
+
     <?php
     // Background position logic (same as banner)
     $bg_position = get_field('background_position_desktop', $page_id) ?: '';

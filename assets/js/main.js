@@ -350,3 +350,42 @@ function checkWidth() {
 
 checkWidth();
 window.addEventListener('resize', checkWidth);
+
+
+// Vimeo banner background: only reveal the player once it's confirmed playing.
+// If the video is private/deleted/blocked, the iframe stays hidden and the
+// fallback background image (.video-wrapper.is-vimeo) shows instead — no error screen.
+(function () {
+  var wrapper = document.querySelector('.banner__section .video-wrapper.is-vimeo');
+  if (!wrapper) return;
+  var iframe = wrapper.querySelector('iframe');
+  if (!iframe) return;
+
+  function reveal() {
+    wrapper.classList.add('video-ready');
+  }
+
+  function init() {
+    if (!window.Vimeo || !window.Vimeo.Player) return; // SDK blocked -> keep fallback
+    try {
+      var player = new Vimeo.Player(iframe);
+      player.on('play', reveal);
+      player.ready()
+        .then(function () { return player.play(); })
+        .then(reveal)
+        .catch(function () { /* private/deleted/error -> keep fallback */ });
+    } catch (e) {
+      /* keep fallback */
+    }
+  }
+
+  if (window.Vimeo && window.Vimeo.Player) {
+    init();
+  } else {
+    var s = document.createElement('script');
+    s.src = 'https://player.vimeo.com/api/player.js';
+    s.async = true;
+    s.onload = init;
+    document.head.appendChild(s); // never loads -> fallback stays
+  }
+})();

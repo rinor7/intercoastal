@@ -10,6 +10,14 @@ get_header();
 
 		<?php get_template_part('includes/blocks/block-features-four', null, array()); ?>
 
+		<?php
+		$page_content = get_the_content();
+		if ( trim( $page_content ) !== '' ) : ?>
+			<div class="container site-page-content">
+				<?php the_content(); ?>
+			</div>
+		<?php endif; ?>
+
 	</main><!-- #main -->
 
 

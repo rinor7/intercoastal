@@ -6,6 +6,17 @@ if (empty($banner['disable_section'])):
     $video_url  = $banner['video'] ?? '';
     $image_url  = $banner['image'] ?? '';
 
+    // Vimeo support: paste a vimeo.com/player.vimeo.com URL (or iframe embed) into the `vimeo_url` field.
+    $vimeo_raw   = $banner['vimeo_url'] ?? '';
+    $vimeo_embed = '';
+    if ($vimeo_raw && preg_match('~vimeo\.com/(?:video/)?(\d+)(?:(?:[/?&]h=)|/)?([a-zA-Z0-9]+)?~', $vimeo_raw, $m)) {
+        $vimeo_id   = $m[1];
+        $vimeo_hash = $m[2] ?? '';
+        $vimeo_embed = 'https://player.vimeo.com/video/' . $vimeo_id
+            . '?background=1&autoplay=1&loop=1&muted=1&autopause=0'
+            . ($vimeo_hash ? '&h=' . $vimeo_hash : '');
+    }
+
     $overlay_color    = $banner['video_overlay_color'] ?? get_field('video_overlay_color') ?? '#000000a1';
     $bg_overlay_color = $banner['background_overlay_color'] ?? get_field('background_overlay_color') ?? '#000000a1';
 
@@ -31,7 +42,7 @@ if (empty($banner['disable_section'])):
         $inline_style .= 'height:' . esc_attr($min_height) . ';';
     }
 
-    if (!$video_url && $image_url) {
+    if (!$video_url && !$vimeo_embed && $image_url) {
         $inline_style .= 'background-image:url(' . esc_url($image_url) . ');';
 
         if (!empty($bg_position)) {
@@ -51,6 +62,19 @@ if (empty($banner['disable_section'])):
                 <source src="<?php echo esc_url($video_url); ?>" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <div class="overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
+        </div>
+    <?php elseif ($vimeo_embed):
+        // Fallback shown if the Vimeo video is private/deleted or fails to load.
+        // Uses the banner image if set, otherwise the theme default bg.webp.
+        $fallback_bg = $image_url ?: get_template_directory_uri() . '/assets/img/bg.webp';
+    ?>
+        <div class="video-wrapper is-vimeo" style="background-image:url(<?php echo esc_url($fallback_bg); ?>);">
+            <iframe src="<?php echo esc_url($vimeo_embed); ?>"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                title="Banner video"></iframe>
             <div class="overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
         </div>
     <?php else: ?>
