@@ -1,4 +1,18 @@
-<?php 
+<?php
+// Add a body class on the front page when the header logo is hidden
+// (mirrors the "Hide logo on homepage" toggle used in header.php).
+function intercoastal_logo_hidden_body_class( $classes ) {
+    if (
+        is_front_page()
+        && function_exists('get_field')
+        && get_field('hide_logo_on_homepage', (int) get_option('page_on_front'))
+    ) {
+        $classes[] = 'home-logo-hidden';
+    }
+    return $classes;
+}
+add_filter('body_class', 'intercoastal_logo_hidden_body_class');
+
 // Remove WP Block ( Patterns from Appearance )
 function remove_wp_block_menu() {
     remove_submenu_page( 'themes.php', 'edit.php?post_type=wp_block' );

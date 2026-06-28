@@ -293,11 +293,25 @@ h3 {
 }
 
 .site-main:not(.site-about-us-template), .site-main:not(.site-contact-template) {
-        display: flex;
-        flex-direction: column;
-        row-gap: 100px;
-        @include md {
-            row-gap: 80px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+    @include md {
+        row-gap: 80px;
+    }
+}
+
+.the__content {
+    color: $white;
+}
+
+.home-logo-hidden {
+    .menu-item {
+        &.is-mega {
+            .mega-menu {
+                top: 22px!important;
+            }
         }
     }
+}
 /* General style END*/

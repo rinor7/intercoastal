@@ -7,7 +7,7 @@ get_header();
 
 <?php get_template_part('includes/blocks/block-banner-all', null, array()); ?>
 
-<div class="container">
+<div class="container the__content">
     <?php the_content(); ?>
 </div>
 
