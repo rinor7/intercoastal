@@ -70,7 +70,15 @@
                     <div class="menu-here">
                         <nav class="navbar navbar-expand-lg navbar-light navbar-center">
 
-                            <?php if ( is_active_sidebar('widget-1') ) { ?>
+                            <?php
+                            // Homepage logo toggle (field group: "Homepage Logo Toggle").
+                            // Hides the logo on the front page only when the checkbox is on.
+                            $hide_logo = is_front_page()
+                                && function_exists('get_field')
+                                && get_field('hide_logo_on_homepage', (int) get_option('page_on_front'));
+
+                            if ( ! $hide_logo ) :
+                                if ( is_active_sidebar('widget-1') ) { ?>
                                 <a aria-label="logo" class="logo_header" href="<?php echo esc_url( home_url('/') ); ?>">
                                     <ul>
                                         <?php dynamic_sidebar('widget-1'); ?>
@@ -80,7 +88,8 @@
                                 <a aria-label="logo" class="logo_header" href="<?php echo esc_url( home_url('/') ); ?>">
                                     <?php bloginfo('name'); ?> <!-- Blog Title -->
                                 </a>
-                            <?php } ?>
+                            <?php }
+                            endif; ?>
 
                             <?php if (is_404()) : ?>
                                 <button class="navbar-back" type="button">
