@@ -14,6 +14,7 @@
         !is_page_template('template-contact.php') &&
         !is_page_template('template-about-us-.php') &&
         !is_page_template('template-real-estate.php') &&
+        !is_page_template('template-marketplace.php') &&
         !is_page_template('template-privacy.php')) : ?>
 
         <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
@@ -22,7 +23,7 @@
 
 
 
-    <?php if ( !is_page_template('template-general.php') && !is_page_template('template-contact.php')) : ?>
+    <?php if ( !is_page_template('template-general.php') && !is_page_template('template-contact.php') && !is_page_template('template-marketplace.php')): ?>
 
         <?php get_template_part('includes/blocks/block-register', null, array()); ?>
 
@@ -52,7 +53,7 @@
     }
     $bg_overlay_color = get_field('background_overlay_color', $page_id) ?: '#000000a1';
     ?>
-    <?php if ( $image_url && !$is_default_template ): ?>
+    <?php if ( $image_url && !$is_default_template && ! is_page_template('template-marketplace.php') ): ?>
 
     <?php
     // Background position logic (same as banner)
