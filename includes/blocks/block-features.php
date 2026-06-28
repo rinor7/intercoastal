@@ -36,7 +36,11 @@ if ( ! ($block['disable_section'] ?? false) ):
 
         <?php foreach ($features as $feature): 
             $page = $feature['choose_page'];
-            if (!$page) continue;
+            $overwrite_title = $feature['text'] ?? '';
+
+            // Allow a card with no chosen page as long as there's a title to show
+            // (e.g. a "Coming Soon" feature whose page doesn't exist yet — no permalink needed).
+            if (!$page && empty($overwrite_title)) continue;
 
             $bg = $feature['background_image']['url'] ?? '';
             $bg_overlay_color = $feature['background_overlay_color'] ?? $block['background_overlay_color'] ?? get_field('background_overlay_color') ?? '#000000a1';
@@ -57,17 +61,16 @@ if ( ! ($block['disable_section'] ?? false) ):
                         </span>
                     <?php endif; ?>
 
-                    <!-- TITLE: allow override from ACF `title_override` -->
-                    <h3 class="feature-title">
-                        <?php
-                            $feature_title = $feature['text'] ?? '';
-                            if (!empty($feature_title)) {
-                                echo esc_html($feature_title);
-                            } else {
-                                echo esc_html(get_the_title($page->ID));
-                            }
-                        ?>
-                    </h3>
+                    <!-- TITLE: use override; fall back to the chosen page's title only if a page exists -->
+                    <?php
+                        $feature_title = $overwrite_title;
+                        if (empty($feature_title) && $page) {
+                            $feature_title = get_the_title($page->ID);
+                        }
+                    ?>
+                    <?php if (!empty($feature_title)): ?>
+                        <h3 class="feature-title"><?php echo esc_html($feature_title); ?></h3>
+                    <?php endif; ?>
 
                     <?php if (!empty($feature['description'])): ?>
                         <p class="feature-text">
@@ -80,7 +83,7 @@ if ( ! ($block['disable_section'] ?? false) ):
                         <span class="feature-cta is-coming-soon" aria-disabled="true">
                             <?php esc_html_e('Coming Soon', 'intercoastal'); ?>
                         </span>
-                    <?php elseif (!empty($feature['cta_text'])): ?>
+                    <?php elseif (!empty($feature['cta_text']) && $page): ?>
                         <a href="<?php echo get_permalink($page->ID); ?>" class="feature-cta">
                             <?php echo esc_html($feature['cta_text']); ?>
                         </a>
