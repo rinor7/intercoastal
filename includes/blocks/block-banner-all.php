@@ -50,7 +50,7 @@ if (empty($banner['disable_section'])):
         }
     }
 ?>
-<section class="banner__section"
+<section class="banner__section<?php echo $vimeo_embed ? ' banner__section--vimeo' : ''; ?>"
     <?php if (!empty($inline_style)): ?>
         style="<?php echo $inline_style; ?>"
     <?php endif; ?>

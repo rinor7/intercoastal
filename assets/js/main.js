@@ -365,6 +365,13 @@ window.addEventListener('resize', checkWidth);
     wrapper.classList.add('video-ready');
   }
 
+  // Reveal as soon as the iframe paints — the URL already has autoplay=1, so the
+  // video is playing by then. This avoids waiting on the external Vimeo SDK download.
+  // The load event handles the normal case; the short timer covers the case where the
+  // iframe finished loading before this script ran. (reveal() is idempotent.)
+  iframe.addEventListener('load', reveal);
+  setTimeout(reveal, 400);
+
   function init() {
     if (!window.Vimeo || !window.Vimeo.Player) return; // SDK blocked -> keep fallback
     try {
