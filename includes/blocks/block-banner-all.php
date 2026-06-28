@@ -82,26 +82,30 @@ if (empty($banner['disable_section'])):
         <div class="image-overlay" style="background-color: <?php echo esc_attr( $bg_overlay_color ); ?>;"></div>
     <?php endif; ?>
 
+    <?php
+    // Resolve the title first so we can decide whether the content block renders at all.
+    if (!empty($banner['title'])) {
+        $title = $banner['title'];
+        $title_class = 'is-custom-title';
+    } elseif (is_front_page()) {
+        // Homepage: no page-title fallback, so the title doesn't show over the banner video.
+        $title = '';
+        $title_class = '';
+    } else {
+        $title = get_the_title();
+        $title_class = 'is-page-title';
+    }
+
+    // Only build the content container if there's something to show
+    // (title, subtitle, or a valid button). Avoids an empty box over the video.
+    $btn = $banner['button_link_1'] ?? null;
+    $has_button = !empty($btn) && is_array($btn) && !empty($btn['url']) && !empty($btn['title']);
+    $has_content = !empty($title) || !empty($banner['subtitle']) || $has_button;
+
+    if ($has_content): ?>
     <div class="container">
         <div class="row">
-           <?php
-            // Removed content width and alignment options — default to single column.
-            ?>
             <div class="centerized-content">
-                <?php
-                if (!empty($banner['title'])) {
-                    $title = $banner['title'];
-                    $title_class = 'is-custom-title';
-                } elseif (is_front_page()) {
-                    // Homepage: leave empty when no custom title (no page-title fallback,
-                    // so the title doesn't show over the banner video).
-                    $title = '';
-                    $title_class = '';
-                } else {
-                    $title = get_the_title();
-                    $title_class = 'is-page-title';
-                }
-                ?>
                 <?php if (!empty($title)): ?>
                     <h1 class="<?php echo esc_attr($title_class); ?>">
                         <?php echo esc_html($title); ?>
@@ -112,11 +116,7 @@ if (empty($banner['disable_section'])):
                     <p><?php echo $banner['subtitle']; ?></p>
                 <?php endif; ?>
 
-                <?php
-                // Minimal: use only ACF Link field `button_link_1`.
-                // Expecting the Link field to return an array with 'url' and 'title'.
-                $btn = $banner['button_link_1'] ?? null;
-                if (!empty($btn) && is_array($btn) && !empty($btn['url']) && !empty($btn['title'])): ?>
+                <?php if ($has_button): ?>
                     <div class="default-btn">
                         <a href="<?php echo esc_url($btn['url']); ?>" class="link-btn" <?php echo !empty($btn['target']) ? 'target="' . esc_attr($btn['target']) . '" rel="noopener noreferrer"' : ''; ?>>
                             <?php echo esc_html($btn['title']); ?>
@@ -126,6 +126,7 @@ if (empty($banner['disable_section'])):
             </div>
         </div>
     </div>
+    <?php endif; ?>
 
     <?php
     $show_address = $banner['show_address_line'] ?? false;
