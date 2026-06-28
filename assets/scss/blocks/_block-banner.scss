@@ -150,15 +150,12 @@
         }
     }
     &--vimeo {
-        @include sm {
-            min-height: unset;
-        }
         // Mobile: a Vimeo banner has no overlay content, so let the iframe define the
         // banner height directly. Put the wrapper/iframe into normal flow (relative) with a
         // 16:9 ratio instead of absolute positioning — the full video shows, uncropped, and
         // the section grows to match it.
         // NOTE: leave the admin "Height" field empty here; an inline height overrides this.
-        @include xs {
+        @include sm {
             height: auto!important;
             min-height: 0;
             .video-wrapper.is-vimeo {
