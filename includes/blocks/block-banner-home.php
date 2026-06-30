@@ -36,7 +36,7 @@ if (empty($banner['home_disable_section'])):
         }
     }
 ?>
-<section class="banner__section"
+<section class="banner__section banner__section-home"
     <?php if (!empty($inline_style)): ?>
         style="<?php echo $inline_style; ?>"
     <?php endif; ?>

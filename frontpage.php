@@ -9,7 +9,6 @@ get_header();
 
 <?php get_template_part('includes/blocks/block-video', null, array()); ?>
 
-
 <?php get_template_part('includes/blocks/block-banner-home', null, array()); ?>
 
 <?php get_template_part('includes/blocks/block-image-and-text', null, array()); ?>
