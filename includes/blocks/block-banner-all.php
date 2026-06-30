@@ -6,17 +6,6 @@ if (empty($banner['disable_section'])):
     $video_url  = $banner['video'] ?? '';
     $image_url  = $banner['image'] ?? '';
 
-    // Vimeo support: paste a vimeo.com/player.vimeo.com URL (or iframe embed) into the `vimeo_url` field.
-    $vimeo_raw   = $banner['vimeo_url'] ?? '';
-    $vimeo_embed = '';
-    if ($vimeo_raw && preg_match('~vimeo\.com/(?:video/)?(\d+)(?:(?:[/?&]h=)|/)?([a-zA-Z0-9]+)?~', $vimeo_raw, $m)) {
-        $vimeo_id   = $m[1];
-        $vimeo_hash = $m[2] ?? '';
-        $vimeo_embed = 'https://player.vimeo.com/video/' . $vimeo_id
-            . '?background=1&autoplay=1&loop=1&muted=1&autopause=0'
-            . ($vimeo_hash ? '&h=' . $vimeo_hash : '');
-    }
-
     $overlay_color    = $banner['video_overlay_color'] ?? get_field('video_overlay_color') ?? '#000000a1';
     $bg_overlay_color = $banner['background_overlay_color'] ?? get_field('background_overlay_color') ?? '#000000a1';
 
@@ -42,7 +31,7 @@ if (empty($banner['disable_section'])):
         $inline_style .= 'height:' . esc_attr($min_height) . ';';
     }
 
-    if (!$video_url && !$vimeo_embed && $image_url) {
+    if (!$video_url && $image_url) {
         $inline_style .= 'background-image:url(' . esc_url($image_url) . ');';
 
         if (!empty($bg_position)) {
@@ -50,7 +39,7 @@ if (empty($banner['disable_section'])):
         }
     }
 ?>
-<section class="banner__section<?php echo $vimeo_embed ? ' banner__section--vimeo' : ''; ?>"
+<section class="banner__section"
     <?php if (!empty($inline_style)): ?>
         style="<?php echo $inline_style; ?>"
     <?php endif; ?>
@@ -64,23 +53,32 @@ if (empty($banner['disable_section'])):
             </video>
             <div class="overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
         </div>
-    <?php elseif ($vimeo_embed):
-        // Fallback shown if the Vimeo video is private/deleted or fails to load.
-        // Uses the banner image if set, otherwise the theme default bg.webp.
-        $fallback_bg = $image_url ?: get_template_directory_uri() . '/assets/img/bg.webp';
-    ?>
-        <div class="video-wrapper is-vimeo" style="background-image:url(<?php echo esc_url($fallback_bg); ?>);">
-            <iframe src="<?php echo esc_url($vimeo_embed); ?>"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-                title="Banner video"></iframe>
-            <div class="overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
-        </div>
     <?php else: ?>
 
         <div class="image-overlay" style="background-color: <?php echo esc_attr( $bg_overlay_color ); ?>;"></div>
     <?php endif; ?>
+
+    <?php
+    // Homepage hero image (field group attached to the front page).
+    // Shows a single image centered over the banner, front page only, when the toggle is on.
+    $hero_image = '';
+    if (is_front_page() && function_exists('get_field')) {
+        $front_id = (int) get_option('page_on_front');
+        if (get_field('show_hero_image_on_homepage', $front_id)) {
+            $hero_image = get_field('homepage_hero_image', $front_id);
+        }
+    }
+
+    if ($hero_image):
+        // Image field may return an array, URL string, or attachment ID depending on its setting.
+        $hero_image_url = is_array($hero_image) ? ($hero_image['url'] ?? '') : (is_numeric($hero_image) ? wp_get_attachment_image_url($hero_image, 'full') : $hero_image);
+        $hero_image_alt = is_array($hero_image) ? ($hero_image['alt'] ?? '') : '';
+        if ($hero_image_url):
+    ?>
+        <div class="banner__hero-image">
+            <img src="<?php echo esc_url($hero_image_url); ?>" alt="<?php echo esc_attr($hero_image_alt); ?>">
+        </div>
+    <?php endif; endif; ?>
 
     <?php
     // Resolve the title first so we can decide whether the content block renders at all.
