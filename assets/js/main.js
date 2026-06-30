@@ -350,3 +350,46 @@ function checkWidth() {
 
 checkWidth();
 window.addEventListener('resize', checkWidth);
+
+
+// Video block: click-to-play. Local videos play in the <video> element; Vimeo
+// links swap in an autoplaying iframe. The poster + play button hide once playing.
+(function () {
+  var blocks = document.querySelectorAll('.block-video__inner');
+  if (!blocks.length) return;
+
+  blocks.forEach(function (inner) {
+    var btn = inner.querySelector('.block-video__play');
+    if (!btn) return;
+
+    function play() {
+      if (inner.classList.contains('is-playing')) return;
+
+      if (inner.getAttribute('data-type') === 'vimeo') {
+        var embed = inner.getAttribute('data-embed');
+        if (!embed) return;
+        var iframe = document.createElement('iframe');
+        iframe.src = embed;
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('title', 'Video');
+        inner.appendChild(iframe);
+      } else {
+        var video = inner.querySelector('.block-video__video');
+        if (!video) return;
+        video.setAttribute('controls', '');
+        video.play();
+      }
+
+      inner.classList.add('is-playing');
+    }
+
+    // The whole frame is clickable, but only the button is keyboard-focusable.
+    btn.addEventListener('click', play);
+    inner.addEventListener('click', function (e) {
+      if (e.target === btn || btn.contains(e.target)) return;
+      play();
+    });
+  });
+})();

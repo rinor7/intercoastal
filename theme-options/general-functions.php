@@ -217,3 +217,38 @@ function s25_get_read_time_minutes($post_id = 0, $wpm = 200) {
 
     return max(1, $minutes);
 }
+
+/**
+ * Fetch a Vimeo video's thumbnail URL via the public oEmbed endpoint.
+ * Cached in a transient for 12h so we don't make an HTTP request on every page load.
+ * Returns '' on failure (private/deleted video, network error, etc.) — that empty
+ * value is also cached so a broken link doesn't hit the network repeatedly.
+ */
+function intercoastal_vimeo_thumbnail($vimeo_url, $width = 1280) {
+    if (empty($vimeo_url)) {
+        return '';
+    }
+
+    $cache_key = 'ic_vimeo_thumb_' . md5($vimeo_url . '|' . (int) $width);
+    $cached    = get_transient($cache_key);
+    if ($cached !== false) {
+        return $cached; // '' is a valid (cached) result
+    }
+
+    $endpoint = add_query_arg(
+        array('url' => $vimeo_url, 'width' => (int) $width),
+        'https://vimeo.com/api/oembed.json'
+    );
+
+    $thumb    = '';
+    $response = wp_remote_get($endpoint, array('timeout' => 5));
+    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+        $data = json_decode(wp_remote_retrieve_body($response), true);
+        if (!empty($data['thumbnail_url'])) {
+            $thumb = $data['thumbnail_url'];
+        }
+    }
+
+    set_transient($cache_key, $thumb, 12 * HOUR_IN_SECONDS);
+    return $thumb;
+}
