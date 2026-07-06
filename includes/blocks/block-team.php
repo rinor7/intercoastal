@@ -147,8 +147,9 @@ add_filter('posts_orderby', function ($orderby, $query) {
 
                                 <article class="team-member">
 
-                                    <?php if (has_post_thumbnail()): ?>
-                                        <div class="team-thumbnail">
+                                    <?php if (has_post_thumbnail()):
+                                        $img_pos = get_field('image_position') ?: 'center'; ?>
+                                        <div class="team-thumbnail pos-<?php echo esc_attr($img_pos); ?>">
                                             <?php the_post_thumbnail('medium'); ?>
                                         </div>
                                     <?php endif; ?>
@@ -230,8 +231,9 @@ add_filter('posts_orderby', function ($orderby, $query) {
                                     <?php while ($q->have_posts()): $q->the_post(); ?>
 
                                         <article class="team-member">
-                                            <?php if (has_post_thumbnail()): ?>
-                                                <div class="team-thumbnail">
+                                            <?php if (has_post_thumbnail()):
+                                                $img_pos = get_field('image_position') ?: 'center'; ?>
+                                                <div class="team-thumbnail pos-<?php echo esc_attr($img_pos); ?>">
                                                     <?php the_post_thumbnail('medium'); ?>
                                                 </div>
                                             <?php endif; ?>
