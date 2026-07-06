@@ -12,7 +12,7 @@
         !$is_default_template &&
         !is_page_template('template-general.php') &&
         !is_page_template('template-contact.php') &&
-        !is_page_template('template-about-us-.php') &&
+        !is_page_template('template-about-us.php') &&
         !is_page_template('template-real-estate.php') &&
         !is_page_template('template-marketplace.php') &&
         !is_page_template('template-privacy.php')) : ?>
