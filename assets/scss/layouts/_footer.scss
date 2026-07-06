@@ -136,6 +136,14 @@ footer {
                             a {
                                 color: $white;
                                 font-size: 24px;
+                                // Disable social links that have no destination set
+                                &[href=""],
+                                &[href="#"],
+                                &:not([href]) {
+                                    pointer-events: none;
+                                    cursor: default;
+                                    opacity: 0.4;
+                                }
                             }
                         }
                     }
