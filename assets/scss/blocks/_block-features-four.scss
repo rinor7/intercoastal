@@ -3,6 +3,26 @@
     row-gap: 60px;
     display: flex;
     .section-header {
+        .default-btn {
+            margin: 12px auto auto auto;
+            &-one {
+                a, .link-btn {
+                @include button2;
+                margin: 0;
+                border: 1px solid transparent;
+                }
+                .link-btn.is-coming-soon {
+                cursor: default;
+                pointer-events: none;
+                }
+            }
+            &-two {
+                a {
+                    @include button1;
+                    margin: 0;
+                }
+            }
+        }
         @include md {
             padding: 0 40px;
         }
@@ -124,5 +144,5 @@
         a {
             @include button2;
         }
-    }
+    }   
 }

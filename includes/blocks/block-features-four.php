@@ -28,6 +28,19 @@ if ( ! ($block['disable_section'] ?? false) ):
                 <?php echo wp_kses_post($block['section_subtitle']); ?>
             </div>
         <?php endif; ?>
+        <?php
+            $header_button = $block['header_button'] ?? [];
+            if (!empty($header_button['url'])):
+                $button_url    = esc_url($header_button['url']);
+                $button_title  = !empty($header_button['title']) ? esc_html($header_button['title']) : __('Learn More', 'intercoastal');
+                $button_target = !empty($header_button['target']) ? esc_attr($header_button['target']) : '_self';
+            ?>
+                <div class="default-btn default-btn-one">
+                    <a href="<?php echo $button_url; ?>" target="<?php echo $button_target; ?>" class="ling-btn">
+                        <?php echo $button_title; ?>
+                    </a>
+                </div>
+        <?php endif; ?>
     </div>
 
     <!-- FEATURE CARDS -->
