@@ -73,8 +73,8 @@
     }
 }
 
-.page-template-template-privacy {
-    .site-privacy {
+.page-template-template-privacy, .page-template-template-general {
+    .site-privacy, .site-intercoastal-today {
         color: $white;
         padding-top: calc(120px + var(--header-height));
         padding-bottom: 80px;

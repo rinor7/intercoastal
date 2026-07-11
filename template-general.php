@@ -3,9 +3,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main site-general-template">
-
-  <?php get_template_part('includes/blocks/block-testimonials', null, array()); ?>
+<main id="primary" class="site-main site-intercoastal-today">
 
   <?php
   // Blog sections come from the "Sections" repeater (field group:
@@ -46,5 +44,14 @@ get_header();
   ?>
 
 </main>
+
+<?php
+// Testimonials slider — toggled per page with the "Show testimonials section" field.
+// Pages saved before this field existed have no stored value, so ACF falls back to
+// the field's default (on) and they keep rendering the section.
+if (get_field('show_testimonials')) :
+  get_template_part('includes/blocks/block-testimonials', null, array());
+endif;
+?>
 
 <?php get_footer(); ?>
