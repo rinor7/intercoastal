@@ -1,5 +1,12 @@
+<?php
+    // Respect an options-level disable switch. If true, skip rendering entirely.
+    $testimonials_disable = get_field('testimonials_disable', 'option');
+    if ( $testimonials_disable ) {
+        return;
+    }
+?>
 <div class="container container-testimonials">
-    <?php 
+    <?php
     $testimonials = get_field('testimonial_slider', 'option'); // get repeater from options page
     if( $testimonials ): ?>
         <div class="swiper testimonial-slider <?php if (is_page_template('template-general.php')) : ?>testimonial-slider-general<?php endif; ?>">

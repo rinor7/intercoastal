@@ -44,6 +44,14 @@
                 // margin-top: -80px;
             }
         }
+        section {
+            &:last-of-type {
+                margin-bottom: 100px;
+                @include md {
+                    margin-bottom: 80px;
+                }
+            }
+        }
     }
 }
 
