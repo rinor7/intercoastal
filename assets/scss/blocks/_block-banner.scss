@@ -55,6 +55,11 @@
         max-width: 800px;
         min-height: 250px;
         display: flex;
+        @include xs {
+            width: 350px;
+            min-width: unset;
+            max-width: unset;
+        }
         img {
             max-width: 100%;
             height: auto;
