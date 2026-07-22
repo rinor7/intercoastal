@@ -112,7 +112,7 @@
 
             <div class="copyrights">
                 <div class="leftside">
-                    <div class="copyright"><span>&copy;<?php echo date(' Y  ') ;?></span><?php if(is_active_sidebar('copyright-text') ) { ?><ul><?php dynamic_sidebar('copyright-text');?></ul><?php } ?></div>
+                    <div class="copyright"><span>&copy;<?php echo date(' Y ') ;?></span><?php if(is_active_sidebar('copyright-text') ) { ?><ul><?php dynamic_sidebar('copyright-text');?></ul><?php } ?></div>
                     <?php wp_nav_menu(
                         array(
                         'theme_location'    => 'menu-3',

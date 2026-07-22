@@ -56,22 +56,41 @@ footer {
             }
             .footer-nav {
                 display: flex;
-                column-gap: 12px;
                 flex-wrap: wrap;
                 row-gap: 12px;
+                column-gap: 18px;
                 @include min-lg {
                     justify-content: end;
+                    margin-top: 12px;
                 }
-                @include xs {
+                @include sm {
                     flex-direction: column;
-                    text-align: center;
-                    row-gap: 24px;
+                    row-gap: 0;
+                    border-top: 1px solid rgba(255, 255, 255, 0.15);
                 }
                 li {
                     a {
                         color: $white;
                         font-size: 14px;
                         font-weight: 500;
+                        @include sm {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            column-gap: 12px;
+                            padding: 16px 0;
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                            &::after {
+                                content: "";
+                                flex-shrink: 0;
+                                width: 16px;
+                                height: 16px;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                background-size: contain;
+                                background-image: url('data:image/svg+xml,<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L1 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                            }
+                        }
                     }
                 }
             }
@@ -84,6 +103,7 @@ footer {
             row-gap: 40px;
             @include xs {
                 flex-direction: column;
+                row-gap: 6px;
             }
             .leftside {
                 display: flex;
@@ -104,6 +124,10 @@ footer {
                     color: $white;
                     font-size: 14px;
                     text-align: center;
+                    @include xs {
+                        font-size: 12px;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
                 }
                 .menu-footer-copyright-menu-container {
                     display: flex;
@@ -111,15 +135,24 @@ footer {
                 .copyright-nav {
                     display: flex;
                     justify-content: center;
+                    flex-wrap: wrap;
                     column-gap: 16px;
+                    row-gap: 8px;
                     @include xs {
-                        flex-direction: column;
-                        row-gap: 24px;
+                        column-gap: 10px;
                     }
                     li {
                         display: flex;
-                        @include xs {
-                            justify-content: center;
+                        align-items: center;
+                        @include sm {
+                            &:not(:last-child)::after {
+                                content: "|";
+                                margin-left: 16px;
+                                color: rgba(255, 255, 255, 0.4);
+                                @include xs {
+                                    margin-left: 10px;
+                                }
+                            }
                         }
                     }
                 }
@@ -685,38 +718,49 @@ footer {
                     row-gap: 12px;
                     flex-direction: column;
                     display: flex;
+                    text-align: end;
+                    align-items: end;
+                    max-width: 500px;
+                    margin-left: auto;
                     @include lg {
                         max-width: 600px;
                         row-gap: 24px;
+                        text-align: start;
+                        align-items: start;
+                        margin-left: 0;
                     }
                     .newsletter-row {
+                        width: 100%;
                         p {
                             display: flex;
                             column-gap: 12px;
+                            justify-content: flex-end;
                             @include sm {
-                                flex-direction: column;
                                 row-gap: 16px;
                                 br {
                                     display: none;
                                 }
                             }
+                            @include xs {
+                                flex-direction: row;
+                                align-items: stretch;
+                                column-gap: 8px;
+                            }
                             .wpcf7-form-control-wrap {
+                                flex: 1;
+                                min-width: 0;
                                 input {
                                     height: 48px;
-                                    border: 1px solid $white;
+                                    border: 1px solid $primaryGold;
                                     background-color: transparent;
                                     padding-left: 12px;
                                     color: $white;
                                     font-weight: 500;
-                                    @include xs {
-                                        text-align: center;
-                                        width: 100%;
-                                    }
+                                    width: 100%;
+                                    text-align: left;
                                     &::placeholder {
                                         color: $white;
-                                        @include xs {
-                                            text-align: center
-                                        }
+                                        text-align: left;
                                     }
                                     &.wpcf7-not-valid {
                                         border: 1px solid $primaryRed;
@@ -736,9 +780,14 @@ footer {
                                 @include button1;
                                 height: 48px;
                                 margin: 0;
+                                flex-shrink: 0;
                                 text-transform: capitalize;
-                                @include xs {
-                                    margin: auto;
+                                background-color: $primaryGold;
+                                border-color: $primaryGold;
+                                color: $black;
+                                &:hover {
+                                    background-color: #A6733D;
+                                    border-color: #A6733D;
                                 }
                             }
                         }
@@ -749,6 +798,35 @@ footer {
                     .newsletter-note {
                         font-size: 14px;
                         font-weight: 500;
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: center;
+                        column-gap: 8px;
+                        max-width: 280px;
+                        margin: 0 auto;
+                        text-align: left;
+                        color: rgba(255, 255, 255, 0.85);
+                        @include min-lg {
+                             max-width: 350px;
+                        }
+                        @include lg {
+                            justify-content: flex-start;
+                            margin: 0;
+                        }
+                        @include xs {
+                            margin: 0 auto;
+                        }
+                        &::before {
+                            content: "";
+                            flex-shrink: 0;
+                            width: 20px;
+                            height: 20px;
+                            margin-top: 2px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z" stroke="%23C08A4E" stroke-width="1.5" stroke-linejoin="round"/><rect x="9" y="11" width="6" height="5" rx="1" stroke="%23C08A4E" stroke-width="1.5"/><path d="M10.5 11V9.5C10.5 8.67157 11.1716 8 12 8C12.8284 8 13.5 8.67157 13.5 9.5V11" stroke="%23C08A4E" stroke-width="1.5"/></svg>');
+                        }
                     }
                 }
                 &.invalid {

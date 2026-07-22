@@ -28,7 +28,6 @@
 .menu-close {
     position: absolute;
     top: -1px;
-    right: 24px;
     background: none;
     border: 0;
     font-size: 28px;
@@ -40,6 +39,8 @@
     width: 100%;
     background: $black;
     height: 65px;
+    text-align: right;
+    padding-right: 40px;
     @include min-md {
         display: none!important;
     }
@@ -320,9 +321,15 @@ header {
                                 display: flex;
                                 padding-bottom: 16px;
                                 position: relative;
+                                @include sm {
+                                    // padding-bottom: 12px;
+                                }
                                 &:not(:last-of-type) {
                                     border-bottom: 1px solid $white;
                                     margin-bottom: 16px;
+                                    @include sm {
+                                        // margin-bottom: 12px;
+                                    }
                                 }
                                 a {
                                     width: 100%;
@@ -331,6 +338,10 @@ header {
                                     line-height: 28px;
                                     font-size: 28px;
                                     font-weight: 500;
+                                    @include sm {
+                                        font-size: 22px;
+                                        line-height: 22px;
+                                    }
                                 }
                                 &:after {
                                     position: absolute;
