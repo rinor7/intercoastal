@@ -68,7 +68,7 @@
             <div class="headerbar" id="header-bar">
                 <div class="container">
                     <div class="menu-here">
-                        <nav class="navbar navbar-expand-lg navbar-light navbar-center">
+                        <nav class="navbar navbar-expand-xl navbar-light navbar-center">
 
                             <?php
                             // Homepage logo toggle (field group: "Homepage Logo Toggle").
